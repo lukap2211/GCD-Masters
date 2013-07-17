@@ -1,0 +1,722 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"type",
+				"typeTem"
+			],
+			[
+				"filter",
+				"filter_title"
+			],
+			[
+				"filt",
+				"filter"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"prin",
+				"print_r"
+			],
+			[
+				"resu",
+				"results"
+			],
+			[
+				"json",
+				"json_decode"
+			],
+			[
+				"FF",
+				"f0f0f0"
+			],
+			[
+				"movie",
+				"movieId"
+			],
+			[
+				"movieID",
+				"movie_id"
+			],
+			[
+				"movie_",
+				"movie_name"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"d_",
+				"daily_movies"
+			],
+			[
+				"check_",
+				"check_follow"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"follow",
+				"follow_tag"
+			],
+			[
+				"follo",
+				"follow_tag"
+			],
+			[
+				"ta",
+				"tag_name"
+			],
+			[
+				"tag",
+				"data-tag"
+			],
+			[
+				"follow_t",
+				"follow_type"
+			],
+			[
+				"ba",
+				"background-position"
+			],
+			[
+				"borde",
+				"border"
+			],
+			[
+				"font-",
+				"font-size"
+			],
+			[
+				"icon",
+				"icon-reorder"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"blo",
+				"blogFullURL"
+			],
+			[
+				"paddin",
+				"padding"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"margi",
+				"margin-bottom"
+			],
+			[
+				"padding",
+				"padding-top"
+			],
+			[
+				"border-",
+				"border-bottom"
+			],
+			[
+				"fo",
+				"font-size"
+			],
+			[
+				"border",
+				"border-top"
+			],
+			[
+				"is",
+				"isEmptyObject"
+			],
+			[
+				"if",
+				"if?	$… = ( … ) ? … : …"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "admin/user_functions.php",
+			"settings":
+			{
+				"buffer_size": 7377,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/user_validate.php",
+			"settings":
+			{
+				"buffer_size": 2227,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 207.0,
+		"selected_items":
+		[
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"togg",
+				"View: Toggle Minimap"
+			],
+			[
+				"toggle",
+				"View: Toggle Minimap"
+			],
+			[
+				"to",
+				"View: Toggle Minimap"
+			],
+			[
+				"open",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"php",
+				"Snippet: <?php else: ?>"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"scss",
+				"Set Syntax: CSS"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"javasc",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"ht",
+				"Set Syntax: HTML"
+			],
+			[
+				"ja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"ph",
+				"Set Syntax: PHP"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"htmp",
+				"Set Syntax: HTML (ASP)"
+			],
+			[
+				"diff",
+				"Set Syntax: Diff"
+			],
+			[
+				"default",
+				"Preferences: Settings - Default"
+			],
+			[
+				"sethtml",
+				"Set Syntax: HTML"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print('Please restart Sublime Text to finish installation')"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/lukap/github/GCD-Masters/admin/include/globals.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/connect.php",
+		"/Users/lukap/github/GCD-Masters/admin/logout.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/admin_header.php",
+		"/Users/lukap/github/GCD-Masters/admin/index.php",
+		"/Users/lukap/github/GCD-Masters/admin/user.php",
+		"/Users/lukap/github/GCD-Masters/admin/login_check.php",
+		"/Users/lukap/github/GCD-Masters/admin/login_success.php",
+		"/Users/lukap/github/GCD-Masters/admin/js/application.js",
+		"/Users/lukap/github/GCD-Masters/API/index.php",
+		"/Users/lukap/github/GCD-Masters/js/application.js",
+		"/Users/lukap/github/GCD-Masters/admin/include/admin_footer.php",
+		"/Users/lukap/github/GCD-Masters/include/header.php",
+		"/Users/lukap/github/GCD-Masters/include/footer.php",
+		"/Users/lukap/github/GCD-Masters/index.php",
+		"/Users/lukap/github/GCD-Masters/OLD_index.html",
+		"/Users/lukap/github/GCD-Masters/admin/js/jquery-1.10.1.min.js",
+		"/Users/lukap/github/GCD-Masters/admin/user_functions.php",
+		"/Users/lukap/github/GCD-Masters/admin/user_validate.php",
+		"/Users/lukap/github/GCD-Masters/README.txt",
+		"/Users/lukap/github/GCD-Masters/admin/css/style.css",
+		"/Users/lukap/github/GCD-Masters/admin/include/login_form.php",
+		"/Users/lukap/github/GCD-Masters/masters.sublime-project",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Women's Lifestyle/StyleList/www/HOMEPAGE.html",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Women's Lifestyle/StyleList/www/sl_js.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Women's Lifestyle/StyleList/www/SIGN_UP_NEWLSETTER.html",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Women's Lifestyle/StyleList/www/sl_js",
+		"/Users/lukap/github/GCD-Masters/admin/content.php",
+		"/Users/lukap/github/GCD-Masters/include/connect.php",
+		"/Users/lukap/github/GCD-Masters/include/login_form.php",
+		"/Users/lukap/github/GCD-Masters/css/bootstrap.css",
+		"/Users/lukap/github/GCD-Masters/css/style.css",
+		"/Users/lukap/github/GCD-Masters/include/globals.php",
+		"/Users/lukap/github/GCD-Masters/include/admin_nav.php",
+		"/Users/lukap/github/GCD-Masters/js/javascript.js",
+		"/Users/lukap/github/GCD-Masters/js/bootstrap.js",
+		"/Users/lukap/github/GCD-Masters/include/aside.php",
+		"/Users/lukap/github/GCD-my_blog/include/album_validate.php",
+		"/Users/lukap/github/GCD-my_blog/include/album_functions.php",
+		"/Users/lukap/github/GCD-my_blog/album.php",
+		"/Users/lukap/github/GCD-Masters/admin_html/index.php",
+		"/Users/lukap/github/GCD-Masters/error_log",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Women's Lifestyle/MY CSS stlyelist.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Women's Lifestyle/main.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Women's Lifestyle/main NOW.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/breadcrumb.html",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/mf-sailthru-newsletter.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/mf-sailthru - LIVE.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/blog-main-override-BACKUP from LUKAP SANDBOX.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/ent_processSailthru_mf_test.php",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/Moviefone/ent_sailthruSpider_mf_test.php",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Moviefone/mf-sailthru.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/ent_sailthruSpider_mf_test.php",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/music-sailthru-newsletter.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Moviefone/13-mf-dark.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/Sailthru_lightbox_css.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Moviefone/Moviefone - daily alert.html",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/ent_processSailthru.php",
+		"/Users/lukap/src/ruby-1.8.7-p174/prec.c",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/ent_config.php",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Moviefone/mf-dark-lukap.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Newsletters/The BoomBox alert_daily.html",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Newsletters/The BoomBox alert_realtime.html",
+		"/Users/lukap/Downloads/PopBubbles61630/style.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/fonts/MontserratRegular/MontserratRegular.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/luka-css-980.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/luka-css.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/main.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/main-980.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/my_wall.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/my_wall.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/jquery-knot-test.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/aol-photo-gallery.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/photosKnot.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/js-init.js",
+		"/Users/lukap/Library/Application Support/Sublime Text 2/Packages/User/HTML.sublime-settings",
+		"/Users/lukap/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/my_wall.html",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/header main menu.html",
+		"/Users/lukap/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/lukap/Dropbox/IRELAND/Recordable Residency Dates.txt",
+		"/Users/lukap/log",
+		"/Users/lukap/.gitconfig",
+		"/Users/lukap/github/mobile-boilerplate/.gitignore",
+		"/Users/lukap/.adobe/userid",
+		"/Users/lukap/.adobe/md5",
+		"/Users/lukap/.ZendStudio/license.71",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/popcetera/css-top.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/popcetera/bottom-js.html",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/popcetera/template-1.html",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/:: Sailthru My Wall for AOL Pop Music site",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/seatgeek.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Popcetera/js-init-ck.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Newsletters/Moviefone - weekend-preview LIVE.html",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Newsletters/Moviefone - weekend-preview.html",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/music-sailthru-newsletter.min.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Entertainment/Newsletters/Noisecreep alert_daily.html",
+		"/Users/lukap/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/free_albums.php",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/js_sailthru-newsletter_OLD.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/music-sailthru-my-wall-test-ck.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/music-sailthru-my-wall-test.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/music-sailthru-newsletter-ck.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/my_wall.html",
+		"/Users/lukap/Desktop/test",
+		"/Users/lukap/Desktop/Lorem ipsum dolor sit amet, consectetur adipisicin",
+		"/Users/lukap/github/moviefone-mobile/README.md",
+		"/Applications/Adobe Photoshop CS6/Presets/Scripts/Event Scripts Only/Display Camera Maker.jsx",
+		"/Users/lukap/Desktop/retina/README.md",
+		"/Users/lukap/Downloads/sergeche-zen-coding-04c37f3/README.textile",
+		"/Users/lukap/Documents/razno/Skype old chat BACKUP/chatsync/0b/0b737f3ce81e9cf7.dat",
+		"/Users/lukap/github/my_blog/genre.php",
+		"/Users/lukap/github/bootstrap/package.json",
+		"/Users/lukap/github/bootstrap/README.md"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"get_location",
+			"min\\.map",
+			"return",
+			"min\\.map",
+			"min.map",
+			"jQuery",
+			"contnet",
+			"strong",
+			"Ruairi Murphy",
+			"alert",
+			"dashboardInit",
+			"backup",
+			"ajax",
+			"GET",
+			"POST",
+			"post",
+			"ajax",
+			"border-top:10px solid blue;",
+			"ERROR",
+			"'error'",
+			"view_user",
+			"result",
+			"row",
+			"error",
+			"strong",
+			"\"include",
+			"a\\.",
+			"4-stamp-tick",
+			"3-stamp-tick",
+			"stamp-tick",
+			"'.breadcrumb",
+			"'.breadcrumb a'",
+			": ",
+			":\\s",
+			";\\s",
+			"preview",
+			"stamp_creation_window",
+			"\\{\\n",
+			"  ",
+			";",
+			"stamp_creation_container",
+			"00b0ec",
+			"\\}",
+			"  ",
+			"\n  ",
+			"movieId",
+			"get_movieTitle",
+			"get_movieTitles",
+			"movie_name",
+			"get_movieTitles",
+			"sailthru",
+			"start_",
+			"text-shadow",
+			"  ",
+			"content",
+			"featured",
+			"movie-release-date",
+			"in theate",
+			"release",
+			"itemprop=\"genre\"",
+			"add_user",
+			"add_user_list",
+			"reg",
+			"cast",
+			"follow_type",
+			"alert_",
+			"settings",
+			"main",
+			"console.log",
+			"folow_type",
+			"sailthru",
+			"data_var",
+			"alertType",
+			"new_alert_id",
+			"[keys][email]",
+			"alertType",
+			"new_alert_id",
+			"alertType",
+			"alertTemplate",
+			"alertType",
+			"data_var =",
+			"data_var",
+			"daily",
+			"_type",
+			"alertType",
+			"template",
+			"alert",
+			"daily",
+			"alert_daily",
+			"settingsLaunch",
+			"GH_NewsletterSettings",
+			"start_follow",
+			"check_follow",
+			"folow",
+			"daily_bloggers",
+			"settings_",
+			"seetings_",
+			"follow_tagfollow_tagfollow_tagfollow_tagfollow_tag",
+			"follow_tag",
+			"followTagName",
+			"daily_bloggers",
+			"daily_tags",
+			"daily_movies",
+			"settings",
+			"check",
+			"bell",
+			"check",
+			"folow_type",
+			"bell",
+			"folow_type",
+			"follow_type",
+			"follow",
+			"movie",
+			"writer",
+			"bell",
+			"director",
+			"48",
+			"in the",
+			"genre",
+			"in the",
+			"rele",
+			"dvd",
+			"contentType",
+			"site_url",
+			"follow_type",
+			"source",
+			"alertType",
+			"add_user"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"    ",
+			"follow_type",
+			"\\n\\r"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "admin/user_functions.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7377,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5743,
+								5743
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "admin/user_validate.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2227,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1146,
+								1370
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 187.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"project": "masters.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"use",
+				"admin/user_functions.php"
+			],
+			[
+				"t",
+				"README.txt"
+			],
+			[
+				"user",
+				"admin/user_functions.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"edit",
+				"editListForm"
+			],
+			[
+				"editlist",
+				"editListForm"
+			],
+			[
+				"",
+				"Array"
+			]
+		],
+		"width": 392.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 263.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

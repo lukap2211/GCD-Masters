@@ -2,7 +2,7 @@
 <div id="navbarExample" class="navbar navbar-static">
   <div class="navbar-inner">
     <div class="container" style="width: auto;">
-      <a class="brand" href="#">Project Name</a>
+      <a class="brand" href="#">c Name</a>
       <ul class="nav">
         <li class="active"><a href="#fat">@fat</a></li>
         <li class=""><a href="#mdo">@mdo</a></li>
