@@ -2,6 +2,18 @@
 
 // user functions
 
+function view_dashboard (){
+
+	$view_dashboard = <<<DASHBOARD
+	 <div id="map-canvas">
+
+	 	<img class="loader" src="img/ajax-loader.gif" />
+
+	 </div>
+DASHBOARD;
+	echo $view_dashboard;
+}
+
 function view_user($usr_id,$action){
 
 	global $conn, $filter;
@@ -29,8 +41,8 @@ function view_user($usr_id,$action){
 		<span >Last name: {$last_name}</span> </a><br />
 		<div class='bio'>{$bio}</div>
 	</article>
-
 VIEW;
+
 			echo $view_user;
 
 		}
@@ -48,7 +60,9 @@ VIEW;
 	</ul>
 	</div>
 ADMIN;
+
 			echo $admin_section;
+
 		}
 
 		// get 10 most recent reviews by user
@@ -145,7 +159,6 @@ function add_user(){
 		</form>
 
 	</article>\n
-
 ADD;
 
 	echo $add_user;
@@ -238,7 +251,6 @@ function edit_user($usr_id,$action){
 		</form>
 
 	</article>\n
-
 EDIT;
 
 			echo $edit_user;

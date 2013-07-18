@@ -1,1 +1,4 @@
 body{ padding:10px; background-color: white;}
+
+#map-canvas {height: 800px;background-color: #e5e5e5; border:1px solid #ccc;}
+#map-canvas .loader { padding: 350px; margin:auto;}

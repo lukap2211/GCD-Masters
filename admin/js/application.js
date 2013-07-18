@@ -1,45 +1,107 @@
 // Google Maps object
 var GM = {
 
-    // main
-    // INFO        : "This is Google Maps object that is used in CMS",
+    // settings
     apiKey      : "AIzaSyCGHVSkXtwVy4D6GDK5WVVgFXs_SKg-0Z0",
     latitude    : "",
     longitude   : "",
     accuracy    : "",
+    zoom        : 19,
 
     // functions
     _fn : {
 
-        get_location: function () {
-            navigator.geolocation.getCurrentPosition(GM._fn.show_map);
-        },
-
-        show_map : function (position) {
+        // get current location
+        getLocation : function (position) {
             GM.latitude  = position.coords.latitude;
             GM.longitude = position.coords.longitude;
             GM.accuracy  = position.coords.accuracy;
 
-            // let's show a map or do something interesting!
-            $("#my_location").html("<a href='//maps.google.com/?q=" + GM.latitude + "," + GM.longitude +"' target=_blank>" + GM.latitude + ", " + GM.longitude + "</a>");
-            $("#my_accuracy").html(Math.round(GM.accuracy));
-        }
+            // showing current location in the header
+            $("#my_location").html("<a href='//maps.google.com/?q=" + GM.latitude + "," + GM.longitude +"' target=_blank>" + GM.latitude + ", " + GM.longitude + "</a>").hide().fadeIn();
+            $("#my_accuracy").html(Math.round(GM.accuracy)).hide().fadeIn();
+
+
+            // load map when location retrieved
+            GM._fn.getMap();
+        },
+
+        // get map current location
+        getMap : function () {
+            google.maps.visualRefresh = true;
+            // google.maps.MapTypeStyleFeatureType = "administrative";
+            var mapOptions = {
+                zoom                : GM.zoom,
+                minZoom             : GM.zoom,
+                maxZoom             : GM.zoom,
+                panControl          : false,
+                draggable           : false,
+                disableDefaultUI    : true,
+                styles:[{
+                    featureType:"poi",
+                    elementType:"labels",
+                    stylers:[{
+                        visibility:"off"
+                    }]
+                }],
+                center: new google.maps.LatLng(GM.latitude, GM.longitude),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+            // set home Smithfield or Griffith College
+            var griffith    = new google.maps.LatLng(53.33101073729732, -6.278211772441864);
+            var smithfield  = new google.maps.LatLng(53.348732478223454, -6.279000341892242);
+
+            $(".set_home_1").click(function (e) {
+                e.preventDefault;
+                map.panTo(griffith);
+            })
+
+            $(".set_home_2").click(function (e) {
+                e.preventDefault;
+                map.panTo(smithfield);
+            })
+
+            // on click add new location
+            google.maps.event.addListener(map, 'click', function(e) {
+                GM._fn.placeMarker(e.latLng, map);
+            });
+
+        },
+
+        // add new location
+        placeMarker : function (position, map) {
+            var marker = new google.maps.Marker({
+                position: position,
+                map: map
+            });
+            alert(position)
+        },
+
+        // init when DOM is ready
+        init : function () {
+            navigator.geolocation.getCurrentPosition(GM._fn.getLocation);
+        },
+
+
+
     }
 }
 
 $(function(){
 
+    // init
+    GM._fn.init();
 
-    GM._fn.get_location();
+    // TODO
+    // front end stuff
 
 
     // Scroll Spy
     $('#navbar').scrollspy();
 
-    // ADMIN section
-
     // tabs
-
     $('#myTab a').click(function (e) {
       e.preventDefault();
       $(this).tab('show');

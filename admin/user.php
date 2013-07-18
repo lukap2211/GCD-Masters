@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-// show all errors
-error_reporting(E_ALL);
-ini_set('display_errors', TRUE);
+// // show all errors
+// error_reporting(E_ALL);
+// ini_set('display_errors', TRUE);
 
 
 // only for signed in users
@@ -11,9 +11,6 @@ ini_set('display_errors', TRUE);
 if(!isset($_SESSION['username'])){
 	header("location:logout.php?login=false");
 }
-
-
-// var_dump(isset($_SESSION['username']));
 
 // connect to database
 require("include/connect.php");
@@ -71,6 +68,19 @@ if(isset($_SESSION['username'])) {
             <ul class="nav">
 
               <li class="active"><a href="user.php">Home</a></li>
+
+	          <?php
+	          if ($_SESSION['privilege'] == "admin" ) {
+	          ?>
+
+	          <li class="dropdown">
+	            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Locations <b class="caret"></b></a>
+	            <ul class="dropdown-menu">
+	              <li><a class="set_home_1" href="#" data-home="griffith">GCD Campus</a></li>
+	              <li><a class="set_home_2" href="#" data-home="smithfield">Smithfield Square</a></li>
+	            </ul>
+	          </li>
+
 	          <li class="dropdown">
 	            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users <b class="caret"></b></a>
 	            <ul class="dropdown-menu">
@@ -78,6 +88,8 @@ if(isset($_SESSION['username'])) {
 	              <li><a href="#">Add New User</a></li>
 	            </ul>
 	          </li>
+
+	          <?php } ?>
 
 	          <li class="dropdown">
 	            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Content <b class="caret"></b></a>
@@ -127,10 +139,6 @@ if(isset($_SESSION['username'])) {
 <?php
 
 
-////////////////////////////////
-
-
-
 // open main container
 echo "<section id='container'>";
 
@@ -141,7 +149,7 @@ include("user_validate.php");
 include("user_functions.php");
 
 // check mode for GET
-if($_GET){
+if ($_GET) {
 	switch ($action){
 		case 'add':
 			if ($action) add_user();
@@ -156,7 +164,7 @@ if($_GET){
 			if ($user_id) delete_user($user_id,$action);
 			break;
 	}
-} elseif($_POST) {
+} elseif ($_POST) {
 	// add & edit submit
 	switch ($action_success){
 		case 'add':
@@ -167,7 +175,10 @@ if($_GET){
 			edit_user_success($username,$first_name,$last_name,$bio,$usr_id);
 			break;
 	}
+} else {
+	view_dashboard();
 }
+
 // close main container
 echo "</section>";
 
