@@ -1,7 +1,7 @@
 
 // Google Maps object
 var GM = {
-    apiKey  = "AIzaSyCGHVSkXtwVy4D6GDK5WVVgFXs_SKg-0Z0",
+    apiKey  : "AIzaSyCGHVSkXtwVy4D6GDK5WVVgFXs_SKg-0Z0",
 }
 
 $(function(){

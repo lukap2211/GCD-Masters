@@ -2,6 +2,11 @@
 <?php
 
 echo("<pre>");
+
+// show all errors
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+
 print_r($_SESSION);
 echo("</pre>");
 
@@ -21,6 +26,10 @@ echo("</pre>");
     <![endif]-->
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
 </head>
 <body data-spy="scroll" data-target=".navbar">
 

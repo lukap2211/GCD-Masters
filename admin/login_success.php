@@ -1,8 +1,8 @@
 <?
 session_start();
 if(!session_is_registered("username")){
-	header("location:login.php");
-}else {
+	header("location:index.php");
+} else {
 	// header("location:user.php?action=view&id={$_SESSION['id']}");
 	header("location:user.php");
 }
