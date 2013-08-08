@@ -1,4 +1,59 @@
-body{ padding:10px; background-color: white;}
 
-#map-canvas {height: 800px;background-color: #e5e5e5; border:1px solid #ccc;}
-#map-canvas .loader { padding: 350px; margin:auto;}
+/*body{ padding:0px; background-color: white;}*/
+
+#dashboard_container {height:40px;}
+#login_container {width:300px; }
+
+.container {z-index: 1060 !important; padding: 10px; background: white; border-radius: 0px;box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); border: 1px solid #ddd;margin-top: 10px;}
+
+#map-canvas {height: 100%; min-height:100%;background-color: #e5e5e5; border:1px solid #ccc; width: 100%; position: absolute;top:0; z-index: -1;}
+#map-canvas img {max-width: none; }
+#map-canvas .loader {margin:10% auto; display: block;}
+
+#map-controls .map-zoom {float:left;}
+#map-controls .map-zoom button {margin-bottom: 5px;}
+#map-controls .map-input {float:right;}
+
+footer {overflow: hidden;}
+.float-left {float: left;}
+.float-right {float: right;}
+
+/*#location {margin: 0 0 20px; position: absolute; bottom: 0px;}
+#location .muted{padding: 5px;}
+*/
+
+.progress {width: 100%; margin: auto;}
+.progress div.bar a {display: block; text-decoration: none; color: white; overflow: hidden;}
+.progress div.bar .popover {color:#333; text-shadow:none;}
+/*.progress div a:hover {display: block;}*/
+
+.info {transition:all 0.4s; line-height:50px; height:50px; background: white; border: 1px solid #ddd; width: 450px; position: fixed; left:-400px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)}
+.info .title {font-size: 28px; color: #0088cc; width: 50px; text-align: center; cursor: pointer;}
+#debug.info .title {color: red;}
+
+/*#map-legend {bottom:50px;position: absolute;}*/
+#location {bottom:80px;}
+#copyright {bottom:140px;}
+#debug {bottom:200px;}
+
+.info:hover {left:0;}
+
+#footer_wrapper {
+	position: absolute;
+	bottom: 0px;
+	height: 80px;
+	width: 100%;
+}
+
+#map-legend{
+	z-index: 1060;
+	padding: 10px;
+	background: white;
+}
+
+@media (max-width: 979px) and (min-width: 768px){
+	/*#container {margin-left: 40px;}*/
+}
+
+/*.modal {width: 670px; margin-left: -335px;}*/
+/*.modal-body { max-height: 540px;}*/

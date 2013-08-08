@@ -4,7 +4,7 @@ if(!session_is_registered("username")){
 	header("location:index.php");
 } else {
 	// header("location:user.php?action=view&id={$_SESSION['id']}");
-	header("location:user.php");
+	header("location:dashboard.php");
 }
 echo "<pre>";
 print_r($_SESSION);

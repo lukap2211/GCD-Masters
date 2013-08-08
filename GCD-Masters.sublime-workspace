@@ -4,6 +4,138 @@
 		"selected_items":
 		[
 			[
+				"geo_",
+				"geo_lat"
+			],
+			[
+				"is",
+				"is_integer"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"cont",
+				"controler"
+			],
+			[
+				"drag",
+				"draggable"
+			],
+			[
+				"ma",
+				"max-height"
+			],
+			[
+				"mar",
+				"margin-left"
+			],
+			[
+				"view",
+				"viewModal"
+			],
+			[
+				"ite",
+				"iterator"
+			],
+			[
+				"add",
+				"addMarker"
+			],
+			[
+				"ge",
+				"geo_lon"
+			],
+			[
+				"im",
+				"important"
+			],
+			[
+				"leg_",
+				"leg_history"
+			],
+			[
+				"le",
+				"legend_tot"
+			],
+			[
+				"par",
+				"ParseInit"
+			],
+			[
+				"curr",
+				"currentMap"
+			],
+			[
+				"cure",
+				"currentMap"
+			],
+			[
+				"cu",
+				"currentMap"
+			],
+			[
+				"current",
+				"current_map"
+			],
+			[
+				"curren",
+				"current_map"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"_",
+				"_fn"
+			],
+			[
+				"min-",
+				"min-height"
+			],
+			[
+				"pre",
+				"preventDefault"
+			],
+			[
+				"te",
+				"text-decoration"
+			],
+			[
+				"anim",
+				"animate"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"bore",
+				"border"
+			],
+			[
+				"map",
+				"mapCanvas"
+			],
+			[
+				"ani",
+				"animate"
+			],
+			[
+				"dra",
+				"draggable"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"get",
+				"get_location"
+			],
+			[
 				"type",
 				"typeTem"
 			],
@@ -14,10 +146,6 @@
 			[
 				"filt",
 				"filter"
-			],
-			[
-				"back",
-				"background-color"
 			],
 			[
 				"user",
@@ -144,10 +272,6 @@
 				"border-top"
 			],
 			[
-				"is",
-				"isEmptyObject"
-			],
-			[
 				"if",
 				"if?	$… = ( … ) ? … : …"
 			]
@@ -156,18 +280,59 @@
 	"buffers":
 	[
 		{
-			"file": "admin/user_functions.php",
+			"file": "admin/css/style.css",
 			"settings":
 			{
-				"buffer_size": 7377,
+				"buffer_size": 8964,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "admin/user_validate.php",
+			"file": "API/index.php",
 			"settings":
 			{
-				"buffer_size": 2227,
+				"buffer_size": 2082,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "API/api_validate.php",
+			"settings":
+			{
+				"buffer_size": 856,
+				"line_ending": "Unix",
+				"name": "<?php"
+			}
+		},
+		{
+			"file": "API/api_functions.php",
+			"settings":
+			{
+				"buffer_size": 3027,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/js/application.js",
+			"settings":
+			{
+				"buffer_size": 20110,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/dashboard_functions.php",
+			"settings":
+			{
+				"buffer_size": 2160,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/include/main_header.php",
+			"settings":
+			{
+				"buffer_size": 916,
 				"line_ending": "Unix"
 			}
 		}
@@ -175,7 +340,7 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 207.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
@@ -259,7 +424,7 @@
 				"Set Syntax: HTML"
 			]
 		],
-		"width": 575.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -280,29 +445,43 @@
 	},
 	"file_history":
 	[
-		"/Users/lukap/github/GCD-Masters/admin/include/globals.php",
-		"/Users/lukap/github/GCD-Masters/admin/include/connect.php",
-		"/Users/lukap/github/GCD-Masters/admin/logout.php",
+		"/Users/lukap/github/GCD-Masters/admin/dashboard_functions.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/admin_header.php",
-		"/Users/lukap/github/GCD-Masters/admin/index.php",
-		"/Users/lukap/github/GCD-Masters/admin/user.php",
-		"/Users/lukap/github/GCD-Masters/admin/login_check.php",
-		"/Users/lukap/github/GCD-Masters/admin/login_success.php",
-		"/Users/lukap/github/GCD-Masters/admin/js/application.js",
-		"/Users/lukap/github/GCD-Masters/API/index.php",
-		"/Users/lukap/github/GCD-Masters/js/application.js",
+		"/Users/lukap/github/GCD-Masters/admin/dashboard.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/admin_nav.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/admin_footer.php",
-		"/Users/lukap/github/GCD-Masters/include/header.php",
-		"/Users/lukap/github/GCD-Masters/include/footer.php",
-		"/Users/lukap/github/GCD-Masters/index.php",
-		"/Users/lukap/github/GCD-Masters/OLD_index.html",
-		"/Users/lukap/github/GCD-Masters/admin/js/jquery-1.10.1.min.js",
+		"/Users/lukap/github/GCD-Masters/admin/include/main_header.php",
+		"/Users/lukap/github/GCD-Masters/admin/dashboard_validate.php",
+		"/Users/lukap/github/GCD-Masters/admin/user.php",
+		"/Users/lukap/github/GCD-my_blog/include/album_functions.php",
+		"/Users/lukap/github/GCD-Masters/admin/logout.php",
+		"/Users/lukap/github/GCD-Masters/admin/index.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/login_form.php",
+		"/Users/lukap/github/GCD-Masters/js/application.js",
 		"/Users/lukap/github/GCD-Masters/admin/user_functions.php",
 		"/Users/lukap/github/GCD-Masters/admin/user_validate.php",
+		"/Users/lukap/github/GCD-Masters/admin/js/application.js",
+		"/Users/lukap/github/GCD-Masters/admin/include/main_footer.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/modal.php",
+		"/Users/lukap/github/GCD-Masters/API/index.php",
+		"/Users/lukap/github/GCD-Masters/admin/css/bootstrap.css",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL WL/StyleList/www/sl_js.js",
+		"/Users/lukap/Dropbox/AOL/DEV/AOL WL/StyleList/www/stylelist.js",
+		"/Users/lukap/github/GCD-Masters/admin/login_success.php",
+		"/Users/lukap/github/GCD-Masters/GCD-Masters.sublime-project",
+		"/Users/lukap/github/GCD-Masters/masters.sublime-project",
+		"/Users/lukap/github/GCD-Masters/admin/index_OLD.php",
+		"/Users/lukap/github/GCD-Masters/settings.json",
+		"/Users/lukap/github/GCD-Masters/index.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/globals.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/connect.php",
+		"/Users/lukap/github/GCD-Masters/admin/login_check.php",
+		"/Users/lukap/github/GCD-Masters/include/header.php",
+		"/Users/lukap/github/GCD-Masters/include/footer.php",
+		"/Users/lukap/github/GCD-Masters/OLD_index.html",
+		"/Users/lukap/github/GCD-Masters/admin/js/jquery-1.10.1.min.js",
 		"/Users/lukap/github/GCD-Masters/README.txt",
 		"/Users/lukap/github/GCD-Masters/admin/css/style.css",
-		"/Users/lukap/github/GCD-Masters/admin/include/login_form.php",
-		"/Users/lukap/github/GCD-Masters/masters.sublime-project",
 		"/Users/lukap/Dropbox/AOL/DEV/AOL Women's Lifestyle/StyleList/www/HOMEPAGE.html",
 		"/Users/lukap/Dropbox/AOL/DEV/AOL Women's Lifestyle/StyleList/www/sl_js.js",
 		"/Users/lukap/Dropbox/AOL/DEV/AOL Women's Lifestyle/StyleList/www/SIGN_UP_NEWLSETTER.html",
@@ -318,7 +497,6 @@
 		"/Users/lukap/github/GCD-Masters/js/bootstrap.js",
 		"/Users/lukap/github/GCD-Masters/include/aside.php",
 		"/Users/lukap/github/GCD-my_blog/include/album_validate.php",
-		"/Users/lukap/github/GCD-my_blog/include/album_functions.php",
 		"/Users/lukap/github/GCD-my_blog/album.php",
 		"/Users/lukap/github/GCD-Masters/admin_html/index.php",
 		"/Users/lukap/github/GCD-Masters/error_log",
@@ -404,142 +582,143 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/lukap/github/GCD-Masters",
 			""
 		]
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
-			"get_location",
-			"min\\.map",
-			"return",
-			"min\\.map",
-			"min.map",
-			"jQuery",
-			"contnet",
-			"strong",
-			"Ruairi Murphy",
+			"setLegend",
+			"lege",
+			"animate",
+			"markers",
+			"deleteMarker",
+			"markers",
+			"modal",
+			"getIcon",
+			"green",
+			"marker",
+			"icon",
+			"blank",
+			"ICON ",
+			"marker",
+			"shadow",
+			"category",
+			"black",
 			"alert",
-			"dashboardInit",
-			"backup",
-			"ajax",
-			"GET",
-			"POST",
-			"post",
-			"ajax",
-			"border-top:10px solid blue;",
-			"ERROR",
-			"'error'",
-			"view_user",
-			"result",
-			"row",
-			"error",
-			"strong",
-			"\"include",
-			"a\\.",
-			"4-stamp-tick",
-			"3-stamp-tick",
-			"stamp-tick",
-			"'.breadcrumb",
-			"'.breadcrumb a'",
-			": ",
-			":\\s",
-			";\\s",
-			"preview",
-			"stamp_creation_window",
-			"\\{\\n",
-			"  ",
-			";",
-			"stamp_creation_container",
-			"00b0ec",
-			"\\}",
-			"  ",
-			"\n  ",
-			"movieId",
-			"get_movieTitle",
-			"get_movieTitles",
-			"movie_name",
-			"get_movieTitles",
-			"sailthru",
-			"start_",
-			"text-shadow",
-			"  ",
+			"undefined",
+			"placeMarker",
+			"addMarker",
+			"xhr",
+			"getItems",
+			"edit_loc",
+			"viewModal",
+			"moveMarker",
+			"placeMarker",
+			"moveMarker",
+			"\n            ",
+			"movemarker",
+			"move",
 			"content",
-			"featured",
-			"movie-release-date",
-			"in theate",
-			"release",
-			"itemprop=\"genre\"",
-			"add_user",
-			"add_user_list",
-			"reg",
-			"cast",
-			"follow_type",
-			"alert_",
-			"settings",
-			"main",
-			"console.log",
-			"folow_type",
-			"sailthru",
-			"data_var",
-			"alertType",
-			"new_alert_id",
-			"[keys][email]",
-			"alertType",
-			"new_alert_id",
-			"alertType",
-			"alertTemplate",
-			"alertType",
-			"data_var =",
-			"data_var",
-			"daily",
-			"_type",
-			"alertType",
-			"template",
+			"addMarkers",
+			"placeMarker",
+			"progress",
+			"legend",
+			"hsq",
+			"longitude",
+			"please enter user ID as number",
+			"debug",
+			"drag",
+			"c=",
+			"xhr",
+			"moveMarkers",
+			"addMarkers",
+			"moveMarker",
+			"geo_lon",
+			"moveMarkers",
+			"`",
+			"json",
+			"loadMarkers",
+			"getItems",
+			"setLegend",
+			"iterator",
+			"currentMap",
+			"mapCanvas",
+			"//get header\ninclude(\"include/admin_header.php\");",
+			"currentMap",
+			"getIcon",
+			"moveMarkers",
+			"user_area",
+			"delete",
+			"deleter",
+			"placeMarker",
+			"moveMarker",
+			"moveMarkers",
+			"addMarker",
+			"iterator",
+			"loadMarkers",
+			"markers",
+			"marker",
+			"current zoo",
+			" ,",
+			"locations",
+			"placeMarker",
+			"markers",
+			"iterator",
+			"placeMarkers",
+			"map",
+			"setMap",
+			"placeMarkers",
+			"placeMarker",
+			"perc",
+			"setTimeout",
+			"setLegend",
 			"alert",
-			"daily",
-			"alert_daily",
-			"settingsLaunch",
-			"GH_NewsletterSettings",
-			"start_follow",
-			"check_follow",
-			"folow",
-			"daily_bloggers",
-			"settings_",
-			"seetings_",
-			"follow_tagfollow_tagfollow_tagfollow_tagfollow_tag",
-			"follow_tag",
-			"followTagName",
-			"daily_bloggers",
-			"daily_tags",
-			"daily_movies",
-			"settings",
-			"check",
-			"bell",
-			"check",
-			"folow_type",
-			"bell",
-			"folow_type",
-			"follow_type",
-			"follow",
-			"movie",
-			"writer",
-			"bell",
-			"director",
-			"48",
-			"in the",
-			"genre",
-			"in the",
-			"rele",
-			"dvd",
-			"contentType",
-			"site_url",
-			"follow_type",
-			"source",
-			"alertType",
-			"add_user"
+			"legend",
+			"showLegend",
+			"setMap",
+			"loadMarkers",
+			"showLegend",
+			"legend",
+			"legend (",
+			"legend(",
+			"markers",
+			"off",
+			"of",
+			"offse",
+			"customZoom",
+			"currentMap",
+			"gri",
+			"load",
+			"ajax",
+			"set_home_2",
+			"zoomControl",
+			"panToWithOffset",
+			"zoom",
+			"paginat",
+			"animate",
+			"map",
+			"center",
+			"user",
+			"phoenix",
+			"smithfield",
+			"griffith",
+			"pan",
+			"options",
+			"aerlingus",
+			"logout",
+			"plus",
+			"getCurrentPosition",
+			"center",
+			"admin_header",
+			"GM.map",
+			"map",
+			"marker",
+			"Google",
+			"        // add new location\n        placeMarker : function (position, map) {\n            var marker = new google.maps.Marker({\n                position: position,\n                map: map\n            });\n            marker.setMap (map);\n            marker.setDraggable (true);\n        },\n\n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -547,6 +726,11 @@
 		"regex": true,
 		"replace_history":
 		[
+			"geo_lng",
+			"pho",
+			"smi",
+			"gri",
+			"griéé",
 			"    ",
 			"follow_type",
 			"\\n\\r"
@@ -560,29 +744,29 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "admin/user_functions.php",
+					"file": "admin/css/style.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7377,
+						"buffer_size": 8964,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5743,
-								5743
+								848,
+								848
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -593,19 +777,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "admin/user_validate.php",
+					"file": "API/index.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2227,
+						"buffer_size": 2082,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1146,
-								1370
+								1574,
+								1574
 							]
 						],
 						"settings":
@@ -614,7 +798,160 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 187.0,
+						"translation.y": 357.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "API/api_validate.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 856,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								430,
+								430
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<?php",
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "API/api_functions.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3027,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1998,
+								1998
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 505.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "admin/js/application.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20110,
+						"regions":
+						{
+							"bookmarks":
+							{
+								"flags": 144,
+								"icon": "bookmark",
+								"regions":
+								[
+								],
+								"scope": "bookmarks"
+							}
+						},
+						"selection":
+						[
+							[
+								7999,
+								8008
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 30.0,
+						"translation.y": 2367.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "admin/dashboard_functions.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2160,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1768,
+								1768
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 335.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "admin/include/main_header.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 916,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								834,
+								834
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -653,7 +990,7 @@
 		]
 	},
 	"menu_visible": true,
-	"project": "masters.sublime-project",
+	"project": "GCD-Masters.sublime-project",
 	"replace":
 	{
 		"height": 64.0
@@ -664,6 +1001,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"ap",
+				"admin/js/application.js"
+			],
 			[
 				"use",
 				"admin/user_functions.php"
@@ -684,14 +1025,30 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"",
+				"~/Dropbox/AOL/DEV/AOL WL/StyleList/StyleList.sublime-project"
+			]
 		],
 		"width": 380.0
 	},
 	"select_symbol":
 	{
-		"height": 392.0,
+		"height": 27.0,
 		"selected_items":
 		[
+			[
+				"view_",
+				"view_dashboard"
+			],
+			[
+				"admi",
+				"badge-important"
+			],
+			[
+				"",
+				"Carousel"
+			],
 			[
 				"edit",
 				"editListForm"
@@ -699,10 +1056,6 @@
 			[
 				"editlist",
 				"editListForm"
-			],
-			[
-				"",
-				"Array"
 			]
 		],
 		"width": 392.0

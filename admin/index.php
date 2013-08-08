@@ -77,27 +77,31 @@ if(!session_is_registered("username")){
 
 } else {
 	// header("location:user.php?action=view&id={$_SESSION['id']}");
-	header("location:user.php");
+	header("location:dashboard.php");
 }
 
-// header
+// get main header
+include("include/main_header.php");
+
+// get admin footer
 include("include/admin_header.php");
 
 // open main container
-echo "<section id='container'>";
+echo "<section id='login_container' class='container'>";
 
 // throw error
 if($error_message) {
 	echo "<div class='alert alert-error'><strong>Ooops!</strong><button type='button' class='close' data-dismiss='alert'>x</button><br /><br /><ul>$error_message</ul></div>";
 }
+
 // login form
 include("include/login_form.php");
 
 // close main container
 echo "</section>";
 
-// footer
-include("include/admin_footer.php");
+// get main footer
+include("include/main_footer.php");
 
 ob_end_flush();
 

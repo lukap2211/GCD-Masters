@@ -6,11 +6,14 @@ $_SESSION = array();
 // open connection
 require("include/connect.php");
 
-// header
+// get main header
+include("include/main_header.php");
+
+// get admin header
 include("include/admin_header.php");
 
 // open main container
-echo "<section id='container'>";
+echo "<section id='login_container' class='container'>";
 
 //message
 if(isset($_GET['login'])){
@@ -25,6 +28,6 @@ include("include/login_form.php");
 // close main container
 echo "</section>";
 
-// footer
-include("include/admin_footer.php");
+// get main footer
+include("include/main_footer.php");
 ?>

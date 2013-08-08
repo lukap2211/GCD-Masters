@@ -3282,6 +3282,7 @@ button.close {
 .btn[disabled] {
   cursor: default;
   background-image: none;
+  background-color: #CCC !important;
   opacity: 0.65;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
