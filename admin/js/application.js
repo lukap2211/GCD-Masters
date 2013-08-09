@@ -29,15 +29,17 @@ var GM = {
     markers         : [],
     iterator        : 0,
     pin  : {
+        // backup icon
         // green       : "http://cdn1.iconfinder.com/data/icons/locationicons/pin.png",
         // orange      : "http://cdn1.iconfinder.com/data/icons/locationicons/pin.png",
         // red         : "http://cdn1.iconfinder.com/data/icons/locationicons/pin.png",
         // black       : "http://cdn1.iconfinder.com/data/icons/locationicons/pin.png"
         green       : "http://lukap.info/gcd/masters/admin/img/pin_green.png",
         orange      : "http://lukap.info/gcd/masters/admin/img/pin_orange.png",
-        red         : "http://lukap.info/gcd/masters/admin/img/pin_red.png",
+        blue        : "http://lukap.info/gcd/masters/admin/img/pin_blue.png",
         black       : "http://lukap.info/gcd/masters/admin/img/pin_black.png",
-        todo        : "http://lukap.info/gcd/masters/admin/img/pin_todo.png"
+        todo        : "http://lukap.info/gcd/masters/admin/img/pin_todo.png",
+        shadow      : "http://lukap.info/gcd/masters/admin/img/pin_shadow.png"
     },
 
     // legend
@@ -46,7 +48,7 @@ var GM = {
         activity    : { total : 0 , perc : 0 },
         history     : { total : 0 , perc : 0 },
         study       : { total : 0 , perc : 0 },
-        pending     : { total : 0 , perc : 0 }
+        todo        : { total : 0 , perc : 0 }
     },
 
     // custom positions
@@ -172,7 +174,7 @@ var GM = {
             GM.iterator  = 0;
 
             var param = "?c=content&a=all&map=" + GM.currentMap;
-            xhr = $.getJSON(GM.rootAPI + param, {dataType: "json"})
+            xhr = $.getJSON(GM.rootAPI + param)
                 .done(function(data) {
                     if(data.result){
                         $.each(data.items, function(i, item) {
@@ -197,7 +199,8 @@ var GM = {
                 position    : position,
                 map         : map,
                 draggable   : true,
-                icon        : new google.maps.MarkerImage(GM.pin.todo, null, null, null, new google.maps.Size(50,50))
+                icon        : new google.maps.MarkerImage(GM.pin.todo, null, null, null, new google.maps.Size(47,47)),
+                shadow      : new google.maps.MarkerImage(GM.pin.shadow, null, null, null, new google.maps.Size(47,47))
             });
             // add to markers array
             GM.markers.push(marker);
@@ -207,7 +210,7 @@ var GM = {
             document.getElementById("longitude").value = position.lng();
 
             // insert into DB via API
-            var param = "?c=content&a=add&geo_lat=" + position.lat() + "&geo_lng=" + position.lng()+ "&user_id=" + GM.user.id + "&map=" + GM.currentMap + "&category=pending";
+            var param = "?c=content&a=add&geo_lat=" + position.lat() + "&geo_lng=" + position.lng()+ "&user_id=" + GM.user.id + "&map=" + GM.currentMap + "&category=todo";
             xhr = $.getJSON(GM.rootAPI + param)
                 .done(function(data) {
                     console.log("marker id: " + data.result + " inserted!!!");
@@ -232,8 +235,8 @@ var GM = {
                 // TODO
                 // this should happen in modal!!!
                 // insert into DB via API
-                var param = "?c=content&a=delete&&id=" + GM.currentMap + "&category=pending";
-                xhr = $.getJSON(GM.rootAPI + param, {dataType: "json"})
+                var param = "?c=content&a=delete&&id=" + GM.currentMap + "&category=todo";
+                xhr = $.getJSON(GM.rootAPI + param)
                     .done(function(data) {
                         console.log("marker id: " + data.result + " inserted!!!");
                         // clean markers array
@@ -272,6 +275,8 @@ var GM = {
                 map         : map,
                 draggable   : true,
                 icon        : GM._fn.getIcon(GM.locations[i].category),
+                shadow      : GM._fn.getIcon('shadow'),
+
                 optimized   : true
 
             }));
@@ -344,43 +349,54 @@ var GM = {
             markers[i].setMap(null);
         },
 
-        getIcon : function (category) {
+        getIcon : function (category,link) {
             var icon;
             switch (category) {
             case "history" :
-                icon = GM.pin.green;
-                break;
-            case "activity" :
                 icon = GM.pin.orange;
                 break;
+            case "activity" :
+                icon = GM.pin.green;
+                break;
             case "study" :
-                icon = GM.pin.red;
+                icon = GM.pin.blue;
                 break;
             case "black" :
                 icon = GM.pin.black;
                 break;
-            case "pending" :
+            case "todo" :
                 icon = GM.pin.todo;
                 break;
+            case "shadow" :
+                icon = GM.pin.shadow;
+                break;
             }
-            // return icon;
-            return new google.maps.MarkerImage(icon, null, null, null, new google.maps.Size(50,50));
+            if (link){
+                return icon;
+            } else {
+                // return icon;
+                return new google.maps.MarkerImage(icon, null, null, null, new google.maps.Size(47,47));
+            }
         },
 
         setLegend : function () {
 
-            $("#map-legend .activity").css("width", GM.legend.activity.perc + "%").find("a").html(GM.legend.activity.total);
-            $("#map-legend .history").css("width", GM.legend.history.perc + "%").find("a").html(GM.legend.history.total);
+            $("#map-legend .activity").css("width",GM.legend.activity.perc + "%").find("a").html(GM.legend.activity.total);
+            $("#map-legend .history").css("width",GM.legend.history.perc + "%").find("a").html(GM.legend.history.total);
             $("#map-legend .study").css("width",GM.legend.study.perc + "%").find("a").html(GM.legend.study.total);
+            $("#map-legend .todo").css("width",GM.legend.todo.perc + "%").find("a").html(GM.legend.todo.total);
         },
 
         loadLegend : function () {
 
             var param = "?c=content&a=legend&map=" + GM.currentMap;
-            xhr = $.getJSON(GM.rootAPI + param, {dataType: "json"})
+            xhr = $.getJSON(GM.rootAPI + param)
                 .done(function(data) {
                     // prepare legend
                     if(data.result){
+                        // reset values
+                        $(".progress div").css({"width" : 0});
+
                         $.each(data.items, function(i, item) {
                             GM.legend.total += parseInt(item.total);
                             switch (item.category) {
@@ -393,19 +409,21 @@ var GM = {
                             case "study" :
                                 GM.legend.study.total = item.total;
                                 break;
-                            case "pending" :
-                                GM.legend.pending.total = item.total;
+                            case "todo" :
+                                GM.legend.todo.total = item.total;
                                 break;
                             }
                         });
+                    } else {
+                        $(".progress div").css({"width" : 0});
                     }
 
                     // set legend
+                    GM.legend.activity.perc = GM.legend.activity.total != 0 ? (GM.legend.activity.total/GM.legend.total*100) : 0 ;
                     GM.legend.history.perc = GM.legend.history.total != 0 ? (GM.legend.history.total/GM.legend.total*100) : 0 ;
                     GM.legend.study.perc = GM.legend.study.total != 0 ? (GM.legend.study.total/GM.legend.total*100) : 0 ;
-                    GM.legend.activity.perc = GM.legend.activity.total != 0 ? (GM.legend.activity.total/GM.legend.total*100) : 0 ;
+                    GM.legend.todo.perc = GM.legend.todo.total != 0 ? (GM.legend.todo.total/GM.legend.total*100) : 0 ;
 
-                    // $(".progress div").css({"width" : 0});
                     setTimeout(function() {
                         GM._fn.setLegend()
 
@@ -437,23 +455,45 @@ var GM = {
             // console.log("CURRENT ZOOM: " + GM.options.zoom);
         },
 
-        customType : function () {
-            map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+        customType : function (type) {
+            switch (type){
+                case 1:
+                    map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+                    break;
+                case 2:
+                    map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+                    map.setTilt(0);
+                    break;
+                case 3:
+                    map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+                    map.setTilt(45);
+                    break;
+                case 4:
+                    map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+                    map.setTilt(0);
+                    break;
+                case 5:
+                    map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+                    map.setTilt(45);
+                    break;
+            }
+
         },
 
         viewModal : function (i) {
             var details;
             // TODO
             // prepare modal
-            // details  = "<p class='text-info'>Geolocation: " +  GM.locations[i].geo_lat + ", " + GM.locations[i].geo_lng + "</p>"
-            details = "<img src='http://maps.googleapis.com/maps/api/staticmap?markers=icon:" + encodeURIComponent(GM._fn.getIcon(GM.locations[i].category)) + "|" + GM.locations[i].geo_lat + "," +GM.locations[i].geo_lng + "|shadow:true&center=" + GM.locations[i].geo_lat + "," +GM.locations[i].geo_lng + "&zoom=" + GM.options.zoom + "&maptype=hybrid&size=640x200&sensor=false'/>";
+            // details = "<img src='http://maps.googleapis.com/maps/api/staticmap?markers=icon:" + encodeURIComponent(GM._fn.getIcon(GM.locations[i].category)) + "|" + GM.locations[i].geo_lat + "," +GM.locations[i].geo_lng + "|shadow:true&center=" + GM.locations[i].geo_lat + "," +GM.locations[i].geo_lng + "&zoom=" + GM.options.zoom + "&maptype=hybrid&size=640x200&sensor=false'/>";
+            details = "<img src='http://maps.googleapis.com/maps/api/staticmap?markers=icon:" + encodeURIComponent(GM._fn.getIcon(GM.locations[i].category), true) + "|" + GM.locations[i].geo_lat + "," +GM.locations[i].geo_lng + "|shadow:true&center=" + GM.locations[i].geo_lat + "," +GM.locations[i].geo_lng + "&zoom=" + GM.options.zoom + "&maptype=hybrid&size=640x200&sensor=false'/>";
             $("#modal h3").html(GM.locations[i].title);
             $("#modal .details").html(details);
             $("#modal").data("item-id",GM.locations[i].id);
 
             // load modal
             $('#modal').modal({
-                keyboard : true
+                keyboard : true,
+                backdrop : true
             });
         },
 
@@ -465,6 +505,36 @@ var GM = {
         site : {
 
             getSettings : function (){
+
+                var param = "?c=site&a=id";
+                xhr = $.getJSON(GM.rootAPI + param)
+                    .done(function(data) {
+                        if (data.result) {
+                            var site = data.items[0];
+
+                            // view site settings
+                            var html = "<h2>" + site.name + "</h2>";
+                                html+= '<p class="lead">' + site.desc + '</p> ';
+                                html+= '<div class="btn-group" data-toggle="buttons-radio">';
+                                html+= '  <button type="button" class="btn btn-primary">On</button>';
+                                html+= '  <button type="button" class="btn btn-primary">Off</button>';
+                                html+= '</div>';
+
+                            $("#modal h3").html("Site Settings");
+                            $("#modal .details").html(html);
+                            $("#modal .btn-danger").hide();
+
+                            // load modal
+                            $('#modal').modal({
+                                keyboard : true
+                            });
+
+                        }
+                    })
+                    .fail(function(){
+                        alert("ERROR: " + param)
+                    })
+
 
             },
 
@@ -481,8 +551,7 @@ var GM = {
 
 }
 
-
-// on document loaded
+// other JS goes here
 $(function(){
 
     // init
@@ -530,30 +599,10 @@ $(function(){
         GM._fn.customZoom()
     });
 
-    // $('.progress div a').tooltip();
+    // progress tooltip
     $('.progress div a').popover({placement: "top", trigger : "hover", toggle :"popover" });
 
     // Scroll Spy
     $('#navbar').scrollspy();
-
-    // tabs
-    $('#myTab a').click(function (e) {
-      e.preventDefault();
-      $(this).tab('show');
-    });
-
-    $('a[data-toggle="tab"]').on('shown', function (e) {
-        e.target; // activated tab
-        e.relatedTarget; // previous tab
-    });
-
-    $('#myTab a[href="#profile"]').tab('show'); // Select tab by name
-    // $('#myTab a:first').tab('show'); // Select first tab
-    // $('#myTab a:last').tab('show'); // Select last tab
-    // $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
-
-
-    // TODO
-    // API common call function
 
 });

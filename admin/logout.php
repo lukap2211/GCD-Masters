@@ -11,9 +11,13 @@ include("include/main_header.php");
 
 // get admin header
 include("include/admin_header.php");
+include("include/dashboard_functions.php");
+
+// show_modal();
 
 // open main container
 echo "<section id='login_container' class='container'>";
+
 
 //message
 if(isset($_GET['login'])){

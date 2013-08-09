@@ -89,6 +89,7 @@ switch ($c) {
 				$query = site_edit();
 				break;
 		}
+		break;
 	default:
 		die("no controler defined!");
 }

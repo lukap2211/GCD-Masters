@@ -42,6 +42,7 @@
 		<?php include("modal.php") ?>
 	</div>
 	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal">Close</a>
 		<a href="#" class="btn btn-primary">Edit</a>
 		<a href="#" class="btn btn-danger">Delete</a>
 	</div>

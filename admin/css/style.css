@@ -28,7 +28,7 @@ footer {overflow: hidden;}
 /*.progress div a:hover {display: block;}*/
 
 .info {transition:all 0.4s; line-height:50px; height:50px; background: white; border: 1px solid #ddd; width: 450px; position: fixed; left:-400px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)}
-.info .title {font-size: 28px; color: #0088cc; width: 50px; text-align: center; cursor: pointer;}
+.info .title {font-size: 28px; /*color: #0088cc;*/color: #555; width: 50px; text-align: center; cursor: pointer; text-shadow:0 1px 0 #ffffff; margin-left:10px;}
 #debug.info .title {color: red;}
 
 /*#map-legend {bottom:50px;position: absolute;}*/

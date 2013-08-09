@@ -127,8 +127,8 @@ function user_delete() {
 function site_id() {
 
 	// query
-	$query = "SELECT name, desc, logo, debug, size";
-	$query.= " FROM settings";
+	$query = "SELECT s.name, s.desc, s.logo, s.debug, s.size";
+	$query.= " FROM settings s";
 	$query.= " WHERE id = 1";
 
 	return $query;

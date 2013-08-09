@@ -8,8 +8,8 @@ function view_dashboard () {
 
     <div id="map-controls">
         <div class="map-zoom">
-            <button id="zoomIn"  class="btn btn-primary"><i class="icon-plus-sign-alt"></i></button><br/>
-            <button id="zoomOut" class="btn btn-primary"><i class="icon-minus-sign-alt"></i></button>
+            <button id="zoomIn"  class="btn"><i class="icon-plus"></i></button><br/>
+            <button id="zoomOut" class="btn"><i class="icon-minus"></i></button>
         </div>
     </div>
 
@@ -24,17 +24,17 @@ function show_legend () {
     <div id="footer_wrapper">
         <div id="map-legend" class="container">
             <div class="progress ">
-                <div class="bar activity bar-warning" style="width: 0%;">
+                <div class="bar activity bar-success" style="width: 0%;">
                     <a href="#" title="" data-original-title="Activity">0</a>
                 </div>
-                <div class="bar history bar-success" style="width: 0%;">
+                <div class="bar history bar-warning" style="width: 0%;">
                     <a href="#" title="" data-original-title="History">0</a>
                 </div>
-                <div class="bar study bar-danger" style="width: 0%;">
+                <div class="bar study" style="width: 0%;">
                     <a href="#" title="" data-original-title="Study">0</a>
                 </div>
-                <div class="bar pending bar-danger" style="width: 0%;">
-                    <a href="#" title="" data-original-title="Pending">0</a>
+                <div class="bar todo bar-danger" style="width: 0%;">
+                    <a href="#" title="" data-original-title="To Do!">0</a>
                 </div>
             </div>
         </div>
@@ -53,7 +53,6 @@ function show_modal () {
             <h3>Modal header</h3>
         </div>
         <div class="modal-body">
-        <?php include("modal.php") ?>
         </div>
         <div class="modal-footer">
         <a href="#" id="edit-item" class="btn btn-primary">Edit</a>
