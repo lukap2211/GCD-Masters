@@ -65,44 +65,42 @@ Copyright - lukap. 2013.
 
     <!-- MAIN CONTAINER -->
 
-    <div id="dashboard_container" class="container">
+    <header id="dashboard" class="container">
 
         <!-- MAIN NAVIGATION -->
 
-        <header id="user_area" data-user-id="<?= $_SESSION['id'] ?>">
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <span class="brand" href="javas"><?="Hi {$_SESSION['username']}" ?></span>
-                    <div>
-                        <ul class="nav">
-                            <li class="dropdown active">
-                                <a href="dashboard.php" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-fixed-width icon-home"></i></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="set_map" data-map="gcd" href="#"><i class="icon-fixed-width icon-globe"></i> GCD Campus</a></li>
-                                    <li><a class="set_map" data-map="smi" href="#"><i class="icon-fixed-width icon-globe"></i> Smithfield Square</a></li>
-                                    <li><a class="set_map" data-map="pho" href="#"><i class="icon-fixed-width icon-globe"></i> Phoenix Park</a></li>
-                                    <li><a class="set_map" data-map="dub" href="#"><i class="icon-fixed-width icon-globe"></i> Dublin</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="nav pull-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-fixed-width icon-cogs"></i> Settings <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="user" href="user.php?id=<?= $_SESSION['id'] ?>&amp;action=view"><i class="icon-fixed-width icon-user"></i> Me</a></li>
-                                    <?php if ($_SESSION['privilege'] == "admin" ) { ?>
-                                    <li><a class="users" href="#"><i class="icon-fixed-width icon-group"></i> Users</a></li>
-                                    <li><a class="settings" href="#"><i class="icon-fixed-width icon-globe"></i> Site</a></li>
-                                    <?php } ?>
-                                    <li class="divider"></li>
-                                    <li><a href="logout.php"><i class="icon-fixed-width icon-signout"></i> Log Out</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <span class="brand" href="javas"><?="Hi {$_SESSION['username']}" ?></span>
+                <div>
+                    <ul class="nav">
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-fixed-width icon-home"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="set_map" data-map="gcd" href="#"><i class="icon-fixed-width icon-globe"></i> GCD Campus</a></li>
+                                <li><a class="set_map" data-map="smi" href="#"><i class="icon-fixed-width icon-globe"></i> Smithfield Square</a></li>
+                                <li><a class="set_map" data-map="pho" href="#"><i class="icon-fixed-width icon-globe"></i> Phoenix Park</a></li>
+                                <li><a class="set_map" data-map="dub" href="#"><i class="icon-fixed-width icon-globe"></i> Dublin</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav pull-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-fixed-width icon-cogs"></i> Settings <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="user" href="user.php?id=<?= $_SESSION['id'] ?>&amp;action=view"><i class="icon-fixed-width icon-user"></i> Me</a></li>
+                                <?php if ($_SESSION['privilege'] == "admin" ) { ?>
+                                <li><a class="users" href="#"><i class="icon-fixed-width icon-group"></i> Users</a></li>
+                                <li><a class="settings" href="#"><i class="icon-fixed-width icon-globe"></i> Site</a></li>
+                                <?php } ?>
+                                <li class="divider"></li>
+                                <li><a href="logout.php"><i class="icon-fixed-width icon-signout"></i> Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </header>
+        </div>
 
         <!-- MAP CONTROLS -->
 
@@ -114,42 +112,32 @@ Copyright - lukap. 2013.
             </div>
         </div>
 
-    </div>
+    </header>
 
 
     <!-- MODAL -->
 
     <div id="modal" class="modal hide fade" data-keyboard="true">
+
+        <!-- HEADER -->
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h3>Modal header</h3>
         </div>
         <div class="modal-body">
+
+            <!-- USER -->
+            <div id="user" data-user-id="<?= $_SESSION['id'] ?>">
+
+            </div>
+
+
         </div>
+
+        <!-- FOOTER -->
         <div class="modal-footer">
         <a href="#" id="edit-item" class="btn btn-primary">Edit</a>
         <a href="#" id="delete-item" class="btn btn-danger">Delete</a>
-        </div>
-    </div>
-
-    <!-- LEGEND -->
-
-    <div id="footer_wrapper">
-        <div id="map-legend" class="container">
-            <div class="progress ">
-                <div class="bar activity bar-success" style="width: 0%;">
-                    <a href="#" title="" data-original-title="Activity">0</a>
-                </div>
-                <div class="bar history bar-warning" style="width: 0%;">
-                    <a href="#" title="" data-original-title="History">0</a>
-                </div>
-                <div class="bar study" style="width: 0%;">
-                    <a href="#" title="" data-original-title="Study">0</a>
-                </div>
-                <div class="bar todo bar-danger" style="width: 0%;">
-                    <a href="#" title="" data-original-title="To Do!">0</a>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -181,6 +169,27 @@ Copyright - lukap. 2013.
         <div class="title float-right"><i class="icon-info-sign"></i></div>
         <p class="text-right float-right">Luka Puharic 2013</p>
     </div>
+
+    <!-- LEGEND -->
+
+    <footer id="legend">
+        <div class="container">
+            <div class="progress ">
+                <div class="bar activity bar-success" style="width: 0%;">
+                    <a href="#" title="" data-original-title="Activity">0</a>
+                </div>
+                <div class="bar history bar-warning" style="width: 0%;">
+                    <a href="#" title="" data-original-title="History">0</a>
+                </div>
+                <div class="bar study" style="width: 0%;">
+                    <a href="#" title="" data-original-title="Study">0</a>
+                </div>
+                <div class="bar todo bar-danger" style="width: 0%;">
+                    <a href="#" title="" data-original-title="To Do!">0</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
     <!-- JAVASCRIPT -->

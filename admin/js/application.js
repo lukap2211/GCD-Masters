@@ -381,10 +381,10 @@ var GM = {
 
         setLegend : function () {
 
-            $("#map-legend .activity").css("width",GM.legend.activity.perc + "%").find("a").html(GM.legend.activity.total);
-            $("#map-legend .history").css("width",GM.legend.history.perc + "%").find("a").html(GM.legend.history.total);
-            $("#map-legend .study").css("width",GM.legend.study.perc + "%").find("a").html(GM.legend.study.total);
-            $("#map-legend .todo").css("width",GM.legend.todo.perc + "%").find("a").html(GM.legend.todo.total);
+            $("#legend .activity").css("width",GM.legend.activity.perc + "%").find("a").html(GM.legend.activity.total);
+            $("#legend .history").css("width",GM.legend.history.perc + "%").find("a").html(GM.legend.history.total);
+            $("#legend .study").css("width",GM.legend.study.perc + "%").find("a").html(GM.legend.study.total);
+            $("#legend .todo").css("width",GM.legend.todo.perc + "%").find("a").html(GM.legend.todo.total);
         },
 
         loadLegend : function () {
@@ -499,7 +499,7 @@ var GM = {
 
         init : function () {
             navigator.geolocation.getCurrentPosition(GM._fn.getLocation);
-            GM.user.id = $("#user_area").data("user-id");
+            GM.user.id = $("#user").data("user-id");
         },
 
         site : {
@@ -559,12 +559,9 @@ $(function(){
     GM._fn.init();
 
     // default map on dashboard
-    if ($("#dashboard_container").length > 0) {
-        GM.currentMap = "gcd";
-        GM.options.draggable = true;
-    }
+    GM.currentMap = "gcd";
+    GM.options.draggable = true;
 
-    // TODO
     // NAVIGATION
 
     // change map
