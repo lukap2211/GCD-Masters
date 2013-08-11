@@ -2,18 +2,27 @@
 /*body{ padding:0px; background-color: white;}*/
 
 #dashboard_container {height:40px;}
-#login_container {width:300px; }
+#login_container {width:300px; margin-top:100px;}
 
 .container {z-index: 1060 !important; padding: 10px; background: white; border-radius: 0px;box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); border: 1px solid #ddd;margin-top: 10px;}
 
 #map-canvas {height: 100%; min-height:100%;background-color: #e5e5e5; border:1px solid #ccc; width: 100%; position: absolute;top:0; z-index: -1;}
-#map-canvas img {max-width: none; }
-#map-canvas .loader {margin:10% auto; display: block;}
+#map-canvas .loader {
+	overflow: hidden;
+	margin-top: 200px;
+	/*min-height:100%;*/
+}
+#map-canvas .loader .bar {
+	height: 100px;
+}
 
-#map-controls .map-zoom {float:left;}
+#map-canvas img {max-width: none; }
+/*#map-canvas .loader {margin:10% auto; display: block;}*/
+
+/*#map-controls .map-zoom {float:left;}
 #map-controls .map-zoom button {margin-bottom: 5px;}
 #map-controls .map-input {float:right;}
-
+*/
 footer {overflow: hidden;}
 .float-left {float: left;}
 .float-right {float: right;}

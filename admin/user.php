@@ -1,5 +1,5 @@
 <?php
-session_start();
+/*session_start();
 
 // // show all errors
 // error_reporting(E_ALL);
@@ -67,7 +67,7 @@ if ($_GET) {
 			break;
 	}
 } else {
-	view_dashboard();
+	show_map_controls();
 }
 
 
@@ -76,6 +76,6 @@ include("include/admin_footer.php");
 echo "</div > "; // wrapper END
 
 //get main footer
-include("include/main_footer.php");
+include("include/main_footer.php");*/
 
 ?>

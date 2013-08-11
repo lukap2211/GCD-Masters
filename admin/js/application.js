@@ -12,11 +12,11 @@ var GM = {
 
     // site settings
     site   : {
-        name        : "100%",
-        desc        : "400px",
-        logo        : "400px",
-        size        : "400px",
-        debug       : "200px"
+        name        : "",
+        desc        : "",
+        logo        : "",
+        size        : "",
+        debug       : ""
     },
 
     // user
@@ -86,10 +86,9 @@ var GM = {
             GM.longitude = position.coords.longitude;
             GM.accuracy  = position.coords.accuracy;
 
-            // showing current location in the header
+            // showing current location
             $("#my_location").html("<a href='//maps.google.com/?q=" + GM.latitude + "," + GM.longitude +"' target=_blank>" + GM.latitude + ", " + GM.longitude + "</a>").hide().fadeIn();
             $("#my_accuracy").html(Math.round(GM.accuracy)).hide().fadeIn();
-
 
             // load map when location retrieved
             GM._fn.getMap();
@@ -108,7 +107,7 @@ var GM = {
             // set listeners
 
             // on click add new location
-            google.maps.event.addListener(map, 'click', function(e) {
+            google.maps.event.addListener(map, 'dblclick', function(e) {
                 // disable more than one at the setTimeout
                 console.log(marker === undefined);
                 // if(marker === undefined){
@@ -166,6 +165,7 @@ var GM = {
 
         loadMarkers : function () {
 
+            // TO DO view as user - pass the user id for admin
             // reset values
             GM._fn.clearMap();
             GM.legend.total = GM.legend.activity.total = GM.legend.history.total = GM.legend.study.total = 0;
@@ -465,12 +465,12 @@ var GM = {
                     map.setTilt(0);
                     break;
                 case 3:
-                    map.setMapTypeId(google.maps.MapTypeId.HYBRID);
-                    map.setTilt(45);
-                    break;
-                case 4:
                     map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
                     map.setTilt(0);
+                    break;
+                case 4:
+                    map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+                    map.setTilt(45);
                     break;
                 case 5:
                     map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
@@ -512,6 +512,7 @@ var GM = {
                         if (data.result) {
                             var site = data.items[0];
 
+                            // alert(site.name);
                             // view site settings
                             var html = "<h2>" + site.name + "</h2>";
                                 html+= '<p class="lead">' + site.desc + '</p> ';
@@ -521,7 +522,7 @@ var GM = {
                                 html+= '</div>';
 
                             $("#modal h3").html("Site Settings");
-                            $("#modal .details").html(html);
+                            $("#modal .modal-body").html(html);
                             $("#modal .btn-danger").hide();
 
                             // load modal
@@ -578,6 +579,20 @@ $(function(){
         e.preventDefault();
         GM._fn.site.getSettings();
     })
+
+    // TODO test
+    $(".nav .settings").click();
+
+
+    // custom map type
+    $("#map-controls #mapType").click(function (e) {
+        e.preventDefault();
+        var typeId = $(this).data("type-id") + 1;
+        // alert(typeId);
+        if (typeId === 5 ) typeId = 0;
+        $(this).data("type-id", typeId);
+        GM._fn.customType(typeId);
+    });
 
     // custom map zoom +
     $("#map-controls #zoomIn").click(function (e) {

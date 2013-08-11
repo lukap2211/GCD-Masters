@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"get",
+				"getSettings"
+			],
+			[
 				"geo_",
 				"geo_lat"
 			],
@@ -130,10 +134,6 @@
 			[
 				"wid",
 				"width"
-			],
-			[
-				"get",
-				"get_location"
 			],
 			[
 				"type",
@@ -283,32 +283,7 @@
 			"file": "admin/css/style.css",
 			"settings":
 			{
-				"buffer_size": 8964,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "API/index.php",
-			"settings":
-			{
-				"buffer_size": 2082,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "API/api_validate.php",
-			"settings":
-			{
-				"buffer_size": 856,
-				"line_ending": "Unix",
-				"name": "<?php"
-			}
-		},
-		{
-			"file": "API/api_functions.php",
-			"settings":
-			{
-				"buffer_size": 3027,
+				"buffer_size": 2103,
 				"line_ending": "Unix"
 			}
 		},
@@ -316,7 +291,15 @@
 			"file": "admin/js/application.js",
 			"settings":
 			{
-				"buffer_size": 20110,
+				"buffer_size": 22402,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/logout.php",
+			"settings":
+			{
+				"buffer_size": 735,
 				"line_ending": "Unix"
 			}
 		},
@@ -324,15 +307,39 @@
 			"file": "admin/dashboard_functions.php",
 			"settings":
 			{
-				"buffer_size": 2160,
+				"buffer_size": 2065,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "admin/include/main_header.php",
+			"file": "admin/include/admin_footer.php",
 			"settings":
 			{
-				"buffer_size": 916,
+				"buffer_size": 1458,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "API/index.php",
+			"settings":
+			{
+				"buffer_size": 2227,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "API/api_functions.php",
+			"settings":
+			{
+				"buffer_size": 3287,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/include/admin_header.php",
+			"settings":
+			{
+				"buffer_size": 274,
 				"line_ending": "Unix"
 			}
 		}
@@ -340,16 +347,20 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 207.0,
 		"selected_items":
 		[
 			[
-				"html",
-				"Set Syntax: HTML"
-			],
-			[
 				"togg",
 				"View: Toggle Minimap"
+			],
+			[
+				"toggl",
+				"View: Toggle Minimap"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
 			],
 			[
 				"toggle",
@@ -424,7 +435,7 @@
 				"Set Syntax: HTML"
 			]
 		],
-		"width": 449.0
+		"width": 467.0
 	},
 	"console":
 	{
@@ -445,12 +456,15 @@
 	},
 	"file_history":
 	[
-		"/Users/lukap/github/GCD-Masters/admin/dashboard_functions.php",
-		"/Users/lukap/github/GCD-Masters/admin/include/admin_header.php",
-		"/Users/lukap/github/GCD-Masters/admin/dashboard.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/modal.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/admin_nav.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/admin_footer.php",
+		"/Users/lukap/github/GCD-Masters/admin/dashboard_functions.php",
+		"/Users/lukap/github/GCD-Masters/API/api_validate.php",
+		"/Users/lukap/github/GCD-Masters/admin/js/application.js",
 		"/Users/lukap/github/GCD-Masters/admin/include/main_header.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/admin_header.php",
+		"/Users/lukap/github/GCD-Masters/admin/dashboard.php",
 		"/Users/lukap/github/GCD-Masters/admin/dashboard_validate.php",
 		"/Users/lukap/github/GCD-Masters/admin/user.php",
 		"/Users/lukap/github/GCD-my_blog/include/album_functions.php",
@@ -460,9 +474,7 @@
 		"/Users/lukap/github/GCD-Masters/js/application.js",
 		"/Users/lukap/github/GCD-Masters/admin/user_functions.php",
 		"/Users/lukap/github/GCD-Masters/admin/user_validate.php",
-		"/Users/lukap/github/GCD-Masters/admin/js/application.js",
 		"/Users/lukap/github/GCD-Masters/admin/include/main_footer.php",
-		"/Users/lukap/github/GCD-Masters/admin/include/modal.php",
 		"/Users/lukap/github/GCD-Masters/API/index.php",
 		"/Users/lukap/github/GCD-Masters/admin/css/bootstrap.css",
 		"/Users/lukap/Dropbox/AOL/DEV/AOL WL/StyleList/www/sl_js.js",
@@ -591,6 +603,38 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"progress",
+			"loading",
+			"muted",
+			"loadLE",
+			"perc",
+			"pho",
+			"dub",
+			"viewModal",
+			"GETICON",
+			"geticon",
+			"new ",
+			"new goo",
+			"new mar",
+			"shadow",
+			"pin\\.red",
+			"marker",
+			"todo",
+			"pending",
+			"red",
+			"50,",
+			"pending",
+			"legend",
+			"data",
+			"getJSON",
+			"getSettings",
+			"backup",
+			"mapCanvas",
+			"moveMarkers",
+			"xhr",
+			"mapCanvas",
+			"clearMap",
+			"clearOverlays",
 			"setLegend",
 			"lege",
 			"animate",
@@ -686,39 +730,7 @@
 			"legend (",
 			"legend(",
 			"markers",
-			"off",
-			"of",
-			"offse",
-			"customZoom",
-			"currentMap",
-			"gri",
-			"load",
-			"ajax",
-			"set_home_2",
-			"zoomControl",
-			"panToWithOffset",
-			"zoom",
-			"paginat",
-			"animate",
-			"map",
-			"center",
-			"user",
-			"phoenix",
-			"smithfield",
-			"griffith",
-			"pan",
-			"options",
-			"aerlingus",
-			"logout",
-			"plus",
-			"getCurrentPosition",
-			"center",
-			"admin_header",
-			"GM.map",
-			"map",
-			"marker",
-			"Google",
-			"        // add new location\n        placeMarker : function (position, map) {\n            var marker = new google.maps.Marker({\n                position: position,\n                map: map\n            });\n            marker.setMap (map);\n            marker.setDraggable (true);\n        },\n\n"
+			"off"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -744,7 +756,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -753,15 +765,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8964,
+						"buffer_size": 2103,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								848,
-								848
+								516,
+								516
 							]
 						],
 						"settings":
@@ -777,52 +789,108 @@
 				},
 				{
 					"buffer": 1,
-					"file": "API/index.php",
+					"file": "admin/js/application.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2082,
+						"buffer_size": 22402,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1574,
-								1574
+								14268,
+								14271
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 357.0,
+						"translation.y": 5387.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "API/api_validate.php",
+					"file": "admin/logout.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 856,
+						"buffer_size": 735,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								430,
-								430
+								270,
+								270
 							]
 						],
 						"settings":
 						{
-							"auto_name": "<?php",
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "admin/dashboard_functions.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2065,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1594,
+								1594
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "admin/include/admin_footer.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1458,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								804,
+								804
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -833,20 +901,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "API/api_functions.php",
+					"buffer": 5,
+					"file": "API/index.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3027,
+						"buffer_size": 2227,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1998,
-								1998
+								1570,
+								1570
 							]
 						],
 						"settings":
@@ -855,100 +923,59 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 505.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "admin/js/application.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 20110,
-						"regions":
-						{
-							"bookmarks":
-							{
-								"flags": 144,
-								"icon": "bookmark",
-								"regions":
-								[
-								],
-								"scope": "bookmarks"
-							}
-						},
-						"selection":
-						[
-							[
-								7999,
-								8008
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 30.0,
-						"translation.y": 2367.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "admin/dashboard_functions.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2160,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1768,
-								1768
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 335.0,
+						"translation.y": 52.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "admin/include/main_header.php",
+					"file": "API/api_functions.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 916,
+						"buffer_size": 3287,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								834,
-								834
+								3287,
+								3287
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1361.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "admin/include/admin_header.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 274,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								111,
+								111
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1002,6 +1029,10 @@
 		"selected_items":
 		[
 			[
+				"hear",
+				"admin/include/admin_header.php"
+			],
+			[
 				"ap",
 				"admin/js/application.js"
 			],
@@ -1034,7 +1065,7 @@
 	},
 	"select_symbol":
 	{
-		"height": 27.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
