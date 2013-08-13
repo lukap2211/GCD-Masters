@@ -4,11 +4,15 @@ session_start();
 // TODO
 // show debug
 if ($_GET['debug']) {
+
     echo("<pre>");
+
     // show all errors
     error_reporting(E_ALL);
     ini_set('display_errors', TRUE);
+    // output session data
     print_r($_SESSION);
+
     echo("</pre>");
 }
 
@@ -69,9 +73,12 @@ Copyright - lukap. 2013.
 
         <!-- MAIN NAVIGATION -->
 
+        <?php if ($_SESSION['privilege'] == "admin" ) { ?><div class="admin"><span>ADMIN</span></div><?php } ?>
+
         <div class="navbar">
             <div class="navbar-inner">
-                <span class="brand" href="javas"><?="Hi {$_SESSION['username']}" ?></span>
+
+                <span id="user" class="brand" href="#" data-user-id=<?=$_SESSION['id']?> data-user-privilege=<?=$_SESSION['privilege']?> > Hi <?=$_SESSION['username']?></span>
                 <div>
                     <ul class="nav">
                         <li class="dropdown active">
@@ -83,18 +90,27 @@ Copyright - lukap. 2013.
                                 <li><a class="set_map" data-map="dub" href="#"><i class="icon-fixed-width icon-globe"></i> Dublin</a></li>
                             </ul>
                         </li>
+                        <?php if ($_SESSION['privilege'] == "admin" ) { ?>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-fixed-width icon-eye-open"></i> View as <span id="view-as"><?="{$_SESSION['first_name']} {$_SESSION['last_name']}"?></span> <b class="caret"></b> </a>
+                            <ul id="viewAsId" class="dropdown-menu">
+                                <li class="divider"></li>
+                                <li><a class="view_as" data-user-id="<?=$_SESSION['id']?>" data-user-fullname="<?="{$_SESSION['first_name']} {$_SESSION['last_name']}"?>" href="#"><i class="icon-fixed-width icon-remove"></i> Reset</a></li>
+                            </ul>
+                        </li>
+                        <?php } ?>
                     </ul>
                     <ul class="nav pull-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-fixed-width icon-cogs"></i> Settings <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a class="user" href="user.php?id=<?= $_SESSION['id'] ?>&amp;action=view"><i class="icon-fixed-width icon-user"></i> Me</a></li>
+                                <li><a class="user" href="#"><i class="icon-fixed-width icon-wrench"></i> My Settings</a></li>
                                 <?php if ($_SESSION['privilege'] == "admin" ) { ?>
-                                <li><a class="users" href="#"><i class="icon-fixed-width icon-group"></i> Users</a></li>
-                                <li><a class="settings" href="#"><i class="icon-fixed-width icon-globe"></i> Site</a></li>
+                                <li><a class="users" data-slide-index="0" href="users-modal"><i class="icon-fixed-width icon-wrench"></i> Users </a></li>
+                                <li><a class="settings" data-slide-index="0" href="site-modal"><i class="icon-fixed-width icon-wrench"></i> Site Settings</a></li>
                                 <?php } ?>
                                 <li class="divider"></li>
-                                <li><a href="logout.php"><i class="icon-fixed-width icon-signout"></i> Log Out</a></li>
+                                <li><a href="logout.php"><i class="icon-fixed-width icon-off"></i> Log Out</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -114,30 +130,100 @@ Copyright - lukap. 2013.
 
     </header>
 
+    <!-- MODAL USERS -->
+    <div id="users-modal" class="modal hide fade" data-keyboard="true">
+        <div id="users-carousel" class="carousel">
+            <!-- CAROUSEL ITEMS -->
+            <div class="carousel-inner">
+                <!-- ALL USERS -->
+                <div class="active item">
+                    <!-- HEADER -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3>List of Users</h3>
+                    </div>
+                    <!-- BODY -->
+                    <div class="modal-body">
 
-    <!-- MODAL -->
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Username</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Admin</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- FOOTER -->
+                    <div class="modal-footer">
+                        <a href="#users-modal" class="btn btn-primary" data-slide-to="3">Add User</a>
+                    </div>
 
-    <div id="modal" class="modal hide fade" data-keyboard="true">
+                </div>
 
-        <!-- HEADER -->
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3>Modal header</h3>
-        </div>
-        <div class="modal-body">
+                <!-- VIEW USER  -->
+                <div class="item">
+                    <!-- HEADER -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3>View User</h3>
+                    </div>
+                    <!-- BODY -->
+                    <div class="modal-body">
+                        VIEW USER
+                    </div>
+                    <!-- FOOTER -->
+                    <div class="modal-footer">
+                        <a href="#users-modal" class="btn back-to-list" data-slide-to="0">Back to list</a>
+                        <a href="#users-modal" class="btn btn-primary" data-slide-to="2"><i class="icon-pencil"></i> Edit</a>
+                        <a href="#users-modal" id="delete-item" class="btn btn-danger"><i class="icon-trash"></i> Delete</a>
+                    </div>
+                </div>
 
-            <!-- USER -->
-            <div id="user" data-user-id="<?= $_SESSION['id'] ?>">
+                <!-- EDIT USER  -->
+                <div class="item">
+                    <!-- HEADER -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3>Edit User</h3>
+                    </div>
+                    <!-- BODY -->
+                    <div class="modal-body">
+                        EDIT USER
+                    </div>
+                    <!-- FOOTER -->
+                    <div class="modal-footer">
+                        <a href="#users-modal" class="btn" data-slide-to="1"><i class="icon-remove"></i> Cancel</a>
+                        <a href="#users-modal" class="btn btn-primary" data-slide-to="11"><i class="icon-ok"></i> Save</a>
+                    </div>
+                </div>
+
+                <!-- ADD USER  -->
+                <div class="item">
+                    <!-- HEADER -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3>Add User</h3>
+                    </div>
+                    <!-- BODY -->
+                    <div class="modal-body">
+                        ADD USER
+                    </div>
+                    <!-- FOOTER -->
+                    <div class="modal-footer">
+                        <a href="#users-modal" class="btn back-to-list" data-slide-to="0">Back to list</a>
+                        <a href="#users-modal" class="btn btn-primary" data-slide-to="2">Add</a>
+                    </div>
+                </div>
 
             </div>
 
-
-        </div>
-
-        <!-- FOOTER -->
-        <div class="modal-footer">
-        <a href="#" id="edit-item" class="btn btn-primary">Edit</a>
-        <a href="#" id="delete-item" class="btn btn-danger">Delete</a>
         </div>
     </div>
 
@@ -174,7 +260,7 @@ Copyright - lukap. 2013.
 
     <footer id="legend">
         <div class="container">
-            <div class="progress ">
+            <div class="progress">
                 <div class="bar activity bar-success" style="width: 0%;">
                     <a href="#" title="" data-original-title="Activity">0</a>
                 </div>
@@ -189,6 +275,7 @@ Copyright - lukap. 2013.
                 </div>
             </div>
         </div>
+
     </footer>
 
 

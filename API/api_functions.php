@@ -6,21 +6,27 @@
 
 function item_all() {
 
+	$filter = "";
 	// by map
 	if(!empty($_GET['map']) && is_string($_GET['map'])){
-		$filter = "and c.map = '{$_GET['map']}'";
+		$filter .= "AND c.map = '{$_GET['map']}'";
 	}
 
 	// by type
 	if(!empty($_GET['type']) && is_string($_GET['type'])){
-		$filter .= " and t.type = '{$_GET['type']}'";
+		$filter .= " AND t.type = '{$_GET['type']}'";
+	}
+
+	// by user id (view as user)
+	if(!empty($_GET['id']) && is_string($_GET['id'])){
+		$filter .= " AND u.id = '{$_GET['id']}'";
 	}
 
 	// query
 	$query = "SELECT c.id, c.title, t.type, c.content, c.excerpt, c.date, c.status, u.id as user_id, c.geo_lat, c.geo_lng, u.username, c.category, t.type";
 	$query.= " FROM contents c, users u, types t";
-	$query.= " WHERE c.user_id = u.id and c.type_id = t.id $filter";
-	$query.= " ORDER BY c.category asc, c.date desc";
+	$query.= " WHERE c.user_id = u.id AND c.type_id = t.id $filter";
+	$query.= " ORDER BY c.category ASC, c.date DESC";
 
 	// output
 	return $query;
@@ -28,14 +34,20 @@ function item_all() {
 
 function item_legend() {
 
+	$filter = "";
 	// by map
 	if(!empty($_GET['map']) && is_string($_GET['map'])){
-		$filter = "and c.map = '{$_GET['map']}'";
+		$filter .= "AND c.map = '{$_GET['map']}'";
 	}
 
 	// by type
 	if(!empty($_GET['type']) && is_string($_GET['type'])){
-		$filter .= " and t.type = '{$_GET['type']}'";
+		$filter .= " AND t.type = '{$_GET['type']}'";
+	}
+
+	// by user id (view as user)
+	if(!empty($_GET['id']) && is_string($_GET['id'])){
+		$filter .= " AND u.id = '{$_GET['id']}'";
 	}
 
 	// query
@@ -43,22 +55,23 @@ function item_legend() {
 	$query.= " FROM contents c, users u, types t";
 	$query.= " WHERE c.user_id = u.id and c.type_id = t.id $filter";
 	$query.= " GROUP BY c.category";
-	$query.= " ORDER BY c.category asc";
+	$query.= " ORDER BY c.category ASC";
 
 	return $query;
 }
 
 function item_id() {
 
+	$filter = "";
 	// by id
 	if(!empty($_GET['id']) && intval($_GET['id'])){
-		$filter = " and c.id = '{$_GET['id']}'";
+		$filter .= " AND c.id = '{$_GET['id']}'";
 	}
 
 	// query
 	$query = "SELECT c.id, c.title, t.type, c.content, c.excerpt, c.date, c.status, u.id as user_id, c.geo_lat, c.geo_lng, u.username, c.category, t.type";
 	$query.= " FROM contents c, users u, types t";
-	$query.= " WHERE c.user_id = u.id and c.type_id = t.id $filter";
+	$query.= " WHERE c.user_id = u.id AND c.type_id = t.id $filter";
 
 	return $query;
 }
@@ -78,9 +91,11 @@ function item_edit() {
 
 function item_edit_loc() {
 
+	$filter = "";
+
 	// by id
 	if(!empty($_GET['id']) && intval($_GET['id'])){
-		$filter = " and id = '{$_GET['id']}'";
+		$filter .= " AND id = '{$_GET['id']}'";
 	}
 
 	if(!empty($_GET['geo_lat']) && intval($_GET['geo_lat'])){
@@ -92,7 +107,7 @@ function item_edit_loc() {
 	// query
 	$query = "UPDATE contents";
 	$query.= " SET geo_lng = '{$_GET['geo_lng']}', geo_lat = '{$_GET['geo_lat']}' ";
-	$query.= " where id $filter";
+	$query.= " WHERE id $filter";
 	return $query;
 }
 
@@ -102,12 +117,36 @@ function item_delete() {
 
 // user functions
 
-function user_all() {
-	// code...
+function users_all() {
+
+	$filter = "";
+
+	// ignore id
+	if(!empty($_GET['ignore']) && intval($_GET['ignore'])){
+		$filter .= "AND u.id <> '{$_GET['ignore']}'";
+	}
+
+	// query
+    $query = "SELECT u.id, u.username, u.first_name, u.last_name, u.bio, p.privilege";
+    $query.= " FROM users u, privileges p";
+    $query.= " WHERE u.privilege_id = p.id $filter";
+	return $query;
 }
 
 function user_id() {
-	// code...
+
+	$filter = "";
+
+	// by id
+	if(!empty($_GET['id']) && intval($_GET['id'])){
+		$filter .= " u.id = '{$_GET['id']}'";
+	}
+
+	// query
+    $query = "SELECT u.id, u.username, u.bio, u.first_name, u.last_name";
+    $query.= " FROM users u";
+    $query.= " WHERE $filter";
+	return $query;
 }
 
 function user_add() {

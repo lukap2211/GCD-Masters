@@ -48,7 +48,7 @@ if(!session_is_registered("username")){
 		// echo "$hashed_password <br />";
 
 		// check if there is a match in db
-		$query = "SELECT u.username, u.password, u.id, p.privilege FROM users u, privileges p";
+		$query = "SELECT u.username, u.password, u.first_name, u.last_name, u.id, p.privilege FROM users u, privileges p";
 		$query.= " WHERE u.username = '$username'";
 		$query.= " AND u.password = '$hashed_password' AND u.privilege_id = p.id";
 
@@ -65,6 +65,8 @@ if(!session_is_registered("username")){
 				session_register("hashed_password");
 				session_register("id");
 				session_register("privilege");
+				session_register("first_name");
+				session_register("last_name");
 				header("location:login_success.php");
 			}
 

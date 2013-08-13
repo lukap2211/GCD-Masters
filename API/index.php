@@ -35,7 +35,7 @@ switch ($c) {
 	case 'user':
 		switch ($a) {
 			case 'all':
-				$query = user_all();
+				$query = users_all();
 				break;
 			case 'id':
 				$query = user_id();

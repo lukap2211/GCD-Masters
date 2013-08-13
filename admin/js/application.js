@@ -21,19 +21,23 @@ var GM = {
 
     // user
     user : {
-        id          : "",
+        id          : ""
     },
+    viewAsId        : "",
 
     // markers
     locations       : [],
     markers         : [],
     iterator        : 0,
     pin  : {
-        // backup icon
+        /* backup icon */
         // green       : "http://cdn1.iconfinder.com/data/icons/locationicons/pin.png",
         // orange      : "http://cdn1.iconfinder.com/data/icons/locationicons/pin.png",
-        // red         : "http://cdn1.iconfinder.com/data/icons/locationicons/pin.png",
-        // black       : "http://cdn1.iconfinder.com/data/icons/locationicons/pin.png"
+        // blue        : "http://cdn1.iconfinder.com/data/icons/locationicons/pin.png",
+        // black       : "http://cdn1.iconfinder.com/data/icons/locationicons/pin.png",
+        // todo        : "http://cdn1.iconfinder.com/data/icons/locationicons/pin.png",
+        // shadow      : "http://cdn1.iconfinder.com/data/icons/locationicons/pin.png"
+        /* originals */
         green       : "http://lukap.info/gcd/masters/admin/img/pin_green.png",
         orange      : "http://lukap.info/gcd/masters/admin/img/pin_orange.png",
         blue        : "http://lukap.info/gcd/masters/admin/img/pin_blue.png",
@@ -108,11 +112,15 @@ var GM = {
 
             // on click add new location
             google.maps.event.addListener(map, 'dblclick', function(e) {
-                // disable more than one at the setTimeout
-                console.log(marker === undefined);
-                // if(marker === undefined){
-                    GM._fn.placeMarker(e.latLng, map);
-                // }
+                if (GM.user.id !== GM.viewAsId){
+                    alert("You cant add marker while viewing as another user!");
+                } else {
+                    // disable more than one at the setTimeout
+                    console.log(marker === undefined);
+                    // if(marker === undefined){
+                        GM._fn.placeMarker(e.latLng, map);
+                    // }
+                }
             });
 
             google.maps.event.addListener(map, 'tilesloaded', function() {
@@ -165,6 +173,7 @@ var GM = {
 
         loadMarkers : function () {
 
+            var filter;
             // TO DO view as user - pass the user id for admin
             // reset values
             GM._fn.clearMap();
@@ -173,7 +182,13 @@ var GM = {
             GM.markers   = [];
             GM.iterator  = 0;
 
-            var param = "?c=content&a=all&map=" + GM.currentMap;
+            if (GM.user.id === GM.viewAsId && GM.user.privilege === "admin") {
+                filter = "";
+            } else {
+                filter = "&id=" + GM.viewAsId;
+            }
+
+            var param = "?c=content&a=all&map=" + GM.currentMap + filter;
             xhr = $.getJSON(GM.rootAPI + param)
                 .done(function(data) {
                     if(data.result){
@@ -388,8 +403,14 @@ var GM = {
         },
 
         loadLegend : function () {
-
-            var param = "?c=content&a=legend&map=" + GM.currentMap;
+            var filter;
+            // set filter if viewing as user
+            if (GM.user.id === GM.viewAsId && GM.user.privilege === "admin") {
+                filter = "";
+            } else {
+                filter = "&id=" + GM.viewAsId;
+            }
+            var param = "?c=content&a=legend&map=" + GM.currentMap + filter;
             xhr = $.getJSON(GM.rootAPI + param)
                 .done(function(data) {
                     // prepare legend
@@ -477,7 +498,6 @@ var GM = {
                     map.setTilt(45);
                     break;
             }
-
         },
 
         viewModal : function (i) {
@@ -497,56 +517,139 @@ var GM = {
             });
         },
 
+        getSettings : function (){
+
+            var param = "?c=site&a=id";
+            xhr = $.getJSON(GM.rootAPI + param)
+                .done(function(data) {
+                    if (data.result) {
+                        var site = data.items[0];
+
+                        // alert(site.name);
+                        // view site settings
+                        var html = "<h2>" + site.name + "</h2>";
+                            html+= '<p class="lead">' + site.desc + '</p> ';
+
+                        $("#modal h3").html("Site Settings");
+                        $("#modal .modal-body #site").html(html);
+                        $("#modal .modal-body div").hide();
+                        $("#modal .modal-body #site").show();
+
+                        // load modal & options
+                        $('#users-modal').modal({keyboard:true});
+                        // load carousel
+                        $('#users-carousel').carousel({'interval':false});
+
+                    }
+                })
+                .fail(function(){
+                    alert("ERROR: " + param)
+                })
+        },
+
+        getUser : function (){
+
+            var param = "?c=user&a=id&id=" + GM.user.id;
+            xhr = $.getJSON(GM.rootAPI + param)
+                .done(function(data) {
+                    if (data.result) {
+                        var user = data.items[0];
+
+                        // alert(site.name);
+                        // view site settings
+                        var html = "<h2>" + user.first_name + " " + user.last_name + " </h2>";
+                            html+= '<p class="lead">' + user.bio + '</p> ';
+
+                        $("#users-modal h3").html("My Settings");
+                        $("#users-modal .modal-body #user").html(html);
+                        $("#users-modal .modal-body div").hide();
+                        $("#users-modal .modal-body #user").show();
+
+                        // load modal & options
+                        $('#users-modal').modal({keyboard:true});
+                        // load carousel
+                        $('#users-carousel').carousel({'interval':false});
+
+                    }
+                })
+                .fail(function(){
+                    alert("ERROR: " + param)
+                })
+        },
+
+        getUsers : function (){
+
+            var html;
+            var param = "?c=user&a=all";
+            xhr = $.getJSON(GM.rootAPI + param)
+                .done(function(data) {
+                    if (data.result) {
+                        for (i = 0, j = 1; i < data.items.length; i++, j++) {
+
+                            html+= '<tr>';
+                            html+= '<td>' +  j + '</td>';
+                            html+= '<td>' +  data.items[i].username + '</td>';
+                            html+= '<td>' +  data.items[i].first_name + '</td>';
+                            html+= '<td>' +  data.items[i].last_name + '</td>';
+                            html+= (data.items[i].privilege === "admin") ? '<td><i class="icon-ok-sign"></i></td>' : '<td></td>';
+                            html+= '<td><a href="#users-modal" data-slide="next" data-user-id="' +  data.items[i].id + '">Details</a></td>';
+                            html+= '</tr>';
+                        }
+
+                        $("#users-modal tbody").html(html);
+
+                        // load modal & options
+                        $('#users-modal').modal({keyboard:true});
+                        // load carousel
+                        $('#users-carousel').carousel({'interval':false});
+
+                    }
+                })
+                .fail(function(){
+                    alert("ERROR: " + param)
+                })
+        },
+
+        getUsersViewAs : function (){
+
+            var html = "" ;
+            var param = "?c=user&a=all&ignore=" + GM.user.id;
+            xhr = $.getJSON(GM.rootAPI + param)
+                .done(function(data) {
+                    if (data.result) {
+                        for (i = 0; i < data.items.length; i++) {
+                            html+= '<li>';
+                            html+= '<a class="view_as" data-user-id="' +  data.items[i].id + '" data-user-fullname="' +  data.items[i].first_name + ' ' + data.items[i].last_name + '" href="#">';
+                            html+= '<i class="icon-fixed-width icon-user"></i> ' +  data.items[i].first_name + ' ' + data.items[i].last_name + '</a>';
+                            html+= '</li>';
+                        }
+                        $(".nav #viewAsId").prepend(html);
+                    }
+                })
+                .fail(function(){
+                    alert("ERROR: " + param)
+                })
+        },
+
+        editSettings : function (){
+
+        },
+
         init : function () {
             navigator.geolocation.getCurrentPosition(GM._fn.getLocation);
             GM.user.id = $("#user").data("user-id");
-        },
-
-        site : {
-
-            getSettings : function (){
-
-                var param = "?c=site&a=id";
-                xhr = $.getJSON(GM.rootAPI + param)
-                    .done(function(data) {
-                        if (data.result) {
-                            var site = data.items[0];
-
-                            // alert(site.name);
-                            // view site settings
-                            var html = "<h2>" + site.name + "</h2>";
-                                html+= '<p class="lead">' + site.desc + '</p> ';
-                                html+= '<div class="btn-group" data-toggle="buttons-radio">';
-                                html+= '  <button type="button" class="btn btn-primary">On</button>';
-                                html+= '  <button type="button" class="btn btn-primary">Off</button>';
-                                html+= '</div>';
-
-                            $("#modal h3").html("Site Settings");
-                            $("#modal .modal-body").html(html);
-                            $("#modal .btn-danger").hide();
-
-                            // load modal
-                            $('#modal').modal({
-                                keyboard : true
-                            });
-
-                        }
-                    })
-                    .fail(function(){
-                        alert("ERROR: " + param)
-                    })
-
-
-            },
-
-            editSettings : function (){
-
+            GM.user.privilege = $("#user").data("user-privilege");
+            GM.viewAsId = $("#user").data("user-id");
+            if (GM.user.privilege === "admin") {
+                GM._fn.getUsersViewAs();
             }
-
         }
+
     },
 
     API : {
+
+        // TODO
         // calls go here!
     }
 
@@ -555,12 +658,12 @@ var GM = {
 // other JS goes here
 $(function(){
 
-    // init
-    GM._fn.init();
-
     // default map on dashboard
     GM.currentMap = "gcd";
     GM.options.draggable = true;
+
+    // init
+    GM._fn.init();
 
     // NAVIGATION
 
@@ -571,14 +674,35 @@ $(function(){
         GM._fn.setMap();
     });
 
+    // view as
+    $("#viewAsId").delegate("a", "click", function(e){
+        // e.preventDefault();
+        GM.viewAsId = $(this).data("user-id");
+        $("#view-as").html($(this).data("user-fullname"));
+        GM._fn.setMap();
+    })
+
     // site settings
     $(".nav .settings").click(function(e){
         e.preventDefault();
-        GM._fn.site.getSettings();
+        GM._fn.getSettings();
     })
 
+    // user settings
+    $(".nav .user").click(function(e){
+        e.preventDefault();
+        GM._fn.getUser();
+    })
+
+    // users settings
+    $(".nav .users").click(function(e){
+        e.preventDefault();
+        GM._fn.getUsers();
+    })
+
+
     // TODO test
-    $(".nav .settings").click();
+    // $(".nav .users").click();
 
 
     // custom map type

@@ -1,49 +1,54 @@
 
-/*body{ padding:0px; background-color: white;}*/
-
-#dashboard {height:40px;}
 #login_container {width:300px; margin-top:100px;}
-
-.container {z-index: 1060 !important; padding: 10px; background: white; border-radius: 0px;box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); border: 1px solid #ddd;margin-top: 10px;}
-
+#dashboard {height:40px; position: relative;}
 #map-canvas {height: 100%; min-height:100%;background-color: #e5e5e5; border:1px solid #ccc; width: 100%; position: absolute;top:0; z-index: -1;}
-#map-canvas .loader {
-	overflow: hidden;
-	margin-top: 200px;
-	/*min-height:100%;*/
-}
-#map-canvas .loader .bar {
-	height: 100px;
-}
-
 #map-canvas img {max-width: none; }
-/*#map-canvas .loader {margin:10% auto; display: block;}*/
+#map-canvas .loader {overflow: hidden; margin-top: 200px; /*min-height:100%;*/ }
+#map-canvas .loader .bar {height: 100px; }
+#map-controls {float:left;}
+#legend {position: absolute; bottom: 0px; height: 80px; width: 100%; }
+#legend .container {z-index: 1060; padding: 10px; background: white; }
+#legend .progress {width: 100%; margin: auto;}
+#legend .progress div.bar a {display: block; text-decoration: none; color: white; overflow: hidden;}
+#legend .progress div.bar .popover {color:#333; text-shadow:none;}
+
+.container {padding: 10px; background: white; border-radius: 0px;box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); border: 1px solid #ddd;margin-top: 10px;}
 
 .float-left {float: left;}
 .float-right {float: right;}
 
-.progress {width: 100%; margin: auto;}
-.progress div.bar a {display: block; text-decoration: none; color: white; overflow: hidden;}
-.progress div.bar .popover {color:#333; text-shadow:none;}
 /*.progress div a:hover {display: block;}*/
 
-.info {transition:all 0.4s; line-height:50px; height:50px; background: white; border: 1px solid #ddd; width: 450px; position: fixed; left:-400px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)}
+.info {transition:all 0.4s; -webkit-transition:all 0.4s; -moz-transition:all 0.4s; line-height:50px; height:50px; background: white; border: 1px solid #ddd; width: 450px; position: fixed; left:-400px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)}
 .info .title {font-size: 28px; /*color: #0088cc;*/color: #555; width: 50px; text-align: center; cursor: pointer; text-shadow:0 1px 0 #ffffff; margin-left:10px;}
-#debug.info .title {color: red;}
 
-/*#map-legend {bottom:50px;position: absolute;}*/
 #location {bottom:80px;}
 #copyright {bottom:140px;}
 #debug {bottom:200px;}
 
 .info:hover {left:0;}
 
-#legend {position: absolute; bottom: 0px; height: 80px; width: 100%; }
-#legend .container {z-index: 1060; padding: 10px; background: white; }
+#view-filter {margin-left: 70px}
+.admin {position: absolute; top:0; right: 150px;overflow: hidden; width: 100px; height: 62px;}
+.admin span{
+    /*float: left;*/
+    position: absolute;
+    left: 0px;
+    top: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    color: white;
+    background: rgba(255,0,0,0.95);
+    background: #999;
+    width: 100px;
+    text-align: center;
+    padding: 0px 5px;
+    z-index: 999;
+    text-shadow: 0 1px 0 #000;
+    box-shadow: 0 1px 0 #666;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(-45deg);
 
-@media (max-width: 979px) and (min-width: 768px){
-	/*#container {margin-left: 40px;}*/
 }
-
-/*.modal {width: 670px; margin-left: -335px;}*/
-/*.modal-body { max-height: 540px;}*/
