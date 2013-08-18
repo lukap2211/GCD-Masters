@@ -112,7 +112,18 @@ function item_edit_loc() {
 }
 
 function item_delete() {
-	// code...
+
+	$filter = "";
+
+	// by id
+	if(!empty($_GET['id']) && intval($_GET['id'])){
+		$filter .= "id in ('{$_GET['id']}')";
+	}
+	// query
+	$query = "DELETE FROM contents";
+	$query.= " WHERE $filter";
+	return $query;
+
 }
 
 // user functions
