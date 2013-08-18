@@ -98,6 +98,10 @@ Copyright - lukap. 2013.
                                 <li><a class="view_as" data-user-id="<?=$_SESSION['id']?>" data-user-fullname="<?="{$_SESSION['first_name']} {$_SESSION['last_name']}"?>" href="#"><i class="icon-fixed-width icon-remove"></i> Reset</a></li>
                             </ul>
                         </li>
+                        <?php } else { ?>
+                        <li class="dropdown">
+                            <a href="javascript:void();" ><?="{$_SESSION['first_name']} {$_SESSION['last_name']}"?></a>
+                        </li>
                         <?php } ?>
                     </ul>
                     <ul class="nav pull-right">
@@ -225,6 +229,23 @@ Copyright - lukap. 2013.
             </div>
 
         </div>
+    </div>
+
+    <!-- MODAL -->
+
+    <div id="marker-modal" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Modal header</h3>
+      </div>
+      <div class="modal-body">
+        <p>One fine body…</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+        <a href="#" class="btn btn-primary edit">Edit</a>
+        <a href="#" class="btn btn-danger delete">Delete</a>
+      </div>
     </div>
 
     <!-- LOCATION -->
