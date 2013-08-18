@@ -3,6 +3,8 @@ session_start();
 session_destroy();
 $_SESSION = array();
 
+header("location:index.php?a=signedOut");
+
 // open connection
 require("include/connect.php");
 
