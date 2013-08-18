@@ -4,12 +4,48 @@
 		"selected_items":
 		[
 			[
-				"font",
-				"font-weight"
+				"set",
+				"setMap"
+			],
+			[
+				"de",
+				"preventDefault"
+			],
+			[
+				"dee",
+				"deleteMarker"
+			],
+			[
+				"data",
+				"data-user-id"
+			],
+			[
+				"modal",
+				"marker-modal"
+			],
+			[
+				"arra",
+				"array"
 			],
 			[
 				"get",
-				"getSettings"
+				"getUsers"
+			],
+			[
+				"vide",
+				"viewAsId"
+			],
+			[
+				"load",
+				"loadMarkers"
+			],
+			[
+				"view",
+				"viewAsId"
+			],
+			[
+				"font",
+				"font-weight"
 			],
 			[
 				"geo_",
@@ -38,10 +74,6 @@
 			[
 				"mar",
 				"margin-left"
-			],
-			[
-				"view",
-				"viewModal"
 			],
 			[
 				"ite",
@@ -284,21 +316,10 @@
 	"buffers":
 	[
 		{
-			"file": "admin/js/application.js",
+			"file": "admin/css/style.css",
 			"settings":
 			{
-				"buffer_size": 25406,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "<?php\nsession_start();\n\n// TODO\n// show debug\nif ($_GET['debug']) {\n\n    echo(\"<pre>\");\n\n    // show all errors\n    error_reporting(E_ALL);\n    ini_set('display_errors', TRUE);\n    // output session data\n    print_r($_SESSION);\n\n    echo(\"</pre>\");\n}\n\n// redirect is session empty\nif(!isset($_SESSION['username'])){\n    header(\"location:logout.php?login=false\");\n}\n?>\n<!DOCTYPE html>\n\n<!--\n\nGCD - MSCDM - Part Time\nLuka Puharic - 2828092\n\nCopyright - lukap. 2013.\n\n -->\n\n<html>\n<head>\n\n    <title>Dashboard</title>\n\n    <!-- CSS -->\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"css/bootstrap.css\">\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"css/bootstrap-responsive.css\">\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"css/font-awesome.min.css\">\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"css/style.css\" />\n\n    <!--[if IE 7]>\n        <link rel=\"stylesheet\" href=\"path/to/font-awesome/css/font-awesome-ie7.min.css\">\n    <![endif]-->\n\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\n    <!-- GOOGLE MAPS API -->\n    <script src=\"https://maps.googleapis.com/maps/api/js?v=3.6&sensor=false\"></script>\n\n</head>\n\n<body data-spy=\"scroll\" data-target=\".navbar\">\n\n    <!-- GOOGLE MAP CANVAS -->\n\n    <div id=\"map-canvas\">\n        <div class=\"loader\"></div>\n\n        <div class=\"loader progress active progress-success progress-striped\">\n          <div class=\"bar\" style=\"width: 1000%\"></div>\n        </div>\n        <!-- <img class=\"loader\" src=\"img/ajax-loader.gif\" /> -->\n    </div>\n\n    <!-- MAIN CONTAINER -->\n\n    <header id=\"dashboard\" class=\"container\">\n\n        <!-- MAIN NAVIGATION -->\n\n        <?php if ($_SESSION['privilege'] == \"admin\" ) { ?><div class=\"admin\"><span>ADMIN</span></div><?php } ?>\n\n        <div class=\"navbar\">\n            <div class=\"navbar-inner\">\n\n                <span id=\"user\" class=\"brand\" href=\"#\" data-user-id=<?= \"{$_SESSION['id']}\" ?> > <?=\"Hi {$_SESSION['username']}\" ?></span>\n                <div>\n                    <ul class=\"nav\">\n                        <li class=\"dropdown active\">\n                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"icon-fixed-width icon-home\"></i></a>\n                            <ul class=\"dropdown-menu\">\n                                <li><a class=\"set_map\" data-map=\"gcd\" href=\"#\"><i class=\"icon-fixed-width icon-globe\"></i> GCD Campus</a></li>\n                                <li><a class=\"set_map\" data-map=\"smi\" href=\"#\"><i class=\"icon-fixed-width icon-globe\"></i> Smithfield Square</a></li>\n                                <li><a class=\"set_map\" data-map=\"pho\" href=\"#\"><i class=\"icon-fixed-width icon-globe\"></i> Phoenix Park</a></li>\n                                <li><a class=\"set_map\" data-map=\"dub\" href=\"#\"><i class=\"icon-fixed-width icon-globe\"></i> Dublin</a></li>\n                            </ul>\n                        </li>\n                        <li class=\"dropdown\">\n                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"icon-fixed-width icon-eye-open\"></i> View as <span id=\"view-as\">Luka Puharic</span> <b class=\"caret\"></b> </a>\n                            <ul class=\"dropdown-menu\">\n                                <li><a class=\"set_map\" data-map=\"gcd\" href=\"#\"><i class=\"icon-fixed-width icon-globe\"></i> user 1</a></li>\n                                <li><a class=\"set_map\" data-map=\"smi\" href=\"#\"><i class=\"icon-fixed-width icon-globe\"></i> user 2</a></li>\n                                <li><a class=\"set_map\" data-map=\"pho\" href=\"#\"><i class=\"icon-fixed-width icon-globe\"></i> user 3</a></li>\n                                <li><a class=\"set_map\" data-map=\"dub\" href=\"#\"><i class=\"icon-fixed-width icon-globe\"></i> user 4</a></li>\n                            </ul>\n                        </li>\n                    </ul>\n                    <ul class=\"nav pull-right\">\n                        <li class=\"dropdown\">\n                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"icon-fixed-width icon-cogs\"></i> Settings <b class=\"caret\"></b></a>\n                            <ul class=\"dropdown-menu\">\n                                <li><a class=\"user\" href=\"#\"><i class=\"icon-fixed-width icon-user\"></i> My Settings</a></li>\n                                <?php if ($_SESSION['privilege'] == \"admin\" ) { ?>\n                                <li><a class=\"users\" data-slide-index=\"0\" href=\"users-modal\"><i class=\"icon-fixed-width icon-group\"></i> Users </a></li>\n                                <li><a class=\"settings\" data-slide-index=\"0\" href=\"site-modal\"><i class=\"icon-fixed-width icon-globe\"></i> Site Settings</a></li>\n                                <?php } ?>\n                                <li class=\"divider\"></li>\n                                <li><a href=\"logout.php\"><i class=\"icon-fixed-width icon-signout\"></i> Log Out</a></li>\n                            </ul>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n\n        <!-- MAP CONTROLS -->\n\n        <div id=\"map-controls\">\n            <div class=\"btn-group btn-group-vertical\">\n                <button id=\"zoomIn\"  class=\"btn\"><i class=\"icon-plus\"></i></button>\n                <button id=\"mapType\" data-type-id=\"1\" class=\"btn\"><i class=\"icon-globe\"></i></button>\n                <button id=\"zoomOut\" class=\"btn\"><i class=\"icon-minus\"></i></button>\n            </div>\n        </div>\n\n    </header>\n\n    <!-- MODAL USERS -->\n    <div id=\"users-modal\" class=\"modal hide fade\" data-keyboard=\"true\">\n        <div id=\"users-carousel\" class=\"carousel\">\n            <!-- CAROUSEL ITEMS -->\n            <div class=\"carousel-inner\">\n                <!-- ALL USERS -->\n                <div class=\"active item\">\n                    <!-- HEADER -->\n                    <div class=\"modal-header\">\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n                        <h3>List of Users</h3>\n                    </div>\n                    <!-- BODY -->\n                    <div class=\"modal-body\">\n\n                        <table class=\"table table-hover\">\n                            <thead>\n                                <tr>\n                                    <th>#</th>\n                                    <th>Username</th>\n                                    <th>First Name</th>\n                                    <th>Last Name</th>\n                                    <th>Admin</th>\n                                    <th>Details</th>\n                                </tr>\n                            </thead>\n                            <tbody>\n                            </tbody>\n                        </table>\n                    </div>\n                    <!-- FOOTER -->\n                    <div class=\"modal-footer\">\n                        <a href=\"#users-modal\" class=\"btn btn-primary\" data-slide-to=\"3\">Add User</a>\n                    </div>\n\n                </div>\n\n                <!-- VIEW USER  -->\n                <div class=\"item\">\n                    <!-- HEADER -->\n                    <div class=\"modal-header\">\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n                        <h3>View User</h3>\n                    </div>\n                    <!-- BODY -->\n                    <div class=\"modal-body\">\n                        VIEW USER\n                    </div>\n                    <!-- FOOTER -->\n                    <div class=\"modal-footer\">\n                        <a href=\"#users-modal\" class=\"btn back-to-list\" data-slide-to=\"0\">Back to list</a>\n                        <a href=\"#users-modal\" class=\"btn btn-primary\" data-slide-to=\"2\"><i class=\"icon-pencil\"></i> Edit</a>\n                        <a href=\"#users-modal\" id=\"delete-item\" class=\"btn btn-danger\"><i class=\"icon-trash\"></i> Delete</a>\n                    </div>\n                </div>\n\n                <!-- EDIT USER  -->\n                <div class=\"item\">\n                    <!-- HEADER -->\n                    <div class=\"modal-header\">\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n                        <h3>Edit User</h3>\n                    </div>\n                    <!-- BODY -->\n                    <div class=\"modal-body\">\n                        EDIT USER\n                    </div>\n                    <!-- FOOTER -->\n                    <div class=\"modal-footer\">\n                        <a href=\"#users-modal\" class=\"btn\" data-slide-to=\"1\"><i class=\"icon-remove\"></i> Cancel</a>\n                        <a href=\"#users-modal\" class=\"btn btn-primary\" data-slide-to=\"11\"><i class=\"icon-ok\"></i> Save</a>\n                    </div>\n                </div>\n\n                <!-- ADD USER  -->\n                <div class=\"item\">\n                    <!-- HEADER -->\n                    <div class=\"modal-header\">\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n                        <h3>Add User</h3>\n                    </div>\n                    <!-- BODY -->\n                    <div class=\"modal-body\">\n                        ADD USER\n                    </div>\n                    <!-- FOOTER -->\n                    <div class=\"modal-footer\">\n                        <a href=\"#users-modal\" class=\"btn back-to-list\" data-slide-to=\"0\">Back to list</a>\n                        <a href=\"#users-modal\" class=\"btn btn-primary\" data-slide-to=\"2\">Add</a>\n                    </div>\n                </div>\n\n            </div>\n\n        </div>\n    </div>\n\n    <!-- LOCATION -->\n\n    <div id=\"location\" class=\"info\">\n        <div class=\"title float-right\"><i class=\"icon-map-marker\"></i></div>\n        <p class=\"muted float-right\">\n            <span id=\"my_location\">...</span>\n         <i class=\"icon-signal\"></i> <span id=\"my_accuracy\">...</span>\n        </p>\n    </div>\n\n    <!-- DEBUG -->\n\n    <div id=\"debug\" class=\"info\">\n        <div class=\"title float-right\"><i class=\"icon-bug\"></i></div>\n        <div class=\"muted float-right\">\n            <form class=\"form-inline \">\n                <input id=\"longitude\" type=\"text\" value=\"\" class=\"input-medium\" placeholder=\"longitude\">\n                <input id=\"latitude\" type=\"text\" value=\"\" class=\"input-medium\" placeholder=\"latitude\">\n            </form>\n        </div>\n    </div>\n\n    <!-- COPYRIGHT -->\n\n    <div id=\"copyright\" class=\"info\">\n        <div class=\"title float-right\"><i class=\"icon-info-sign\"></i></div>\n        <p class=\"text-right float-right\">Luka Puharic 2013</p>\n    </div>\n\n    <!-- LEGEND -->\n\n    <footer id=\"legend\">\n        <div class=\"container\">\n            <div class=\"progress \">\n                <div class=\"bar activity bar-success\" style=\"width: 0%;\">\n                    <a href=\"#\" title=\"\" data-original-title=\"Activity\">0</a>\n                </div>\n                <div class=\"bar history bar-warning\" style=\"width: 0%;\">\n                    <a href=\"#\" title=\"\" data-original-title=\"History\">0</a>\n                </div>\n                <div class=\"bar study\" style=\"width: 0%;\">\n                    <a href=\"#\" title=\"\" data-original-title=\"Study\">0</a>\n                </div>\n                <div class=\"bar todo bar-danger\" style=\"width: 0%;\">\n                    <a href=\"#\" title=\"\" data-original-title=\"To Do!\">0</a>\n                </div>\n            </div>\n        </div>\n    </footer>\n\n\n    <!-- JAVASCRIPT -->\n    <script src=\"js/jquery-1.10.1.min.js\"></script>\n    <script src=\"js/bootstrap.js\"></script>\n    <script src=\"js/application.js\"></script>\n\n</body>\n\n</html>",
-			"file": "admin/dashboard.php",
-			"file_size": 11743,
-			"file_write_time": 130207107240000000,
-			"settings":
-			{
-				"buffer_size": 11744,
+				"buffer_size": 2159,
 				"line_ending": "Unix"
 			}
 		},
@@ -306,15 +327,7 @@
 			"file": "API/index.php",
 			"settings":
 			{
-				"buffer_size": 2228,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "API/api_functions.php",
-			"settings":
-			{
-				"buffer_size": 3731,
+				"buffer_size": 2981,
 				"line_ending": "Unix"
 			}
 		},
@@ -327,10 +340,26 @@
 			}
 		},
 		{
-			"file": "admin/css/style.css",
+			"file": "API/api_functions.php",
 			"settings":
 			{
-				"buffer_size": 2428,
+				"buffer_size": 4416,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/dashboard.php",
+			"settings":
+			{
+				"buffer_size": 12492,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/js/application.js",
+			"settings":
+			{
+				"buffer_size": 29300,
 				"line_ending": "Unix"
 			}
 		}
@@ -426,7 +455,7 @@
 				"Set Syntax: HTML"
 			]
 		],
-		"width": 467.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -447,28 +476,29 @@
 	},
 	"file_history":
 	[
-		"/Users/lukap/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/Users/lukap/github/GCD-Masters/admin/user_functions.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/connect.php",
 		"/Users/lukap/github/GCD-Masters/admin/index.php",
+		"/Users/lukap/github/GCD-Masters/admin/login_success.php",
+		"/Users/lukap/github/GCD-Masters/admin/logout.php",
+		"/Users/lukap/github/GCD-Masters/admin/user_functions.php",
+		"/Users/lukap/github/GCD-Masters/API/api_functions.php",
+		"/Users/lukap/github/GCD-Masters/API/api_validate.php",
+		"/Users/lukap/github/GCD-Masters/API/index.php",
+		"/Users/lukap/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/lukap/github/GCD-Masters/admin/css/style.css",
 		"/Users/lukap/Desktop/modal_OLD.php",
 		"/Users/lukap/github/GCD-Masters/admin/dashboard_OLD.php",
-		"/Users/lukap/github/GCD-Masters/admin/include/connect.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/admin_footer.php",
 		"/Users/lukap/github/GCD-Masters/admin/content.php",
 		"/Users/lukap/github/GCD-Masters/admin/dashboard_functions.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/admin_header.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/main_header.php",
-		"/Users/lukap/github/GCD-Masters/API/index.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/admin_nav.php",
 		"/Users/lukap/github/GCD-Masters/admin/user_validate.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/main_footer.php",
 		"/Users/lukap/github/GCD-Masters/admin/user.php",
 		"/Users/lukap/github/GCD-Masters/admin/dashboard_validate.php",
-		"/Users/lukap/github/GCD-Masters/admin/logout.php",
-		"/Users/lukap/github/GCD-Masters/API/api_functions.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/modal.php",
-		"/Users/lukap/github/GCD-Masters/API/api_validate.php",
 		"/Users/lukap/github/GCD-Masters/admin/js/application.js",
 		"/Users/lukap/github/GCD-Masters/admin/dashboard.php",
 		"/Users/lukap/github/GCD-my_blog/include/album_functions.php",
@@ -477,7 +507,6 @@
 		"/Users/lukap/github/GCD-Masters/admin/css/bootstrap.css",
 		"/Users/lukap/Dropbox/AOL/DEV/AOL WL/StyleList/www/sl_js.js",
 		"/Users/lukap/Dropbox/AOL/DEV/AOL WL/StyleList/www/stylelist.js",
-		"/Users/lukap/github/GCD-Masters/admin/login_success.php",
 		"/Users/lukap/github/GCD-Masters/GCD-Masters.sublime-project",
 		"/Users/lukap/github/GCD-Masters/masters.sublime-project",
 		"/Users/lukap/github/GCD-Masters/admin/index_OLD.php",
@@ -594,6 +623,53 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"icon_backup",
+			"\\.fail\\(function\\(\\)\\{",
+			".fail(function(){",
+			"delegate",
+			"marker-modal",
+			"alert",
+			"delete",
+			"viewmo",
+			"deleteMarker",
+			"viewModal",
+			"marker-modal",
+			"remove",
+			"delete",
+			"update",
+			"delete",
+			"viewMo",
+			"deleteMarker",
+			"viewModal",
+			"moveMarker",
+			"c=content",
+			"deleteMarker",
+			"delete",
+			".modal",
+			"viewModal",
+			"dblclick",
+			"viewModal",
+			"dbl",
+			"GM.currentMap",
+			"current",
+			"smi",
+			"maps",
+			"gcd",
+			"setMap",
+			"getUsers",
+			"getUsersViewAs",
+			"ignore",
+			"AND",
+			"and",
+			"getUsers",
+			"alert",
+			"legend",
+			"loadMar",
+			"viewAs",
+			"user",
+			"admin",
+			"user.id",
+			"SESSION",
 			"slide",
 			"users-carousel",
 			"user.id",
@@ -674,54 +750,7 @@
 			"getJSON",
 			"getSettings",
 			"backup",
-			"mapCanvas",
-			"moveMarkers",
-			"xhr",
-			"mapCanvas",
-			"clearMap",
-			"clearOverlays",
-			"setLegend",
-			"lege",
-			"animate",
-			"markers",
-			"deleteMarker",
-			"markers",
-			"modal",
-			"getIcon",
-			"green",
-			"marker",
-			"icon",
-			"blank",
-			"ICON ",
-			"marker",
-			"shadow",
-			"category",
-			"black",
-			"alert",
-			"undefined",
-			"placeMarker",
-			"addMarker",
-			"xhr",
-			"getItems",
-			"edit_loc",
-			"viewModal",
-			"moveMarker",
-			"placeMarker",
-			"moveMarker",
-			"\n            ",
-			"movemarker",
-			"move",
-			"content",
-			"addMarkers",
-			"placeMarker",
-			"progress",
-			"legend",
-			"hsq",
-			"longitude",
-			"please enter user ID as number",
-			"debug",
-			"drag",
-			"c="
+			"mapCanvas"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -729,6 +758,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			".fail(function () {",
 			"geo_lng",
 			"pho",
 			"smi",
@@ -747,126 +777,69 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "admin/js/application.js",
+					"file": "admin/css/style.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 25406,
+						"buffer_size": 2159,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								13453,
-								13453
+								1887,
+								1887
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4832.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "admin/dashboard.php",
+					"file": "API/index.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11744,
+						"buffer_size": 2981,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8785,
-								8785
+								2948,
+								2948
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": false
+							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 50.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 686.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "API/index.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2228,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								514,
-								514
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 625.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "API/api_functions.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3731,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2659,
-								2659
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "API/api_validate.php",
 					"semi_transient": false,
 					"settings":
@@ -894,30 +867,107 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "admin/css/style.css",
+					"buffer": 3,
+					"file": "API/api_functions.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2428,
+						"buffer_size": 4416,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1763,
-								1763
+								2403,
+								2416
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "admin/dashboard.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12492,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								437,
+								437
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "admin/js/application.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 29300,
+						"regions":
+						{
+							"bookmarks":
+							{
+								"flags": 144,
+								"icon": "bookmark",
+								"regions":
+								[
+									[
+										13585,
+										13585
+									]
+								],
+								"scope": "bookmarks"
+							}
+						},
+						"selection":
+						[
+							[
+								10273,
+								10273
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3462.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -942,11 +992,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.372412791679,
 			1.0
 		],
 		"rows":
@@ -1036,7 +1093,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 263.0,
 	"status_bar_visible": true,
 	"template_settings":
