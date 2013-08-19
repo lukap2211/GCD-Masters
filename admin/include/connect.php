@@ -1,8 +1,5 @@
 <?php
 
-// globals
-include("globals.php");
-
 // database settings
 
 // localhost
