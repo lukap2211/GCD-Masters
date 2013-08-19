@@ -115,7 +115,8 @@ Copyright - lukap. 2013.
 <html>
 <head>
 
-    <title>Dashboard</title>
+    <title>Geo CMS</title>
+
 
     <!-- CSS -->
     <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
@@ -123,10 +124,23 @@ Copyright - lukap. 2013.
     <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="css/style.css" />
 
+    <!-- icons -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+    <link rel="apple-touch-icon" href="img/touch-icon-iphone.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/touch-icon-iphone-retina.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="img/touch-icon-ipad-retina.png" />
+
+    <!-- iPad standalone app -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
     <!--[if IE 7]>
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
 
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- GOOGLE MAPS API -->
