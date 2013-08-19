@@ -47,7 +47,7 @@ Copyright - lukap. 2013.
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- GOOGLE MAPS API -->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.6&sensor=false"></script>
@@ -110,7 +110,7 @@ Copyright - lukap. 2013.
                             <ul class="dropdown-menu">
                                 <li><a class="user" href="#"><i class="icon-fixed-width icon-wrench"></i> My Settings</a></li>
                                 <?php if ($_SESSION['privilege'] == "admin" ) { ?>
-                                <li><a class="users" data-slide-index="0" href="users-modal"><i class="icon-fixed-width icon-wrench"></i> Users </a></li>
+                                <li><a class="users" data-slide-index="0" href="modal-users"><i class="icon-fixed-width icon-wrench"></i> Users </a></li>
                                 <li><a class="settings" data-slide-index="0" href="site-modal"><i class="icon-fixed-width icon-wrench"></i> Site Settings</a></li>
                                 <?php } ?>
                                 <li class="divider"></li>
@@ -135,7 +135,7 @@ Copyright - lukap. 2013.
     </header>
 
     <!-- MODAL USERS -->
-    <div id="users-modal" class="modal hide fade" data-keyboard="true">
+    <div id="modal-users" class="modal hide fade" data-keyboard="true">
         <div id="users-carousel" class="carousel">
             <!-- CAROUSEL ITEMS -->
             <div class="carousel-inner">
@@ -166,7 +166,7 @@ Copyright - lukap. 2013.
                     </div>
                     <!-- FOOTER -->
                     <div class="modal-footer">
-                        <a href="#users-modal" class="btn btn-primary" data-slide-to="3">Add User</a>
+                        <a href="#modal-users" class="btn btn-primary" data-slide-to="3">Add User</a>
                     </div>
 
                 </div>
@@ -184,9 +184,9 @@ Copyright - lukap. 2013.
                     </div>
                     <!-- FOOTER -->
                     <div class="modal-footer">
-                        <a href="#users-modal" class="btn back-to-list" data-slide-to="0">Back to list</a>
-                        <a href="#users-modal" class="btn btn-primary" data-slide-to="2"><i class="icon-pencil"></i> Edit</a>
-                        <a href="#users-modal" id="delete-item" class="btn btn-danger"><i class="icon-trash"></i> Delete</a>
+                        <a href="#modal-users" class="btn back-to-list" data-slide-to="0">Back to list</a>
+                        <a href="#modal-users" class="btn btn-primary" data-slide-to="2"><i class="icon-pencil"></i> Edit</a>
+                        <a href="#modal-users" id="delete-item" class="btn btn-danger"><i class="icon-trash"></i> Delete</a>
                     </div>
                 </div>
 
@@ -203,8 +203,8 @@ Copyright - lukap. 2013.
                     </div>
                     <!-- FOOTER -->
                     <div class="modal-footer">
-                        <a href="#users-modal" class="btn" data-slide-to="1"><i class="icon-remove"></i> Cancel</a>
-                        <a href="#users-modal" class="btn btn-primary" data-slide-to="11"><i class="icon-ok"></i> Save</a>
+                        <a href="#modal-users" class="btn" data-slide-to="1"><i class="icon-remove"></i> Cancel</a>
+                        <a href="#modal-users" class="btn btn-primary" data-slide-to="11"><i class="icon-ok"></i> Save</a>
                     </div>
                 </div>
 
@@ -221,8 +221,8 @@ Copyright - lukap. 2013.
                     </div>
                     <!-- FOOTER -->
                     <div class="modal-footer">
-                        <a href="#users-modal" class="btn back-to-list" data-slide-to="0">Back to list</a>
-                        <a href="#users-modal" class="btn btn-primary" data-slide-to="2">Add</a>
+                        <a href="#modal-users" class="btn back-to-list" data-slide-to="0">Back to list</a>
+                        <a href="#modal-users" class="btn btn-primary" data-slide-to="2">Add</a>
                     </div>
                 </div>
 
@@ -231,7 +231,7 @@ Copyright - lukap. 2013.
         </div>
     </div>
 
-    <!-- MODAL -->
+    <!-- MODAL MARKER -->
 
     <div id="marker-modal" class="modal hide fade">
       <div class="modal-header">
@@ -246,6 +246,80 @@ Copyright - lukap. 2013.
         <a href="#" class="btn btn-primary edit">Edit</a>
         <a href="#" class="btn btn-danger delete">Delete</a>
       </div>
+    </div>
+
+
+    <!-- MODAL SITE -->
+
+    <div id="modal-site" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Site Settings</h3>
+        </div>
+        <div class="modal-body">
+            <form>
+
+                <fieldset>
+                    <label>Name</label>
+                    <input class="input-xlarge" type="text" name="name" placeholder="Site name goes here" />
+                </fieldset>
+
+                <fieldset>
+                    <label>Description</label>
+                    <textarea rows="3" name="desc" ></textarea>
+                </fieldset>
+
+                <div class="switch">
+                    <div class="head">
+                        <h5>Debug</h5>
+                        <i class="icon-bug"></i>
+                    </div>
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="debug" class="onoffswitch-checkbox" id="debugOnOff" >
+                        <label class="onoffswitch-label" for="debugOnOff">
+                            <div class="onoffswitch-inner"></div>
+                            <div class="onoffswitch-switch"></div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="switch">
+                    <div class="head">
+                        <h5>Location</h5>
+                        <i class="icon-map-marker"></i>
+                    </div>
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="location" class="onoffswitch-checkbox" id="locationOnOff" >
+                        <label class="onoffswitch-label" for="locationOnOff">
+                            <div class="onoffswitch-inner"></div>
+                            <div class="onoffswitch-switch"></div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="switch">
+                    <div class="head">
+                        <h5>Legend</h5>
+                        <i class="icon-tasks"></i>
+                    </div>
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="legend" class="onoffswitch-checkbox" id="legendOnOff" >
+                        <label class="onoffswitch-label" for="legendOnOff">
+                            <div class="onoffswitch-inner"></div>
+                            <div class="onoffswitch-switch"></div>
+                        </label>
+                    </div>
+                </div>
+           </form>
+
+        </div>
+        <div class="modal-footer">
+
+            <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+            <a href="#" class="btn btn-primary save">Save</a>
+            <!-- <a href="#" class="btn btn-danger delete">Delete</a> -->
+
+        </div>
     </div>
 
     <!-- LOCATION -->
@@ -303,7 +377,18 @@ Copyright - lukap. 2013.
     <!-- JAVASCRIPT -->
     <script src="js/jquery-1.10.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/iscroll.js"></script>
     <script src="js/application.js"></script>
+
+    <script type="text/javascript">
+    var myScroll;
+    function loaded() {
+        setTimeout(function () {
+            // myScroll = new iScroll('wrapper');
+        }, 100);
+    }
+    window.addEventListener('load', loaded, false);
+    </script>
 
 </body>
 

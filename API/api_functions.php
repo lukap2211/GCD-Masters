@@ -177,7 +177,7 @@ function user_delete() {
 function site_id() {
 
 	// query
-	$query = "SELECT s.name, s.desc, s.logo, s.debug, s.size";
+	$query = "SELECT s.name, s.desc, s.logo, s.debug, s.size, s.debug, s.location, s.legend ";
 	$query.= " FROM settings s";
 	$query.= " WHERE id = 1";
 
@@ -186,9 +186,14 @@ function site_id() {
 
 function site_edit() {
 
+	// set checkbox values
+	$debug = (!empty($_GET['debug']) && ($_GET['debug'] = 'on')) ? 1 : 0;
+	$location = (!empty($_GET['location']) && ($_GET['location'] = 'on')) ? 1 : 0;
+	$legend = (!empty($_GET['legend']) && ($_GET['legend'] = 'on')) ? 1 : 0;
+
 	// query
-	$query = "UPDATE settings";
-	$query.= " SET name = '{_GET['name']}', logo = '{_GET['logo']}', debug = '{_GET['debug']}', size = '{_GET['size']}'";
+	$query = "UPDATE settings s";
+	$query.= " SET s.name = '{$_GET['name']}', s.desc = '{$_GET['desc']}', s.debug = {$debug}, s.location = {$location}, s.legend = {$legend}";
 	$query.= " WHERE id = 1";
 
 	return $query;

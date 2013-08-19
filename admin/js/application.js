@@ -22,9 +22,9 @@ var GM = {
 
     // user
     user : {
-        id          : ""
+        id          : "",
+        viewAsId    : "",
     },
-    viewAsId        : "",
 
     // markers
     locations       : [],
@@ -114,7 +114,7 @@ var GM = {
 
             // on click add new location
             google.maps.event.addListener(map, 'dblclick', function (e) {
-                if (GM.user.id !== GM.viewAsId) {
+                if (GM.user.id !== GM.user.viewAsId) {
                     alert("You cant add marker while viewing as another user!");
                 } else {
                     // disable more than one at the setTimeout
@@ -200,10 +200,10 @@ var GM = {
             GM.markers   = [];
             GM.iterator  = 0;
 
-            if (GM.user.id === GM.viewAsId && GM.user.privilege === "admin") {
+            if (GM.user.id === GM.user.viewAsId && GM.user.privilege === "admin") {
                 filter = "";
             } else {
-                filter = "&id=" + GM.viewAsId;
+                filter = "&id=" + GM.user.viewAsId;
             }
 
             var param = "?c=content&a=all&map=" + GM.currentMap + filter;
@@ -434,10 +434,10 @@ var GM = {
         loadLegend : function () {
             var filter;
             // set filter if viewing as user
-            if (GM.user.id === GM.viewAsId && GM.user.privilege === "admin") {
+            if (GM.user.id === GM.user.viewAsId && GM.user.privilege === "admin") {
                 filter = "";
             } else {
-                filter = "&id=" + GM.viewAsId;
+                filter = "&id=" + GM.user.viewAsId;
             }
             var param = "?c=content&a=legend&map=" + GM.currentMap + filter;
             xhr = $.getJSON(GM.rootAPI + param)
@@ -553,33 +553,55 @@ var GM = {
         },
 
         getSettings : function () {
-            var html;
             var param = "?c=site&a=id";
             xhr = $.getJSON(GM.rootAPI + param)
                 .done(function (data) {
                     if (data.result) {
                         var site = data.items[0];
-
-                        // alert(site.name);
-                        // view site settings
-                        html += "<h2>" + site.name + "</h2>";
-                        html += '<p class="lead">' + site.desc + '</p> ';
-
-                        $("#modal h3").html("Site Settings");
-                        $("#modal .modal-body #site").html(html);
-                        $("#modal .modal-body div").hide();
-                        $("#modal .modal-body #site").show();
-
-                        // load modal & options
-                        $('#users-modal').modal({keyboard : true});
-                        // load carousel
-                        $('#users-carousel').carousel({'interval' : false});
-
+                        GM.site.name = site.name;
+                        GM.site.desc = site.desc;
+                        GM.site.debug = site.debug === '1' ? true : false;
+                        GM.site.location = site.location === '1' ? true : false;
+                        GM.site.legend = site.legend === '1' ? true : false;
+                        GM._fn.setSettings();
                     }
                 })
                 .fail(function () {
                     alert("ERROR: " + param);
                 });
+        },
+
+        setSettings : function () {
+            if (GM.site.debug) {$("#debug").fadeIn('slow'); } else {$("#debug").fadeOut('slow'); }
+            if (GM.site.location) {$("#location").fadeIn('slow'); } else {$("#location").fadeOut('slow'); }
+            if (GM.site.legend) {$("#legend").fadeIn('slow'); } else {$("#legend").fadeOut('slow'); }
+
+        },
+
+        showSettings : function () {
+            $("#modal-site [name='name']").val(GM.site.name);
+            $("#modal-site [name='desc']").html(GM.site.desc);
+            $("#modal-site [name='debug']").prop('checked', GM.site.debug);
+            $("#modal-site [name='location']").prop('checked', GM.site.location);
+            $("#modal-site [name='legend']").prop('checked', GM.site.legend);
+
+            $('#modal-site').modal({
+                keyboard : true,
+                backdrop : true
+            });
+        },
+
+        saveSettings : function () {
+            var param = "?c=site&a=edit&" + $("#modal-site form").serialize();
+            xhr = $.getJSON(GM.rootAPI + param)
+                .done(function (data) {
+                    $('#modal-site').modal('hide')
+                    GM._fn.getSettings();
+                })
+                .fail(function () {
+                    alert("ERROR: " + param);
+                });
+
         },
 
         getUser : function () {
@@ -595,13 +617,13 @@ var GM = {
                         html += "<h2>" + user.first_name + " " + user.last_name + " </h2>";
                         html += '<p class="lead">' + user.bio + '</p> ';
 
-                        $("#users-modal h3").html("My Settings");
-                        $("#users-modal .modal-body #user").html(html);
-                        $("#users-modal .modal-body div").hide();
-                        $("#users-modal .modal-body #user").show();
+                        $("#modal-users h3").html("My Settings");
+                        $("#modal-users .modal-body #user").html(html);
+                        $("#modal-users .modal-body div").hide();
+                        $("#modal-users .modal-body #user").show();
 
                         // load modal & options
-                        $('#users-modal').modal({keyboard : true});
+                        $('#modal-users').modal({keyboard : true});
                         // load carousel
                         $('#users-carousel').carousel({'interval' : false});
 
@@ -627,14 +649,14 @@ var GM = {
                             html += '<td>' +  data.items[i].first_name + '</td>';
                             html += '<td>' +  data.items[i].last_name + '</td>';
                             html += (data.items[i].privilege === "admin") ? '<td><i class="icon-ok-sign"></i></td>' : '<td></td>';
-                            html += '<td><a href="#users-modal" data-slide="next" data-user-id="' +  data.items[i].id + '">Details</a></td>';
+                            html += '<td><a href="#modal-users" data-slide="next" data-user-id="' +  data.items[i].id + '">Details</a></td>';
                             html += '</tr>';
                         }
 
-                        $("#users-modal tbody").html(html);
+                        $("#modal-users tbody").html(html);
 
                         // load modal & options
-                        $('#users-modal').modal({keyboard : true});
+                        $('#modal-users').modal({keyboard : true});
                         // load carousel
                         $('#users-carousel').carousel({'interval' : false});
 
@@ -674,10 +696,11 @@ var GM = {
             navigator.geolocation.getCurrentPosition(GM._fn.getLocation);
             GM.user.id = $("#user").data("user-id");
             GM.user.privilege = $("#user").data("user-privilege");
-            GM.viewAsId = $("#user").data("user-id");
+            GM.user.viewAsId = $("#user").data("user-id");
             if (GM.user.privilege === "admin") {
                 GM._fn.getUsersViewAs();
-            }
+            };
+            GM._fn.getSettings();
         }
 
     },
@@ -713,15 +736,21 @@ $(function () {
     // view as
     $("#viewAsId").delegate("a", "click", function (e) {
         e.preventDefault();
-        GM.viewAsId = $(this).data("user-id");
+        GM.user.viewAsId = $(this).data("user-id");
         $("#view-as").html($(this).data("user-fullname"));
         GM._fn.setMap();
     });
 
-    // site settings
+    // site settings get
     $(".nav .settings").click(function (e) {
         e.preventDefault();
-        GM._fn.getSettings();
+        GM._fn.showSettings();
+    });
+
+    // site settings save
+    $("#modal-site a.save").click(function (e) {
+        e.preventDefault();
+        GM._fn.saveSettings();
     });
 
     // user settings
@@ -772,19 +801,27 @@ $(function () {
     // Scroll Spy
     $('#navbar').scrollspy();
 
-
     // Modals
-    $('#marker-modal').delegate(".delete", "click", function (e) {
-        alert("DELETE!" + $('#marker-modal').data('item-id'));
+    $('#marker-modal').delegate(".delete", "click", function(e){
+        alert("DELETE! " + $('#marker-modal').data('item-id'));
         GM._fn.deleteMarker($('#marker-modal').data('item-id'));
         e.preventDefault();
     });
 
     // Edit
-    $('#marker-modal').delegate(".edit", "click", function (e) {
-        alert("EDIT!" + $('#marker-modal').data('item-id'));
+    $('#marker-modal').delegate(".edit", "click", function(e){
+        alert("EDIT! " + $('#marker-modal').data('item-id'));
         GM._fn.deleteMarker($('#marker-modal').data('item-id'));
         e.preventDefault();
     });
+
+
+    // // iScroll
+    // var myScroll = new iScroll('wrapper', {
+    //     snap: 'li',
+    //     momentum: false,
+    //     hScrollbar: false,
+    //     vScrollbar: false
+    // });
 
 });
