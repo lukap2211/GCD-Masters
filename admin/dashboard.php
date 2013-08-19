@@ -35,13 +35,25 @@ Copyright - lukap. 2013.
 <html>
 <head>
 
-    <title>Dashboard</title>
+    <title>Geo CMS Dashboard</title>
 
     <!-- CSS -->
     <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="css/bootstrap-responsive.css">
     <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+    <!-- icons -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+    <link rel="apple-touch-icon" href="img/touch-icon-iphone.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/touch-icon-iphone-retina.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="img/touch-icon-ipad-retina.png" />
+
+    <!-- iPad standalone app -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <!--[if IE 7]>
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome-ie7.min.css">
@@ -88,6 +100,8 @@ Copyright - lukap. 2013.
                                 <li><a class="set_map" data-map="smi" href="#"><i class="icon-fixed-width icon-globe"></i> Smithfield Square</a></li>
                                 <li><a class="set_map" data-map="pho" href="#"><i class="icon-fixed-width icon-globe"></i> Phoenix Park</a></li>
                                 <li><a class="set_map" data-map="dub" href="#"><i class="icon-fixed-width icon-globe"></i> Dublin</a></li>
+                                <li class="divider"></li>
+                                <li><a class="edit_map" href="#"><i class="icon-fixed-width icon-pencil"></i> Edit Locations</a></li>
                             </ul>
                         </li>
                         <?php if ($_SESSION['privilege'] == "admin" ) { ?>
@@ -271,7 +285,7 @@ Copyright - lukap. 2013.
 
                 <div class="switch">
                     <div class="head">
-                        <h5>Debug</h5>
+                        <label>Debug</label>
                         <i class="icon-bug"></i>
                     </div>
                     <div class="onoffswitch">
@@ -285,7 +299,7 @@ Copyright - lukap. 2013.
 
                 <div class="switch">
                     <div class="head">
-                        <h5>Location</h5>
+                        <label>Location</label>
                         <i class="icon-map-marker"></i>
                     </div>
                     <div class="onoffswitch">
@@ -299,7 +313,7 @@ Copyright - lukap. 2013.
 
                 <div class="switch">
                     <div class="head">
-                        <h5>Legend</h5>
+                        <label>Legend</label>
                         <i class="icon-tasks"></i>
                     </div>
                     <div class="onoffswitch">
@@ -377,17 +391,17 @@ Copyright - lukap. 2013.
     <!-- JAVASCRIPT -->
     <script src="js/jquery-1.10.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/iscroll.js"></script>
+    <!-- // <script src="js/iscroll.js"></script> -->
     <script src="js/application.js"></script>
 
     <script type="text/javascript">
-    var myScroll;
-    function loaded() {
-        setTimeout(function () {
+    // var myScroll;
+    // function loaded() {
+        // setTimeout(function () {
             // myScroll = new iScroll('wrapper');
-        }, 100);
-    }
-    window.addEventListener('load', loaded, false);
+        // }, 100);
+    // }
+    // window.addEventListener('load', loaded, false);
     </script>
 
 </body>
