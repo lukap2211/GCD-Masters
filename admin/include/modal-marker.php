@@ -40,12 +40,12 @@
 
                             <fieldset class="float-left">
                                 <label>Title</label>
-                                <input class="input-xlarge" type="text" name="title" placeholder="Last Name" />
+                                <input class="input-xlarge" type="text" name="title" placeholder="Title" />
                             </fieldset>
 
                             <fieldset class="float-left">
-                                <label>Description</label>
-                                <textarea rows="10" name="content" ></textarea>
+                                <label>Content</label>
+                                <textarea rows="10" name="content" placeholder="Content here..."></textarea>
                             </fieldset>
 
                         </div>
