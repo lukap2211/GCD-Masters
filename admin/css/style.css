@@ -1,5 +1,5 @@
 
-#login_container {width:300px; margin-top:100px;}
+#login_container {width:450px; margin-top:100px;}
 #dashboard {height:40px; position: relative;}
 #map-canvas {height: 100%; min-height:100%;background-color: #e5e5e5; border:1px solid #ccc; width: 100%; position: absolute;top:0; z-index: -1;}
 #map-canvas img {max-width: none; }
@@ -28,6 +28,10 @@
 
 .info:hover {left:0;}
 
+
+label {color: #999; cursor: initial;}
+
+
 #view-filter {margin-left: 70px}
 .admin {position: absolute; top:0; right: 150px;overflow: hidden; width: 100px; height: 62px;}
 .admin span{
@@ -54,15 +58,17 @@
 }
 
 
-#modal-site input.name {width:500px; min-width: 500px; max-width: 500px;}
-#modal-site textarea {width:500px;}
+.modal input.name {width:500px;}
+.modal textarea {width:500px; min-width: 500px; max-width: 500px;}
+.modal fieldset {margin-right: 20px;}
+.modal .switch {width: 100px; margin-right: 14px; padding: 10px 30px 20px ; border-radius: 10px; border:1px solid #ccc; float: left;}
+.modal .switch .head {color: #A1A1A1; margin:20px; text-align: center;}
+.modal .switch .head h5 {}
+.modal .switch .head i {font-size: 28px;}
+.modal .switch .onoffswitch {margin: 0 10px;}
 
-#modal-site .switch {width: 100px; margin-right: 14px; padding: 10px 30px 20px ; border-radius: 10px; border:1px solid #ccc; float: left;}
-#modal-site .switch .head {text-align: center; color: #A1A1A1; margin:20px;}
-#modal-site .switch .head h5 {}
-#modal-site .switch .head i {font-size: 28px;}
-#modal-site .switch .onoffswitch {margin: 0 10px;}
-
+#modal-marker .switch {width: 60px; padding: 15px 25px 20px; margin: 0; cursor: pointer; text-align: center;}
+#modal-marker .switch .head {margin: 10px;}
 
 /* iScroll */
 
@@ -182,13 +188,15 @@
 
 .onoffswitch-label {
     display: block; overflow: hidden; cursor: pointer;
-    border: 2px solid #FFFFFF; border-radius: 50px;
+    border: 2px solid #DDD; border-radius: 50px;
 }
 
 .onoffswitch-inner {
     width: 200%; margin-left: -100%;
-    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
-    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+    -moz-transition: margin 0.1s ease-in 0s;
+    -webkit-transition: margin 0.1s ease-in 0s;
+    -o-transition: margin 0.1s ease-in 0s;
+    transition: margin 0.1s ease-in 0s;
 }
 
 .onoffswitch-inner:before, .onoffswitch-inner:after {
@@ -213,10 +221,12 @@
 .onoffswitch-switch {
     width: 20px; margin: 2.5px;
     background: #A1A1A1;
-    border: 2px solid #FFFFFF; border-radius: 50px;
+    border: 2px solid #FFF; border-radius: 50px;
     position: absolute; top: 0; bottom: 0; right: 51px;
-    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
-    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s;
+    -moz-transition: all 0.1s ease-in 0s;
+    -webkit-transition: all 0.1s ease-in 0s;
+    -o-transition: all 0.1s ease-in 0s;
+    transition: all 0.1s ease-in 0s;
 }
 
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
