@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"geo",
+				"geo_lng"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"lo",
+				"log"
+			],
+			[
+				"cu",
+				"current"
+			],
+			[
+				"pass",
+				"hashed_password"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"in",
+				"inline"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
 				"set",
 				"setMap"
 			],
@@ -68,14 +112,6 @@
 				"draggable"
 			],
 			[
-				"ma",
-				"max-height"
-			],
-			[
-				"mar",
-				"margin-left"
-			],
-			[
 				"ite",
 				"iterator"
 			],
@@ -112,10 +148,6 @@
 				"currentMap"
 			],
 			[
-				"cu",
-				"currentMap"
-			],
-			[
 				"current",
 				"current_map"
 			],
@@ -138,10 +170,6 @@
 			[
 				"pre",
 				"preventDefault"
-			],
-			[
-				"te",
-				"text-decoration"
 			],
 			[
 				"anim",
@@ -216,10 +244,6 @@
 				"movie_name"
 			],
 			[
-				"margin",
-				"margin-top"
-			],
-			[
 				"d_",
 				"daily_movies"
 			],
@@ -272,10 +296,6 @@
 				"margin"
 			],
 			[
-				"in",
-				"inline-block"
-			],
-			[
 				"blo",
 				"blogFullURL"
 			],
@@ -319,39 +339,7 @@
 			"file": "admin/css/style.css",
 			"settings":
 			{
-				"buffer_size": 2159,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "API/index.php",
-			"settings":
-			{
-				"buffer_size": 2981,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "API/api_validate.php",
-			"settings":
-			{
-				"buffer_size": 871,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "API/api_functions.php",
-			"settings":
-			{
-				"buffer_size": 4416,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "admin/dashboard.php",
-			"settings":
-			{
-				"buffer_size": 12492,
+				"buffer_size": 6301,
 				"line_ending": "Unix"
 			}
 		},
@@ -359,7 +347,47 @@
 			"file": "admin/js/application.js",
 			"settings":
 			{
-				"buffer_size": 29300,
+				"buffer_size": 33750,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/include/modal_OLD.php",
+			"settings":
+			{
+				"buffer_size": 5445,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "API/api_functions.php",
+			"settings":
+			{
+				"buffer_size": 5153,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/include/modal-site.php",
+			"settings":
+			{
+				"buffer_size": 2839,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/include/modal-user.php",
+			"settings":
+			{
+				"buffer_size": 2400,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/include/modal-marker.php",
+			"settings":
+			{
+				"buffer_size": 5238,
 				"line_ending": "Unix"
 			}
 		}
@@ -367,9 +395,21 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 47.0,
 		"selected_items":
 		[
+			[
+				"merge",
+				"Sublimerge: View Diff"
+			],
+			[
+				"merg",
+				"Sublimerge: View Diff"
+			],
+			[
+				"togg",
+				"View: Toggle Minimap"
+			],
 			[
 				"php",
 				"Set Syntax: PHP"
@@ -384,10 +424,6 @@
 			],
 			[
 				"to",
-				"View: Toggle Minimap"
-			],
-			[
-				"togg",
 				"View: Toggle Minimap"
 			],
 			[
@@ -455,7 +491,7 @@
 				"Set Syntax: HTML"
 			]
 		],
-		"width": 449.0
+		"width": 467.0
 	},
 	"console":
 	{
@@ -476,31 +512,39 @@
 	},
 	"file_history":
 	[
-		"/Users/lukap/github/GCD-Masters/admin/include/connect.php",
-		"/Users/lukap/github/GCD-Masters/admin/index.php",
-		"/Users/lukap/github/GCD-Masters/admin/login_success.php",
-		"/Users/lukap/github/GCD-Masters/admin/logout.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/main-nav.php",
+		"/Users/lukap/github/GCD-Masters/admin/dashboard.php",
+		"/Users/lukap/github/GCD-Masters/API/index.php",
 		"/Users/lukap/github/GCD-Masters/admin/user_functions.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/modal-site.php",
+		"/Users/lukap/github/GCD-Masters/admin/user.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/modal-users.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/modal_user.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/modal_marker.php",
+		"/Users/lukap/github/GCD-Masters/admin/index.php",
 		"/Users/lukap/github/GCD-Masters/API/api_functions.php",
 		"/Users/lukap/github/GCD-Masters/API/api_validate.php",
-		"/Users/lukap/github/GCD-Masters/API/index.php",
+		"/Users/lukap/github/GCD-Masters/admin/logout.php",
+		"/Users/lukap/github/GCD-Masters/admin/login_success.php",
+		"/Users/lukap/github/GCD-Masters/touch-icon-ipad.png",
+		"/Users/lukap/github/GCD-Masters/admin/css/font-awesome.css",
+		"/Users/lukap/github/GCD-Masters/admin/font/fontawesome-webfont.ttf",
+		"/Users/lukap/github/GCD-Masters/admin/content.php",
+		"/Users/lukap/github/GCD-Masters/admin/include/connect.php",
 		"/Users/lukap/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/lukap/github/GCD-Masters/admin/css/style.css",
 		"/Users/lukap/Desktop/modal_OLD.php",
 		"/Users/lukap/github/GCD-Masters/admin/dashboard_OLD.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/admin_footer.php",
-		"/Users/lukap/github/GCD-Masters/admin/content.php",
 		"/Users/lukap/github/GCD-Masters/admin/dashboard_functions.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/admin_header.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/main_header.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/admin_nav.php",
 		"/Users/lukap/github/GCD-Masters/admin/user_validate.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/main_footer.php",
-		"/Users/lukap/github/GCD-Masters/admin/user.php",
 		"/Users/lukap/github/GCD-Masters/admin/dashboard_validate.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/modal.php",
 		"/Users/lukap/github/GCD-Masters/admin/js/application.js",
-		"/Users/lukap/github/GCD-Masters/admin/dashboard.php",
 		"/Users/lukap/github/GCD-my_blog/include/album_functions.php",
 		"/Users/lukap/github/GCD-Masters/admin/include/login_form.php",
 		"/Users/lukap/github/GCD-Masters/js/application.js",
@@ -595,15 +639,7 @@
 		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/free_albums.php",
 		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/js_sailthru-newsletter_OLD.js",
 		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/music-sailthru-my-wall-test-ck.js",
-		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/music-sailthru-my-wall-test.js",
-		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/music-sailthru-newsletter-ck.js",
-		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/my_wall.html",
-		"/Users/lukap/Desktop/test",
-		"/Users/lukap/Desktop/Lorem ipsum dolor sit amet, consectetur adipisicin",
-		"/Users/lukap/github/moviefone-mobile/README.md",
-		"/Applications/Adobe Photoshop CS6/Presets/Scripts/Event Scripts Only/Display Camera Maker.jsx",
-		"/Users/lukap/Desktop/retina/README.md",
-		"/Users/lukap/Downloads/sergeche-zen-coding-04c37f3/README.textile"
+		"/Users/lukap/Dropbox/AOL/DEV/AOL Scripts/AOL Entertainment/music-sailthru-my-wall-test.js"
 	],
 	"find":
 	{
@@ -620,9 +656,82 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"set",
+			"icon.get",
+			"GM\\.current",
+			"GM.currentId",
+			"current",
+			"marker",
+			"addMarker",
+			"saveMarker",
+			"viewMarker",
+			"deleteMarker",
+			"editLocation",
+			"editMarkerLocation",
+			"moveMarker",
+			"addMarker",
+			"placeMarker",
+			"addMarkers",
+			"placeMarkers",
+			"loadMarkers",
+			"getUser",
+			"getIcon",
+			"loadLegend",
+			"setLegend",
+			".Map",
+			"Map",
+			"getMAp",
+			"setMap",
+			"getLocation",
+			"getUsersViewAs",
+			"setSettings",
+			"showSettings",
+			"saveSettings",
+			"getSettings",
+			"viewMarker",
+			"showMar",
+			"showmarker",
+			"raiseOnDrag",
+			"shadow",
+			"viewModal",
+			"saveuser",
+			"float\\-right",
+			"getuser",
+			"user",
+			"getUser",
+			"showSettings",
+			"getUser",
+			"my settings",
+			"modal",
+			"view",
+			"shadow",
+			"shadow\nshadow",
+			"editSettings",
+			"shadow",
+			"editSettings",
+			"shadow",
+			"fast",
+			"getSettings",
+			"serialize",
+			"param",
+			"close",
+			"EEE",
+			"bug",
+			"getSettings",
+			"modal\\-users",
+			"modal\\-user",
+			"users\\-modal",
+			"users-modal",
+			"getSettings",
+			"site",
+			"marker-modal",
+			"viewAsId",
+			"viewas",
+			"admin",
+			"viewAsId",
 			"icon_backup",
 			"\\.fail\\(function\\(\\)\\{",
 			".fail(function(){",
@@ -677,80 +786,7 @@
 			"getUsers",
 			"users_modal",
 			"modal",
-			"viewModa",
-			"modal",
-			"data",
-			"....</",
-			"CCC",
-			"append",
-			"getUser",
-			"user_id",
-			"170px",
-			"getUser",
-			"getLocation",
-			"getMap",
-			"privilege",
-			"admin",
-			"user.id",
-			"getSettings",
-			"user",
-			"map-le",
-			"legend",
-			"#legend",
-			"legend",
-			"footer_wrapper",
-			"user_area",
-			"dashboard_container",
-			"dashboard",
-			"user",
-			"connect.php",
-			"alert",
-			"getLocation",
-			"getMap",
-			"map-canvas",
-			"wrapper",
-			"getSettings",
-			"html",
-			"c=site&a=id",
-			"site",
-			"view_debug",
-			"container2",
-			"map_controls",
-			"modal",
-			"viewModal",
-			"view_dashboard",
-			"getSettings",
-			"site",
-			"customType",
-			"MapTypeId",
-			"mapType",
-			"progress",
-			"loading",
-			"muted",
-			"loadLE",
-			"perc",
-			"pho",
-			"dub",
-			"viewModal",
-			"GETICON",
-			"geticon",
-			"new ",
-			"new goo",
-			"new mar",
-			"shadow",
-			"pin\\.red",
-			"marker",
-			"todo",
-			"pending",
-			"red",
-			"50,",
-			"pending",
-			"legend",
-			"data",
-			"getJSON",
-			"getSettings",
-			"backup",
-			"mapCanvas"
+			"viewModa"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -758,6 +794,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			"modal-users",
 			".fail(function () {",
 			"geo_lng",
 			"pho",
@@ -786,15 +823,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2159,
+						"buffer_size": 6301,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1887,
-								1887
+								2517,
+								2517
 							]
 						],
 						"settings":
@@ -804,26 +841,68 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 311.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "API/index.php",
+					"file": "admin/js/application.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2981,
+						"buffer_size": 33750,
+						"regions":
+						{
+							"bookmarks":
+							{
+								"flags": 144,
+								"icon": "bookmark",
+								"regions":
+								[
+									[
+										14499,
+										14499
+									]
+								],
+								"scope": "bookmarks"
+							}
+						},
+						"selection":
+						[
+							[
+								16828,
+								16828
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5820.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "admin/include/modal_OLD.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5445,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2948,
-								2948
+								2992,
+								2992
 							]
 						],
 						"settings":
@@ -833,35 +912,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 686.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "API/api_validate.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 871,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 329.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -872,15 +923,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4416,
+						"buffer_size": 5153,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2403,
-								2416
+								3598,
+								3598
 							]
 						],
 						"settings":
@@ -893,36 +944,29 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
+				},
 				{
 					"buffer": 4,
-					"file": "admin/dashboard.php",
+					"file": "admin/include/modal-site.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12492,
+						"buffer_size": 2839,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								437,
-								437
+								1965,
+								1306
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": false
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -932,42 +976,58 @@
 				},
 				{
 					"buffer": 5,
-					"file": "admin/js/application.js",
+					"file": "admin/include/modal-user.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 29300,
+						"buffer_size": 2400,
 						"regions":
 						{
-							"bookmarks":
-							{
-								"flags": 144,
-								"icon": "bookmark",
-								"regions":
-								[
-									[
-										13585,
-										13585
-									]
-								],
-								"scope": "bookmarks"
-							}
 						},
 						"selection":
 						[
 							[
-								10273,
-								10273
+								1031,
+								1031
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3462.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "admin/include/modal-marker.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5238,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4533,
+								4533
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 379.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -992,18 +1052,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.372412791679,
 			1.0
 		],
 		"rows":
@@ -1016,7 +1069,7 @@
 	"project": "GCD-Masters.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 86.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1024,6 +1077,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"dash",
+				"admin/dashboard.php"
+			],
 			[
 				"hear",
 				"admin/include/admin_header.php"
