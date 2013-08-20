@@ -80,13 +80,20 @@ function item_add() {
 
 	// query
 	$query = "INSERT INTO contents";
-	$query.= " (id, user_id, type_id, title, date, date_modified, content, excerpt, status, geo_lng, geo_lat, map, category)  ";
-	$query.= " VALUES (NULL, '{$_GET['user_id']}', '1', 'test', '0000-00-00 00:00:00', CURRENT_TIMESTAMP, 'some lukap content', 'bla', '0', '{$_GET['geo_lng']}', '{$_GET['geo_lat']}', '{$_GET['map']}', '{$_GET['category']}')";
+	$query.= " (id, user_id, type_id, date, date_modified, geo_lng, geo_lat, map, category)  ";
+	$query.= " VALUES (NULL, '{$_GET['user_id']}', '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '{$_GET['geo_lng']}', '{$_GET['geo_lat']}', '{$_GET['map']}', '{$_GET['category']}')";
 	return $query;
 }
 
 function item_edit() {
-	// code...
+
+	// query
+	// TODO type, user
+	$query = "UPDATE contents";
+	$query.= " SET user_id = '{$_GET['user_id']}', title = '{$_GET['title']}', date_modified = CURRENT_TIMESTAMP, content = '{$_GET['content']}', category = '{$_GET['category']}'  ";
+    $query.= " WHERE id = {$_GET['id']};";
+	return $query;
+
 }
 
 function item_edit_loc() {
@@ -150,13 +157,13 @@ function user_id() {
 
 	// by id
 	if(!empty($_GET['id']) && intval($_GET['id'])){
-		$filter .= " u.id = '{$_GET['id']}'";
+		$filter .= " AND u.id = '{$_GET['id']}'";
 	}
 
 	// query
-    $query = "SELECT u.id, u.username, u.bio, u.first_name, u.last_name";
-    $query.= " FROM users u";
-    $query.= " WHERE $filter";
+    $query = "SELECT u.id, u.username, u.bio, u.first_name, u.last_name, p.privilege";
+    $query.= " FROM users u, privileges p";
+    $query.= " WHERE u.privilege_id = p.id $filter";
 	return $query;
 }
 
@@ -165,7 +172,21 @@ function user_add() {
 }
 
 function user_edit() {
-	// code...
+
+	$hashed_password = "";
+
+    // crypt password
+	if (!empty($_GET['pass'])) {
+	    $hashed_password = ", password = '". md5($_GET['pass']) ."'";
+	}
+
+    // query
+    $query = "UPDATE users";
+    $query.= " SET first_name = '{$_GET['first_name']}', last_name = '{$_GET['last_name']}', bio = '{$_GET['bio']}' $hashed_password";
+    $query.= " WHERE id = {$_GET['id']};";
+
+    return $query;
+
 }
 
 function user_delete() {
