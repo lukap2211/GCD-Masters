@@ -254,7 +254,7 @@ var GM = {
                 var param = "?c=content&a=add&geo_lat=" + position.lat() + "&geo_lng=" + position.lng() + "&user_id=" + GM.user.id + "&map=" + GM.currentMap + "&category=todo";
                 xhr = $.getJSON(GM.rootAPI + param)
                     .done(function (data) {
-                        console.log("addMarker - marker id: " + data.result + " inserted!!!");
+                        console.log("marker id: " + data.result + " inserted!!!");
                         GM._fn.marker.getMarker(data.result);
                     })
                     .fail(function () {
@@ -269,8 +269,7 @@ var GM = {
                 var param = "?c=content&a=id&id=" + id;
                 xhr = $.getJSON(GM.rootAPI + param)
                     .done(function (data) {
-                        console.log(data);
-                        console.log("setMarker - marker id: " + data.result + " get!!!");
+                        console.log("marker id: " + data.result + " get!!!");
                         // add record into locations array
                         GM.locations.push(data.items[0]);
                         // add to markers array
@@ -323,7 +322,7 @@ var GM = {
                 GM.iterator++;
             },
 
-            moveMarker : function (position, map) {
+            moveMarker : function (position, map, i) {
 
                 // udpate object
                 // map.panTo(position);
