@@ -852,13 +852,4 @@ $(function () {
     // Scroll Spy
     $('#navbar').scrollspy();
 
-
-    // // iScroll
-    // var myScroll = new iScroll('wrapper', {
-    //     snap: 'li',
-    //     momentum: false,
-    //     hScrollbar: false,
-    //     vScrollbar: false
-    // });
-
 });

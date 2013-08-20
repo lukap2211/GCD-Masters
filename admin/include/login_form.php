@@ -8,7 +8,7 @@
         <!-- <h2 class="form-signin-heading">Please sign in</h2> -->
         <legend>Please sign in</legend>
         <div class="control-group">
-            <label class="control-label" for="inputUsername">Password</label>
+            <label class="control-label" for="inputUsername">Username</label>
             <div class="controls">
                 <input id="inputUsername" type="text" class="input-medium" placeholder="Username" name="username" value="<?php ($username !== NULL) ? "" : $username ; echo $username; ?>" >
             </div>

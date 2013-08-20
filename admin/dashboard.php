@@ -156,22 +156,10 @@ Copyright - lukap. 2013.
 
     </footer>
 
-
     <!-- JAVASCRIPT -->
     <script src="js/jquery-1.10.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <!-- // <script src="js/iscroll.js"></script> -->
     <script src="js/application.js"></script>
-
-    <script type="text/javascript">
-    // var myScroll;
-    // function loaded() {
-        // setTimeout(function () {
-            // myScroll = new iScroll('wrapper');
-        // }, 100);
-    // }
-    // window.addEventListener('load', loaded, false);
-    </script>
 
 </body>
 

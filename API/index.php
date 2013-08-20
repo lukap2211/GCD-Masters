@@ -126,7 +126,6 @@ if ($query != ""){
             }
         }
 
-
     }
 
     echo json_encode($json);
