@@ -1,14 +1,6 @@
 <?php
 // validate api input
 
-/*
-echo "<pre>";
-print_r($_GET);
-print_r($_POST);
-echo "</pre>";
-*/
-
-
 if ($_GET){
 
 	// controler
@@ -20,7 +12,7 @@ if ($_GET){
 	}
 
 	// action
-	if(!empty($_GET['a']) && in_array($_GET['a'],array('all', 'id', 'delete', 'legend','add', 'edit', 'edit_loc'))){
+	if(!empty($_GET['a']) && in_array($_GET['a'],array('all', 'id', 'delete', 'legend','add', 'edit', 'edit_loc'))) {
 		$a = $_GET['a'];
 	} else {
 		$a = NULL;
@@ -31,7 +23,7 @@ if ($_GET){
 if ($_POST){
 
 	// controler
-	if(!empty($_POST['c']) && in_array($_GET['c'],array("user", "content","site"))) {
+	if(!empty($_POST['c']) && in_array($_POST['c'],array("user", "content", "site"))) {
 		$c = $_POST['c'];
 	} else {
 		$c = NULL;
@@ -39,7 +31,7 @@ if ($_POST){
 	}
 
 	// action
-	if(!empty($_POST['a']) && in_array($_POST['a'],array('add','edit'))){
+	if(!empty($_POST['a']) && in_array($_POST['a'],array('add','edit'))) {
 		$a = $_POST['a'];
 	} else {
 		$a = NULL;
