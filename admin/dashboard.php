@@ -3,7 +3,7 @@ session_start();
 
 // TODO
 // show debug
-if ($_GET['debug']) {
+if ($_GET['debug'] == "on") {
 
     echo("<pre>");
 
@@ -25,10 +25,8 @@ if(!isset($_SESSION['username'])){
 
 <!--
 
-GCD - MSCDM - Part Time
-Luka Puharic - 2828092
-
-Copyright - lukap. 2013.
+Copyright 2013 Luka Puharic
+http://www.apache.org/licenses/LICENSE-2.0.txt
 
  -->
 
@@ -52,14 +50,19 @@ Copyright - lukap. 2013.
     <link rel="apple-touch-icon" sizes="114x114" href="img/touch-icon-iphone-retina.png" />
     <link rel="apple-touch-icon" sizes="144x144" href="img/touch-icon-ipad-retina.png" />
 
+    <link rel="apple-touch-startup-image" href="img/touch-icon-ipad-retina.png  ">
+
     <!-- iPad standalone app -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
 
     <!--[if IE 7]>
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
     <!-- GOOGLE MAPS API -->

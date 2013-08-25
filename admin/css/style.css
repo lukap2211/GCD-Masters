@@ -1,3 +1,7 @@
+/*!
+* Copyright 2013 Luka Puharic
+* http://www.apache.org/licenses/LICENSE-2.0.txt
+*/
 
 #login_container {width:450px; margin-top:100px;}
 #dashboard {height:40px; position: relative;}
@@ -66,6 +70,9 @@ label {color: #999; cursor: initial;}
 .modal .switch .head h5 {}
 .modal .switch .head i {font-size: 28px;}
 .modal .switch .onoffswitch {margin: 0 10px;}
+
+
+#upload_loading {margin:150px 0; display: block; text-align: center; display: none;}
 
 #modal-marker .switch {width: 60px; padding: 15px 25px 20px; margin: 0; cursor: pointer; text-align: center;}
 #modal-marker .switch .head {margin: 10px;}

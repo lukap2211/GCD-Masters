@@ -105,12 +105,11 @@ if (!empty($_GET['a']) && in_array($_GET['a'], array("signedOut", "showError")))
 
 <!--
 
-GCD - MSCDM - Part Time
-Luka Puharic - 2828092
-
-Copyright - lukap. 2013.
+Copyright 2013 Luka Puharic
+http://www.apache.org/licenses/LICENSE-2.0.txt
 
  -->
+
 
 <html>
 <head>
