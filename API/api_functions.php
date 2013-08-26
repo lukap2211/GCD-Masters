@@ -23,12 +23,11 @@ function item_all() {
     }
 
     // query
-    $query = "SELECT c.id, c.title, t.type, c.content, c.excerpt, c.date, c.status, u.id as user_id, c.geo_lat, c.geo_lng, u.username, c.category, t.type";
-    $query.= " FROM contents c, users u, types t";
+    $query = "SELECT c.id, c.title, t.type, c.content, c.excerpt, c.date, c.status, u.id as user_id, c.geo_lat, c.geo_lng, u.username, c.category, t.type, c.image_name";    $query.= " FROM contents c, users u, types t";
     $query.= " WHERE c.user_id = u.id AND c.type_id = t.id $filter";
     $query.= " ORDER BY c.category ASC, c.date DESC";
 
-    // output
+    // execute
     run_query($query);
 }
 
@@ -57,7 +56,7 @@ function item_legend() {
     $query.= " GROUP BY c.category";
     $query.= " ORDER BY c.category ASC";
 
-    // output
+    // execute
     run_query($query);
 }
 
@@ -70,10 +69,11 @@ function item_id() {
     }
 
     // query
-    $query = "SELECT c.id, c.title, t.type, c.content, c.excerpt, c.date, c.status, u.id as user_id, c.geo_lat, c.geo_lng, u.username, c.category, t.type";
+    $query = "SELECT c.id, c.title, t.type, c.content, c.excerpt, c.date, c.status, u.id as user_id, c.geo_lat, c.geo_lng, u.username, c.category, t.type, c.image_name";
     $query.= " FROM contents c, users u, types t";
     $query.= " WHERE c.user_id = u.id AND c.type_id = t.id $filter";
 
+    // execute
     run_query($query);
 }
 
@@ -82,6 +82,8 @@ function item_add() {
     $query = "INSERT INTO contents";
     $query.= " (id, user_id, type_id, date, date_modified, geo_lng, geo_lat, map, category)  ";
     $query.= " VALUES (NULL, '{$_GET['user_id']}', '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '{$_GET['geo_lng']}', '{$_GET['geo_lat']}', '{$_GET['map']}', '{$_GET['category']}')";
+
+    // execute
     run_query($query);
 }
 
@@ -89,6 +91,7 @@ function item_edit() {
     $allowedExts = array("gif", "jpeg", "jpg", "png");
     $temp = explode(".", $_FILES["file"]["name"]);
     $extension = end($temp);
+    $upload_image = "";
 
     // echo "<pre>";
     // print_r($_FILES["file"]);
@@ -107,8 +110,11 @@ function item_edit() {
                 echo "Error: " . $_FILES["file"]["error"] . "<br>";
             } else {
 
-                $image_file = file_get_contents($_FILES["file"]["tmp_name"]);
+                $image_file = mysql_real_escape_string(file_get_contents($_FILES["file"]["tmp_name"]));
                 $image_name = $_FILES["file"]["name"];
+                $image_type = $_FILES["file"]["type"];
+
+                $upload_image = ", image_name = '{$image_name}', image = '{$image_file}', image_type = '{$image_type}'";
 
                 // if (file_exists("upload/" . $_FILES["file"]["name"])) {
                 //     echo $_FILES["file"]["name"] . " already exists. ";
@@ -118,21 +124,30 @@ function item_edit() {
                 //     echo "Stored in: " . "../upload/" . $_FILES["file"]["name"];
                 // }
             }
-    } else {
-        echo "Invalid file";
     }
 
     // query
-    // TODO type, user
     $query = "UPDATE contents";
-    $query.= " SET user_id = '{$_GET['user_id']}', title = '{$_GET['title']}', date_modified = CURRENT_TIMESTAMP,";
-    $query.= " content = '{$_GET['content']}', category = '{$_GET['category']}', image = " . mysql_real_escape_string($image_file) . ", image_name = {$image_name}";
-    $query.= " WHERE id = {$_GET['id']};";
+    $query.= " SET user_id = '{$_POST['user_id']}', title = '{$_POST['title']}', date_modified = CURRENT_TIMESTAMP,";
+    $query.= " content = '{$_POST['content']}', category = '{$_POST['category']}' $upload_image";
+    $query.= " WHERE id = {$_POST['id']};";
 
-    echo "$query";
+    // execute
     run_query($query);
 
 }
+
+function item_get_image() {
+
+    // query
+    $query = "SELECT c.image, c.image_name, c.image_type";
+    $query.= " FROM contents c";
+    $query.= " WHERE c.id = '{$_GET['id']}'";
+
+    // execute
+    return($query);
+}
+
 
 function item_edit_loc() {
 
@@ -153,6 +168,8 @@ function item_edit_loc() {
     $query = "UPDATE contents";
     $query.= " SET geo_lng = '{$_GET['geo_lng']}', geo_lat = '{$_GET['geo_lat']}' ";
     $query.= " WHERE id $filter";
+
+    // execute
     run_query($query);
 }
 
@@ -167,8 +184,9 @@ function item_delete() {
     // query
     $query = "DELETE FROM contents";
     $query.= " WHERE $filter";
-    run_query($query);
 
+    // execute
+    run_query($query);
 }
 
 // user functions
@@ -186,6 +204,8 @@ function users_all() {
     $query = "SELECT u.id, u.username, u.first_name, u.last_name, u.bio, p.privilege";
     $query.= " FROM users u, privileges p";
     $query.= " WHERE u.privilege_id = p.id $filter";
+
+    // execute
     run_query($query);
 }
 
@@ -202,6 +222,8 @@ function user_id() {
     $query = "SELECT u.id, u.username, u.bio, u.first_name, u.last_name, p.privilege";
     $query.= " FROM users u, privileges p";
     $query.= " WHERE u.privilege_id = p.id $filter";
+
+    // execute
     run_query($query);
 }
 
@@ -223,8 +245,8 @@ function user_edit() {
     $query.= " SET first_name = '{$_GET['first_name']}', last_name = '{$_GET['last_name']}', bio = '{$_GET['bio']}' $hashed_password";
     $query.= " WHERE id = {$_GET['id']};";
 
+    // execute
     run_query($query);
-
 }
 
 function user_delete() {
@@ -240,6 +262,7 @@ function site_id() {
     $query.= " FROM settings s";
     $query.= " WHERE id = 1";
 
+    // execute
     run_query($query);
 }
 
@@ -255,48 +278,51 @@ function site_edit() {
     $query.= " SET s.name = '{$_GET['name']}', s.desc = '{$_GET['desc']}', s.debug = {$debug}, s.location = {$location}, s.legend = {$legend}";
     $query.= " WHERE id = 1";
 
+    // execute
     run_query($query);
 }
 
+// execute query
+
 function run_query ($query) {
 
-    global $a, $conn;
+    global $a;
+    global $conn;
 
     if ($query != "") {
 
         $result = mysqli_query($conn, $query);
 
-        $json["query"] = $query;
+        $output["query"] = $query;
 
         // error check
         if(!$result) {
 
-            $json["error"] = "ERROR: " . mysqli_error($conn);
+            $output["error"] = "ERROR: " . mysqli_error($conn);
 
         } else {
 
             // for add, edit, delete
             if (in_array($a, array("edit", "edit_loc", "delete"))) {
 
-                // $json["result"] = mysqli_affected_rows($conn);
-                $json["result"]= $conn->affected_rows;
+                // $output["result"] = mysqli_affected_rows($conn);
+                $output["result"]= $conn->affected_rows;
 
             } else if ($a === "add"){
 
-                $json["result"]= mysqli_insert_id($conn);
+                $output["result"] = mysqli_insert_id($conn);
 
             } else {
                 // show query
-                $json["result"] = mysqli_num_rows($result);
+                $output["result"] = mysqli_num_rows($result);
 
                 while($row = mysqli_fetch_array($result, MYSQL_ASSOC)){
-                    $json["items"][] = $row;
+                    $output["items"][] = $row;
                 }
             }
-
         }
 
-        echo json_encode($json);
+        echo json_encode($output);
 
     }
 

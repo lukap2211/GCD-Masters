@@ -21,168 +21,48 @@
 .float-left {float: left;}
 .float-right {float: right;}
 
-/*.progress div a:hover {display: block;}*/
-
 .info {transition:all 0.4s; -webkit-transition:all 0.4s; -moz-transition:all 0.4s; line-height:50px; height:50px; background: white; border: 1px solid #ddd; width: 450px; position: fixed; left:-400px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)}
-.info .title {font-size: 28px; /*color: #0088cc;*/color: #555; width: 50px; text-align: center; cursor: pointer; text-shadow:0 1px 0 #ffffff; margin-left:10px;}
+.info .title {font-size: 28px; color: #555; width: 50px; text-align: center; cursor: pointer; text-shadow:0 1px 0 #ffffff; margin-left:10px;}
 
 #copyright {bottom:80px;}
 #location {bottom:140px; display: none;}
 #debug {bottom:200px; display: none;}
 
 .info:hover {left:0;}
-
-
+2
 label {color: #999; cursor: initial;}
-
 
 #view-filter {margin-left: 70px}
 .admin {position: absolute; top:0; right: 150px;overflow: hidden; width: 100px; height: 62px;}
-.admin span{
-    /*float: left;*/
-    position: absolute;
-    left: 0px;
-    top: 20px;
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 0.2em;
-    color: white;
-    background: rgba(255,0,0,0.95);
-    background: #999;
-    width: 100px;
-    text-align: center;
-    padding: 0px 5px;
-    z-index: 999;
-    text-shadow: 0 1px 0 #000;
-    box-shadow: 0 1px 0 #666;
-    transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(-45deg);
-
-}
+.admin span{position: absolute; left: 0px; top: 20px; font-size: 10px; font-weight: bold; letter-spacing: 0.2em; color: white; background: rgba(255,0,0,0.95); background: #999; width: 100px; text-align: center; padding: 0px 5px; z-index: 999; text-shadow: 0 1px 0 #000; box-shadow: 0 1px 0 #666; transform: rotate(45deg); -ms-transform: rotate(45deg); -webkit-transform: rotate(-45deg);}
 
 
 .modal input.name {width:500px;}
 .modal textarea {width:500px; min-width: 500px; max-width: 500px;}
-.modal fieldset {margin-right: 20px;}
-.modal .switch {width: 100px; margin-right: 14px; padding: 10px 30px 20px ; border-radius: 10px; border:1px solid #ccc; float: left;}
-.modal .switch .head {color: #A1A1A1; margin:20px; text-align: center;}
-.modal .switch .head h5 {}
+.modal .switch {width: 100px; margin-right: 14px; padding: 10px 30px 20px ; border-radius: 10px; border:1px solid #ccc; float: left; background:#f1f1f1;}
+.modal .switch .head {color: #666; margin:20px; text-align: center;}
 .modal .switch .head i {font-size: 28px;}
 .modal .switch .onoffswitch {margin: 0 10px;}
+.modal .loadImage {overflow: hidden; position: relative; margin:10px 0;}
+.modal .loadImage [type='file'] {cursor: inherit; display: block; font-size: 999px; filter: alpha(opacity=0); min-height: 100%; min-width: 100%; opacity: 0; position: absolute; right: 0; text-align: right; top: 0; }
+.modal .loc_container,
+.modal .image_container {display: inline-block; width: 526px; height: 250px; font-size: 0; line-height: 0; vertical-align: middle; background-size: 100%; background-position: 50% 50%; background-repeat: no-repeat; background-image: url('../img/530x250px.png'); overflow: hidden; position: relative; }
+.modal .image_container { border: 1px dashed #999; }
+.modal .image_container .dimensions { position: absolute; background: #333; color:#FFF; width:80px; height: 20px; right:0; top:0; font-size: 12px; line-height: 20px; text-align: center;}
+.modal .loc_container .longlat { position: absolute; background: #333; color:#FFF; width:140px; height: 20px; right:0; top:0; font-size: 12px; line-height: 20px; text-align: center;}
+#modal-marker .loader {margin:150px 0; display: block; text-align: center; display: none;}
+#modal-marker .switch.cat {width: 60px; padding: 20px 25px; margin: 0 3px; cursor: pointer; text-align: center;}
+#modal-marker .switch.cat .head {margin: 10px;}
+#modal-marker .switch.cat input {margin-top: 30px;}
 
 
-#upload_loading {margin:150px 0; display: block; text-align: center; display: none;}
+/*
 
-#modal-marker .switch {width: 60px; padding: 15px 25px 20px; margin: 0; cursor: pointer; text-align: center;}
-#modal-marker .switch .head {margin: 10px;}
+ON - OFF switch
 
-/* iScroll */
+Following CSS taken from http://proto.io/freebies/onoff/
 
-#wrapper {
-    width:530px;
-    height:160px;
-
-    float:left;
-    position:relative;  /* On older OS versions "position" and "z-index" must be defined, */
-    z-index:1;          /* it seems that recent webkit is less picky and works anyway. */
-    overflow:hidden;
-
-    background:#aaa;
-    -webkit-border-radius:10px;
-    -moz-border-radius:10px;
-    -o-border-radius:10px;
-    border-radius:10px;
-    background:#e3e3e3;
-}
-
-#scroller {
-    width:2650px;
-    height:100%;
-    float:left;
-    padding:0;
-}
-
-#scroller ul {
-    list-style:none;
-    display:block;
-    float:left;
-    width:100%;
-    height:100%;
-    padding:0;
-    margin:0;
-    text-align:left;
-}
-
-#scroller li {
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -o-box-sizing:border-box;
-    box-sizing:border-box;
-    display:block; float:left;
-    width:530px;
-    height:160px;
-    text-align:center;
-    font-family:georgia;
-    font-size:18px;
-    line-height:140%;
-}
-
-
-#nav {
-    width:530px;
-    float:left;
-}
-
-#prev, #next {
-    float:left;
-    font-weight:bold;
-    font-size:14px;
-    padding:5px 0;
-    width:80px;
-}
-
-#next {
-    float:right;
-    text-align:right;
-}
-
-#indicator, #indicator > li {
-    display:block; float:left;
-    list-style:none;
-    padding:0; margin:0;
-}
-
-#indicator {
-    width:110px;
-    padding:12px 0 0 30px;
-}
-
-#indicator > li {
-    text-indent:-9999em;
-    width:8px; height:8px;
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    -o-border-radius:4px;
-    border-radius:4px;
-    background:#ddd;
-    overflow:hidden;
-    margin-right:4px;
-}
-
-#indicator > li.active {
-    background:#888;
-}
-
-#indicator > li:last-child {
-    margin:0;
-}
-
-/* iScroll END */
-
-
-
-/* ON - OFF switch */
+*/
 
 .onoffswitch {
     position: relative; width: 80px;
@@ -215,13 +95,15 @@ label {color: #999; cursor: initial;}
 .onoffswitch-inner:before {
     content: "ON";
     padding-left: 12px;
-    background-color: #EEEEEE; color: #333333;
+    background-color: #FFFFFF;
+    color: #333333;
 }
 
 .onoffswitch-inner:after {
     content: "OFF";
     padding-right: 12px;
-    background-color: #EEEEEE; color: #333333;
+    background-color: #FFFFFF;
+    color: #333333;
     text-align: right;
 }
 
@@ -244,7 +126,6 @@ label {color: #999; cursor: initial;}
     right: 0px;
     background-color: #5EB95E;
 }
-
 
 /* ON - OFF switch END */
 

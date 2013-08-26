@@ -68,6 +68,9 @@ switch ($c) {
             case 'id':
                 item_id();
                 break;
+            case 'get_image':
+                item_get_image();
+                break;
             case 'add':
                 item_add();
                 break;

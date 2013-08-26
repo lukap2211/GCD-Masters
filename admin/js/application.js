@@ -1,3 +1,8 @@
+/*!
+* Copyright 2013 Luka Puharic
+* http://www.apache.org/licenses/LICENSE-2.0.txt
+*/
+
 var marker, map, xhr;
 
 // Google Maps object
@@ -5,8 +10,8 @@ var GM = {
 
     // settings
     apiKey          : "AIzaSyCGHVSkXtwVy4D6GDK5WVVgFXs_SKg-0Z0",
-    rootAPI         : "http://github/GCD-masters/API/",         // local
-    // rootAPI         : "http://lukap.info/gcd/masters/API/",     // production
+    rootURL         : "http://github/GCD-masters/",         // local
+    // rootURL         : "http://lukap.info/gcd/masters/",     // production
     latitude        : "",
     longitude       : "",
     accuracy        : "",
@@ -66,7 +71,7 @@ var GM = {
         dub         : { map : new google.maps.LatLng(53.34737470187197,  -6.263923645019531), zoom : 12, minZoom : 10, maxZoom : 21} // Dublin
     },
 
-    // map otpions
+    // map opions
     options     : {
         zoom                : 19,
         minZoom             : 12,
@@ -119,15 +124,15 @@ var GM = {
 
                 // on click add new location
                 google.maps.event.addListener(map, 'dblclick', function (e) {
-                    if (GM.user.id !== GM.user.viewAsId) {
-                        alert("You cant add marker while viewing as another user!");
-                    } else {
+                    // if (GM.user.id !== GM.user.viewAsId) {
+                        // alert("You cant add marker while viewing as another user!");
+                    // } else {
                         // disable more than one at the setTimeout
-                        console.log(marker === undefined);
+                        // console.log(marker === undefined);
                         // if(marker === undefined){
                         GM._fn.marker.addMarker(e.latLng, map);
                         // }
-                    }
+                    // }
                 });
 
                 google.maps.event.addListener(map, 'tilesloaded', function () {
@@ -146,7 +151,6 @@ var GM = {
                         map.panTo(proj.fromContainerPixelToLatLng(aPoint));
                     };
                     ov.draw = function () {};
-                    ov.setMap(this);
                 };
             },
 
@@ -192,6 +196,10 @@ var GM = {
                 for (var i = 0; i < GM.markers.length; i++) {
                     GM.markers[i].setMap(null);
                 }
+                GM.legend.total = GM.legend.activity.total = GM.legend.history.total = GM.legend.study.total = 0;
+                GM.locations = [];
+                GM.markers   = [];
+                GM.iterator  = 0;
             }
         },
 
@@ -202,10 +210,6 @@ var GM = {
                 var filter;
                 // reset values
                 GM._fn.map.clearMap();
-                GM.legend.total = GM.legend.activity.total = GM.legend.history.total = GM.legend.study.total = 0;
-                GM.locations = [];
-                GM.markers   = [];
-                GM.iterator  = 0;
 
                 if (GM.user.id === GM.user.viewAsId && GM.user.privilege === "admin") {
                     filter = "";
@@ -213,8 +217,8 @@ var GM = {
                     filter = "&id=" + GM.user.viewAsId;
                 }
 
-                var param = "?c=content&a=all&map=" + GM.currentMap + filter;
-                xhr = $.getJSON(GM.rootAPI + param)
+                var param = "API/?c=content&a=all&map=" + GM.currentMap + filter;
+                xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
                         if (data.result) {
                             $.each(data.items, function (i, item) {
@@ -237,7 +241,7 @@ var GM = {
                     setTimeout(function () {
                         GM._fn.marker.placeMarker();
                     }, i * 300);
-                }
+                    }
             }
         },
 
@@ -251,8 +255,8 @@ var GM = {
 
 
                 // insert into DB via API
-                var param = "?c=content&a=add&geo_lat=" + position.lat() + "&geo_lng=" + position.lng() + "&user_id=" + GM.user.id + "&map=" + GM.currentMap + "&category=todo";
-                xhr = $.getJSON(GM.rootAPI + param)
+                var param = "API/?c=content&a=add&geo_lat=" + position.lat() + "&geo_lng=" + position.lng() + "&user_id=" + GM.user.viewAsId + "&map=" + GM.currentMap + "&category=todo";
+                xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
                         console.log("marker id: " + data.result + " inserted!!!");
                         GM._fn.marker.getMarker(data.result);
@@ -266,8 +270,8 @@ var GM = {
 
                 // ad to location[]
                 // insert into DB via API
-                var param = "?c=content&a=id&id=" + id;
-                xhr = $.getJSON(GM.rootAPI + param)
+                var param = "API/?c=content&a=id&id=" + id;
+                xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
                         console.log("marker id: " + data.result + " get!!!");
                         // add record into locations array
@@ -338,8 +342,8 @@ var GM = {
 
             editLocation : function (i) {
                 // update location in db
-                var param = "?c=content&a=edit_loc&id=" + GM.locations[i].id + "&geo_lat=" + GM.locations[i].geo_lat + "&geo_lng=" + GM.locations[i].geo_lng;
-                xhr = $.getJSON(GM.rootAPI + param)
+                var param = "API/?c=content&a=edit_loc&id=" + GM.locations[i].id + "&geo_lat=" + GM.locations[i].geo_lat + "&geo_lng=" + GM.locations[i].geo_lng;
+                xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
                         if (data.result) {
                             console.log("Marker updated!");
@@ -355,8 +359,8 @@ var GM = {
                 // confirm delete
                 var x = window.confirm("Are you sure you want to delete this?");
                 if (x) {
-                    var param = "?c=content&a=delete&id=" + GM.locations[i].id;
-                    xhr = $.getJSON(GM.rootAPI + param)
+                    var param = "API/?c=content&a=delete&id=" + GM.locations[i].id;
+                    xhr = $.getJSON(GM.rootURL + param)
                         .done(function (data) {
                             if (data.result) {
                                 // TODO
@@ -365,7 +369,7 @@ var GM = {
                                 GM.locations.splice(i, 1);
                                 GM.markers.splice(i, 1);
 
-                                console.log("marker index: " + i + ", id: " + data.result + " deleted!!!");
+                                console.log("marker index: " + i + ", ID: " + data.result + " deleted!!!");
                                 $("#marker-modal").modal('hide');
                                 GM._fn.map.setMap();
                             } else {
@@ -378,12 +382,12 @@ var GM = {
                         });
 
                 } else {
-                    alert("NOT DELETED!");
+                    console.log("Marker id = " + GM.locations[i].id + " not deleted!");
                 }
             },
 
             viewMarker : function (i) {
-
+                $("#modal-marker [name='content']").html("");
                 GM.currentId = i;
                 console.log("Marker ID = " + i);
                 var data = GM.locations[i];
@@ -393,17 +397,21 @@ var GM = {
                 $("#modal-marker [name='user_id']").val(GM.user.id);
                 $("#modal-marker [name='title']").val(data.title);
                 $("#modal-marker [name='content']").html(data.content);
-                $("#modal-marker [name='geo_lat']").val(data.geo_lat);
-                $("#modal-marker [name='geo_lng']").val(data.geo_lng);
+                $("#modal-marker .geo_lat").html(data.geo_lat);
+                $("#modal-marker .geo_lng").html(data.geo_lng);
 
                 $("#modal-marker :radio[name ='category']").prop('checked', false);
                 $("#modal-marker input[value='" + data.category + "']").prop('checked', true);
                 $("#modal-marker .sat_map").prop("src", src);
 
-                // details += "type: " + GM.locations[i].type + "</br>";
-
-                // console.log(details);
-                // $("#modal-marker .modal-body").append(details);
+                // load image from database based on id
+                if (data.image_name) {
+                    console.log(data.image_name);
+                    GM._fn.marker.loadImage(data.id);
+                } else {
+                    console.log("NOIMAGE!");
+                    $("#modal-marker .image").prop("src", GM.rootURL + "admin/img/noimage.png");
+                }
 
                 // load modal
                 $('#modal-marker').modal({
@@ -412,28 +420,45 @@ var GM = {
                 });
             },
 
+            loadImage : function (id) {
+                // load iamge from database based on id
+                $("#modal-marker .image").prop("src", GM.rootURL + "API/load_image.php?id=" + id);
+            },
+
             saveMarker : function () {
+                setTimeout(function () {
+                    $('#modal-marker').modal('hide');
+                    $('#upload_form')[0].reset();
+                    GM._fn.map.getMap();
+                }, 1000)
+            },
 
-                var param = "?c=content&a=edit&" + $("#modal-marker form").serialize();
-                xhr = $.getJSON(GM.rootAPI + param)
-                    .done(function () {
-                        $('#modal-marker').modal('hide');
-                        GM._fn.settings.getSettings();
-                    })
-                    .fail(function () {
-                        alert("ERROR: " + param);
-                    });
+            startUpload: function () {
+                $('#upload_loading').css("display", "block");
+                $('#upload_form').css("display", "none");
+                return true;
+            },
 
-                GM._fn.map.setMap();
-                console.log(param);
+            stopUpload : function (success) {
+                var result = '';
+                if (success == 1){
+                 result = '<span class="msg">The file was uploaded successfully!<\/span><br/><br/>';
+                }
+                else {
+                 result = '<span class="emsg">There was an error during file upload!<\/span><br/><br/>';
+                }
+                $("#upload_loading").css("display", "none");
+                $("#upload_form").html = result + '<label>File: <input name="myfile" type="file" size="30" /><\/label><label><input type="submit" name="submitBtn" class="sbtn" value="Upload" /><\/label>';
+                $("#upload_form").css("display", "block");;
+                return true;
             }
         },
 
         user : {
 
             getUser : function (id) {
-                var param = "?c=user&a=id&id=" + id;
-                xhr = $.getJSON(GM.rootAPI + param)
+                var param = "API/?c=user&a=id&id=" + id;
+                xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
                         if (data.result) {
                             var user = data.items[0];
@@ -477,8 +502,8 @@ var GM = {
                     }
                 }
 
-                var param = "?c=user&a=edit&" + $("#modal-user form").serialize() + pass;
-                xhr = $.getJSON(GM.rootAPI + param)
+                var param = "API/?c=user&a=edit&" + $("#modal-user form").serialize() + pass;
+                xhr = $.getJSON(GM.rootURL + param)
                     .done(function () {
                         $('#modal-user').modal('hide');
                         GM._fn.settings.get();
@@ -492,8 +517,8 @@ var GM = {
             getAllUsers : function () {
 
                 var html, i, j;
-                var param = "?c=user&a=all";
-                xhr = $.getJSON(GM.rootAPI + param)
+                var param = "API/?c=user&a=all";
+                xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
                         if (data.result) {
                             for (i = 0 , j = 1; i < data.items.length; i++ , j++) {
@@ -528,8 +553,8 @@ var GM = {
             viewAs : function () {
 
                 var html = "", i;
-                var param = "?c=user&a=all&ignore=" + GM.user.id;
-                xhr = $.getJSON(GM.rootAPI + param)
+                var param = "API/?c=user&a=all&ignore=" + GM.user.id;
+                xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
                         if (data.result) {
                             for (i = 0; i < data.items.length; i++) {
@@ -592,8 +617,8 @@ var GM = {
                 } else {
                     filter = "&id=" + GM.user.viewAsId;
                 }
-                var param = "?c=content&a=legend&map=" + GM.currentMap + filter;
-                xhr = $.getJSON(GM.rootAPI + param)
+                var param = "API/?c=content&a=legend&map=" + GM.currentMap + filter;
+                xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
                         // prepare legend
                         if (data.result) {
@@ -682,8 +707,8 @@ var GM = {
         settings : {
 
             getSettings : function () {
-                var param = "?c=site&a=id";
-                xhr = $.getJSON(GM.rootAPI + param)
+                var param = "API/?c=site&a=id";
+                xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
                         if (data.result) {
                             var site = data.items[0];
@@ -720,8 +745,8 @@ var GM = {
             },
 
             saveSettings : function () {
-                var param = "?c=site&a=edit&" + $("#modal-site form").serialize();
-                xhr = $.getJSON(GM.rootAPI + param)
+                var param = "API/?c=site&a=edit&" + $("#modal-site form").serialize();
+                xhr = $.getJSON(GM.rootURL + param)
                     .done(function () {
                         $('#modal-site').modal('hide');
                         GM._fn.settings.getSettings();
@@ -780,6 +805,18 @@ $(function () {
         GM._fn.settings.showSettings();
     });
 
+    // user settings
+    $(".nav .user").click(function (e) {
+        e.preventDefault();
+        GM._fn.user.getUser(GM.user.id);
+    });
+
+    // users settings
+    $(".nav .users").click(function (e) {
+        e.preventDefault();
+        GM._fn.user.getAllUsers();
+    });
+
     // site settings save
     $("#modal-site a.save").click(function (e) {
         e.preventDefault();
@@ -795,24 +832,13 @@ $(function () {
     // marker save
     $("#modal-marker a.save").click(function (e) {
         e.preventDefault();
+        $("#upload_form").submit();
         GM._fn.marker.saveMarker();
     });
 
     $('#modal-marker a.delete').click(function (e) {
         GM._fn.marker.deleteMarker(GM.currentId);
         e.preventDefault();
-    });
-
-    // user settings
-    $(".nav .user").click(function (e) {
-        e.preventDefault();
-        GM._fn.user.getUser(GM.user.id);
-    });
-
-    // users settings
-    $(".nav .users").click(function (e) {
-        e.preventDefault();
-        GM._fn.user.getAllUsers();
     });
 
     // custom map type
@@ -852,3 +878,4 @@ $(function () {
     $('#navbar').scrollspy();
 
 });
+
