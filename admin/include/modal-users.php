@@ -1,7 +1,7 @@
     <div id="modal-users" class="modal hide fade" data-keyboard="true">
-        <div id="users-carousel" class="carousel">
+        <!-- <div id="users-carousel" class="carousel"> -->
             <!-- CAROUSEL ITEMS -->
-            <div class="carousel-inner">
+            <!-- <div class="carousel-inner"> -->
                 <!-- ALL USERS -->
                 <div class="active item">
                     <!-- HEADER -->
@@ -89,7 +89,7 @@
                     </div>
                 </div>
 
-            </div>
+            <!-- </div> -->
 
-        </div>
+        <!-- </div> -->
     </div>

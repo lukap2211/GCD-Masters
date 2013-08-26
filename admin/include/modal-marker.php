@@ -13,7 +13,7 @@
                 <input type="hidden" name="a" value="edit" />
 
                 <div class="tabbable"> <!-- Only required for left/right tabs -->
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs" id="marker-tabs">
                         <li class="active"><a href="#tab1" data-toggle="tab">Location</a></li>
                         <li><a href="#tab2" data-toggle="tab">Content</a></li>
                         <li><a href="#tab3" data-toggle="tab">Image</a></li>
@@ -169,10 +169,17 @@
 
         </div>
         <div class="modal-footer">
-             <iframe id="upload_target" name="upload_target" src="javascript:void(0);" ></iframe>
+            <iframe id="upload_target" name="upload_target" src="javascript:void(0);" ></iframe>
 
-            <a href="#" class="btn" data-dismiss="modal">Cancel</a>
-            <a href="#" class="btn btn-primary save" >Save</a>
-            <a href="#" class="btn btn-danger delete float-left" data-dismiss="modal">Delete</a>
+                <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+                <a href="#" class="btn btn-primary save" data-loading-text="Saving..."><i class="icon-ok"></i> Save</a>
+                <a href="#" class="btn btn-danger delete float-left" data-dismiss="modal"><i class="icon-remove"></i> Delete</a>            </div>
+
+            <div class="loader">
+                <div class="progress progress-striped active">
+                    <div class="bar" style="width: 100%;"></div>
+                </div>
+            </div>
         </div>
+
     </div>

@@ -11,7 +11,7 @@ var GM = {
     // settings
     apiKey          : "AIzaSyCGHVSkXtwVy4D6GDK5WVVgFXs_SKg-0Z0",
     rootURL         : "http://github/GCD-masters/",         // local
-    // rootURL         : "http://lukap.info/gcd/masters/",     // production
+    rootURL         : "http://lukap.info/gcd/masters/",     // production
     latitude        : "",
     longitude       : "",
     accuracy        : "",
@@ -259,7 +259,7 @@ var GM = {
                 var param = "API/?c=content&a=add&geo_lat=" + position.lat() + "&geo_lng=" + position.lng() + "&user_id=" + GM.user.viewAsId + "&map=" + GM.currentMap + "&category=todo";
                 xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
-                        console.log("marker id: " + data.result + " inserted!!!");
+                        console.log("ID: " + data.result + " - Marker added!");
                         GM._fn.marker.getMarker(data.result);
                     })
                     .fail(function () {
@@ -274,11 +274,13 @@ var GM = {
                 var param = "API/?c=content&a=id&id=" + id;
                 xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
-                        console.log("marker id: " + data.result + " get!!!");
-                        // add record into locations array
-                        GM.locations.push(data.items[0]);
-                        // add to markers array
-                        GM._fn.marker.placeMarker();
+                        if(data.results){
+                            console.log("ID: " + id + " - Marker Fetched");
+                            // add record into locations array
+                            GM.locations.push(data.items[0]);
+                            // add to markers array
+                            GM._fn.marker.placeMarker();
+                        }
                     })
                     .fail(function () {
                         alert("ERROR: " + param);
@@ -366,13 +368,15 @@ var GM = {
                     xhr = $.getJSON(GM.rootURL + param)
                         .done(function (data) {
                             if (data.result) {
-                                // TODO
+
+                                console.log("ID: " + GM.locations[i].id + " - Deleted!");
+
                                 // clean markers array
                                 GM.markers[i].setMap(null);
                                 GM.locations.splice(i, 1);
                                 GM.markers.splice(i, 1);
 
-                                console.log("marker index: " + i + ", ID: " + data.result + " deleted!!!");
+                                // close and refresh
                                 $("#marker-modal").modal('hide');
                                 GM._fn.map.setMap();
                             } else {
@@ -385,15 +389,22 @@ var GM = {
                         });
 
                 } else {
-                    console.log("Marker id = " + GM.locations[i].id + " not deleted!");
+                    console.log("ID: " + GM.locations[i].id + " - Not Deleted!");
                 }
             },
 
             viewMarker : function (i) {
-                $("#modal-marker [name='content']").html("");
+                // reset form
+                $("#upload_form")[0].reset();
+                $('#marker-tabs a:first').tab('show');
+
                 GM.currentId = i;
-                console.log("Marker ID = " + i);
+
                 var data = GM.locations[i];
+
+                console.log("ID: " + GM.locations[i].id + " - View Marker");
+                console.log(data);
+
                 var src = "http://maps.googleapis.com/maps/api/staticmap?markers=icon:" + GM._fn.admin.getIcon(GM.locations[i].category, true) + "|" + GM.locations[i].geo_lat + "," + GM.locations[i].geo_lng + "|shadow:true&center=" + GM.locations[i].geo_lat + "," + GM.locations[i].geo_lng + "&zoom=" + GM.options.zoom + "&maptype=hybrid&size=530x250&sensor=false";
 
                 $("#modal-marker [name='id']").val(data.id);
@@ -406,6 +417,10 @@ var GM = {
                 $("#modal-marker :radio[name ='category']").prop('checked', false);
                 $("#modal-marker input[value='" + data.category + "']").prop('checked', true);
                 $("#modal-marker .sat_map").prop("src", src);
+
+                $("#modal-marker [name='comments']").prop('checked', data.comments === '1' ? true : false);
+                $("#modal-marker [name='twitter']").prop('checked', data.twitter === '1' ? true : false);
+                $("#modal-marker [name='facebook']").prop('checked', data.facebook === '1' ? true : false);
 
                 // load image from database based on id
                 if (data.image_name) {
@@ -424,6 +439,7 @@ var GM = {
 
             loadImage : function (id) {
                 // load iamge from database based on id
+                console.log("ID: " + id + " - Loading image");
                 $("#modal-marker .image").prop("src", GM.rootURL + "API/load_image.php?id=" + id);
             },
 
@@ -437,23 +453,19 @@ var GM = {
             startUpload : function () {
                 // $("#upload_form").submit();
                 $('.modal .loader').css("display", "block");
-                $('.modal .load-image').css("display", "none");
-                $('.modal .upload-image').css("display", "none");
+                $('.modal .actions').css("display", "none");
                 return false;
             },
 
             stopUpload : function (success) {
-                var result = '';
-                if (success == 1){
-                 result = '<span class="msg">The file was uploaded successfully!<\/span><br/><br/>';
-                }
-                else {
-                 result = '<span class="emsg">There was an error during file upload!<\/span><br/><br/>';
-                }
+
                 $(".loader").css("display", "none");
-                $(".load-image").html = result + '<label>File: <input name="myfile" type="file" size="30" /><\/label><label><input type="submit" name="submitBtn" class="sbtn" value="Upload" /><\/label>';
-                $(".load-image").css("display", "block");
-                $(".upload-image").css("display", "block");
+
+                if (success == 1){
+                    GM._fn.marker.saveMarker();
+                } else {
+                    alert("ERROR: Marker not Saved!");
+                }
                 return true;
             }
         },
@@ -840,16 +852,17 @@ $(function () {
     });
 
     // marker upload image
-    $("#modal-marker .upload-image").click(function (e) {
-        e.preventDefault();
-        GM._fn.marker.startUpload();
-    });
+    // $("#modal-marker .upload-image").click(function (e) {
+    //     e.preventDefault();
+    //     GM._fn.marker.startUpload();
+    // });
 
     // marker save
     $("#modal-marker a.save").click(function (e) {
         e.preventDefault();
+        GM._fn.marker.startUpload();
         $("#upload_form").submit();
-        GM._fn.marker.saveMarker();
+
     });
 
     $('#modal-marker a.delete').click(function (e) {

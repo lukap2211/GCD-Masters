@@ -37,17 +37,17 @@ label {color: #999; cursor: initial;}
 .admin span{position: absolute; left: 0px; top: 20px; font-size: 10px; font-weight: bold; letter-spacing: 0.2em; color: white; background: rgba(255,0,0,0.95); background: #999; width: 100px; text-align: center; padding: 0px 5px; z-index: 999; text-shadow: 0 1px 0 #000; box-shadow: 0 1px 0 #666; transform: rotate(45deg); -ms-transform: rotate(45deg); -webkit-transform: rotate(-45deg);}
 
 
+.modal form {margin:0;}
 .modal input.name {width:500px;}
 .modal textarea {width:500px; min-width: 500px; max-width: 500px;}
-.modal .switch {width: 100px; margin-right: 14px; padding: 10px 30px 20px ; border-radius: 10px; border:1px solid #ccc; float: left; background:#f1f1f1;}
+.modal .switch {width: 100px; margin:0 7px; padding: 10px 30px 20px ; border-radius: 10px; border:1px solid #ccc; float: left; background:#f1f1f1;}
 .modal .switch .head {color: #666; margin:20px; text-align: center;}
 .modal .switch .head i {font-size: 28px;}
 .modal .switch .onoffswitch {margin: 0 10px;}
 .modal .load-image {overflow: hidden; position: relative; margin:10px 0; float: left;}
 .modal .load-image [type='file'] {cursor: inherit; display: block; font-size: 999px; filter: alpha(opacity=0); min-height: 100%; min-width: 100%; opacity: 0; position: absolute; right: 0; text-align: right; top: 0; }
 .modal .upload-image {float: left; margin: 10px 0;}
-.modal .progress {float: left; margin: 5px 10px 5px 0;}
-.modal iframe {width:0%;height:0px;border:0px}
+.modal iframe {width:0%;height:0px;border:0px solid #FFF;}
 .modal iframe.debug {width:100%;height:200px;}
 
 
@@ -56,10 +56,12 @@ label {color: #999; cursor: initial;}
 .modal .image-container { border: 1px dashed #999; }
 .modal .image-container .dimensions { position: absolute; background: #333; color:#FFF; width:80px; height: 20px; right:0; top:0; font-size: 12px; line-height: 20px; text-align: center;}
 .modal .loc-container .longlat { position: absolute; background: #333; color:#FFF; width:140px; height: 20px; right:0; top:0; font-size: 12px; line-height: 20px; text-align: center;}
-#modal-marker .loader {text-align: left; display: none; margin: 10px 0; float: left; line-height: 30px}
+#modal-marker .loader {display: none; margin: 10px 0; width: 560px;}
+.modal .progress {margin: 20px 10px}
 #modal-marker .switch.cat {width: 60px; padding: 20px 25px; margin: 0 3px; cursor: pointer; text-align: center;}
 #modal-marker .switch.cat .head {margin: 10px;}
 #modal-marker .switch.cat input {margin-top: 30px;}
+#modal-marker #tab4 ul {padding-left: 5px;}
 
 
 /*
