@@ -8,9 +8,10 @@
     include("api_validate.php");
     include("api_functions.php");
 
-    // upload image
-    item_edit();
+    // edit item
+    $result = item_edit();
+
+    echo $result;
 
 ?>
 
-<script language="javascript" type="text/javascript">window.top.window.GM._fn.marker.stopUpload(<?php echo $result; ?>);</script>
