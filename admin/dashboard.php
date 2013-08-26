@@ -79,7 +79,6 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
         <div class="loader progress active progress-success progress-striped">
           <div class="bar" style="width: 1000%"></div>
         </div>
-        <!-- <img class="loader" src="img/ajax-loader.gif" /> -->
     </div>
 
     <!-- MAIN CONTAINER -->

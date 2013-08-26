@@ -29,7 +29,7 @@
                         </li>
                         <?php } else { ?>
                         <li class="dropdown">
-                            <a href="javascript:void();" ><?="{$_SESSION['first_name']} {$_SESSION['last_name']}"?></a>
+                            <a href="javascript:void(0);" ><?="{$_SESSION['first_name']} {$_SESSION['last_name']}"?></a>
                         </li>
                         <?php } ?>
                     </ul>

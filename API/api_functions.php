@@ -93,9 +93,6 @@ function item_edit() {
     $extension = end($temp);
     $upload_image = "";
 
-    // echo "<pre>";
-    // print_r($_FILES["file"]);
-    // echo "</pre>";
 
     if ((($_FILES["file"]["type"] == "image/gif")
         || ($_FILES["file"]["type"] == "image/jpeg")
@@ -131,6 +128,12 @@ function item_edit() {
     $query.= " SET user_id = '{$_POST['user_id']}', title = '{$_POST['title']}', date_modified = CURRENT_TIMESTAMP,";
     $query.= " content = '{$_POST['content']}', category = '{$_POST['category']}' $upload_image";
     $query.= " WHERE id = {$_POST['id']};";
+
+
+    echo "<pre>";
+    print_r($_POST);
+    echo "$query";
+    echo "</pre>";
 
     // execute
     run_query($query);
