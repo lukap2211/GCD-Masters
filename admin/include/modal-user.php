@@ -12,19 +12,6 @@
                     <input class="input-large" type="text" name="first_name" placeholder="First Name" />
                 </fieldset>
 
-<!--
-                 <fieldset class="float-left">
-                    <label>Admin</label>
-                    <div class="onoffswitch">
-                        <input type="checkbox" name="debug" class="onoffswitch-checkbox" id="debugOnOff" >
-                        <label class="onoffswitch-label" for="debugOnOff">
-                            <div class="onoffswitch-inner"></div>
-                            <div class="onoffswitch-switch"></div>
-                        </label>
-                    </div>
-                </fieldset>
- -->
-
                 <div class="clearfix"></div>
 
                 <fieldset class="float-left">
@@ -50,7 +37,7 @@
                 <span class="help-block">Please enter new password.</span>
             </fieldset>
 
-            <fieldset class="float-left">
+            <fieldset class="float-right">
                 <label>Repeat Password</label>
                 <input type="password" name="repeat-pass" placeholder="Repeat new password">
                 <span class="help-block">Repeated password must match.</span>

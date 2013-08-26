@@ -111,6 +111,7 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
     <!-- MODAL SITE -->
     <?php include("include/modal-site.php") ?>
 
+    <?php if ($_SESSION['privilege'] == "admin" ) { ?>
 
     <!-- LOCATION -->
     <div id="location" class="info">
@@ -131,6 +132,8 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
             </form>
         </div>
     </div>
+
+    <?php } ?>
 
     <!-- COPYRIGHT -->
     <div id="copyright" class="info">
