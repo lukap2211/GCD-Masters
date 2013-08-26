@@ -6,9 +6,6 @@
         </div>
         <div class="modal-body">
 
-            <!-- loading -->
-            <p class="loader">Saving... <br /><img src="img/ajax-loader.gif" /><br/></p>
-
             <!-- <form> -->
             <form id="upload_form" action="../API/upload_image.php" method="post" enctype="multipart/form-data" target="upload_target" onsubmit="GM._fn.marker.startUpload();" >
 
@@ -29,7 +26,7 @@
                         <!-- TAB 1 -->
                         <div class="tab-pane active" id="tab1">
 
-                            <div class="loc_container">
+                            <div class="loc-container">
                                 <div class="longlat"><spam class="geo_lng"></spam>, <spam class="geo_lat"></spam></div>
                                 <img class="sat_map" width="530" height="250" />
                             </div>
@@ -47,20 +44,23 @@
                             <fieldset class="float-left">
                                 <label>Content</label>
                                 <textarea rows="8" name="content" placeholder="Content here..."></textarea>
+                                <span class="help-block">Please enter your content here (max char: 1000)</span>
+
+
                             </fieldset>
 
                         </div>
 
                         <!-- TAB 3 -->
                         <div class="tab-pane" id="tab3">
-                            <div class="image_container">
+                            <div class="image-container">
                                 <div class="dimensions">530x250px</div>
                                 <img class="image" />
                             </div>
 
                             <fieldset class="float-left ">
-                                <label class="loadImage">
-                                    <a class="btn">Image Upload</a>
+                                <label class="load-image">
+                                    <a class="btn">Upload lmage here </a>
                                     <input type="file" name="file" id="file">
                                 </label>
                             </fieldset>
@@ -169,7 +169,7 @@
 
         </div>
         <div class="modal-footer">
-             <iframe id="upload_target" name="upload_target" src="javascript:void(0);" style="width:100%;height:200px;border:0px solid #fff;"></iframe>
+             <iframe id="upload_target" name="upload_target" src="javascript:void(0);" ></iframe>
 
             <a href="#" class="btn" data-dismiss="modal">Cancel</a>
             <a href="#" class="btn btn-primary save" >Save</a>

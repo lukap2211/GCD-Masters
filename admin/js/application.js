@@ -39,20 +39,20 @@ var GM = {
     pin  : {
 
         /* backup icon */
-        green       : "http://o.aolcdn.com/os/industry/misc/pin_green.png",
-        orange      : "http://o.aolcdn.com/os/industry/misc/pin_orange.png",
-        blue        : "http://o.aolcdn.com/os/industry/misc/pin_blue.png",
-        black       : "http://o.aolcdn.com/os/industry/misc/pin_black.png",
-        todo        : "http://o.aolcdn.com/os/industry/misc/pin_todo.png",
-        shadow      : "http://o.aolcdn.com/os/industry/misc/pin_shadow.png"
+        // green       : "http://o.aolcdn.com/os/industry/misc/pin_green",
+        // orange      : "http://o.aolcdn.com/os/industry/misc/pin_orange",
+        // blue        : "http://o.aolcdn.com/os/industry/misc/pin_blue",
+        // black       : "http://o.aolcdn.com/os/industry/misc/pin_black",
+        // todo        : "http://o.aolcdn.com/os/industry/misc/pin_todo",
+        // shadow      : "http://o.aolcdn.com/os/industry/misc/pin_shadog"
 
         /* originals */
-        // green       : "http://lukap.info/gcd/masters/admin/img/pin_green.png",
-        // orange      : "http://lukap.info/gcd/masters/admin/img/pin_orange.png",
-        // blue        : "http://lukap.info/gcd/masters/admin/img/pin_blue.png",
-        // black       : "http://lukap.info/gcd/masters/admin/img/pin_black.png",
-        // todo        : "http://lukap.info/gcd/masters/admin/img/pin_todo.png",
-        // shadow      : "http://lukap.info/gcd/masters/admin/img/pin_shadow.png"
+        green       : "http://lukap.info/gcd/masters/admin/img/pin_green",
+        orange      : "http://lukap.info/gcd/masters/admin/img/pin_orange",
+        blue        : "http://lukap.info/gcd/masters/admin/img/pin_blue",
+        black       : "http://lukap.info/gcd/masters/admin/img/pin_black",
+        todo        : "http://lukap.info/gcd/masters/admin/img/pin_todo",
+        shadow      : "http://lukap.info/gcd/masters/admin/img/pin_shadow"
     },
 
     // legend
@@ -250,9 +250,10 @@ var GM = {
             addMarker : function (position, map) {
 
                 // update position
-                document.getElementById("latitude").value = position.lat();
-                document.getElementById("longitude").value = position.lng();
-
+                if (GM.user.privilege === "admin") {
+                    document.getElementById("latitude").value = position.lat();
+                    document.getElementById("longitude").value = position.lng();
+                }
 
                 // insert into DB via API
                 var param = "API/?c=content&a=add&geo_lat=" + position.lat() + "&geo_lng=" + position.lng() + "&user_id=" + GM.user.viewAsId + "&map=" + GM.currentMap + "&category=todo";
@@ -334,8 +335,10 @@ var GM = {
                 GM.locations[i].geo_lng = position.lng();
 
                 // update position
-                document.getElementById("latitude").value = position.lat();
-                document.getElementById("longitude").value = position.lng();
+                if (GM.user.privilege === "admin") {
+                    document.getElementById("latitude").value = position.lat();
+                    document.getElementById("longitude").value = position.lng();
+                }
 
                 GM._fn.marker.editLocation(i);
             },
@@ -406,7 +409,6 @@ var GM = {
 
                 // load image from database based on id
                 if (data.image_name) {
-                    console.log(data.image_name);
                     GM._fn.marker.loadImage(data.id);
                 } else {
                     console.log("NOIMAGE!");
@@ -428,15 +430,16 @@ var GM = {
             saveMarker : function () {
                 setTimeout(function () {
                     $('#modal-marker').modal('hide');
-                    $('#upload_form')[0].reset();
                     GM._fn.map.getMap();
                 }, 1000)
             },
 
-            startUpload: function () {
-                $('#upload_loading').css("display", "block");
-                $('#upload_form').css("display", "none");
-                return true;
+            startUpload : function () {
+                // $("#upload_form").submit();
+                $('.modal .loader').css("display", "block");
+                $('.modal .load-image').css("display", "none");
+                $('.modal .upload-image').css("display", "none");
+                return false;
             },
 
             stopUpload : function (success) {
@@ -447,9 +450,10 @@ var GM = {
                 else {
                  result = '<span class="emsg">There was an error during file upload!<\/span><br/><br/>';
                 }
-                $("#upload_loading").css("display", "none");
-                $("#upload_form").html = result + '<label>File: <input name="myfile" type="file" size="30" /><\/label><label><input type="submit" name="submitBtn" class="sbtn" value="Upload" /><\/label>';
-                $("#upload_form").css("display", "block");;
+                $(".loader").css("display", "none");
+                $(".load-image").html = result + '<label>File: <input name="myfile" type="file" size="30" /><\/label><label><input type="submit" name="submitBtn" class="sbtn" value="Upload" /><\/label>';
+                $(".load-image").css("display", "block");
+                $(".upload-image").css("display", "block");
                 return true;
             }
         },
@@ -594,10 +598,10 @@ var GM = {
                     break;
                 }
                 if (link) {
-                    return icon;
+                    return icon + "_small.png";
                 } else {
                     // return icon;
-                    return new google.maps.MarkerImage(icon, null, null, null, new google.maps.Size(47, 47));
+                    return new google.maps.MarkerImage(icon + ".png", null, null, null, new google.maps.Size(47, 47));
                 }
             },
 
@@ -623,7 +627,7 @@ var GM = {
                         // prepare legend
                         if (data.result) {
                             // reset values
-                            $(".progress div").css({"width" : 0});
+                            $("#legend .progress div").css({"width" : 0});
 
                             $.each(data.items, function (i, item) {
                                 GM.legend.total += parseInt(item.total, 10);
@@ -643,7 +647,7 @@ var GM = {
                                 }
                             });
                         } else {
-                            $(".progress div").css({"width" : 0});
+                            $("#legend .progress div").css({"width" : 0});
                         }
 
                         // set legend
@@ -726,7 +730,13 @@ var GM = {
             },
 
             setSettings : function () {
-                if (GM.site.debug) {$("#debug").fadeIn('slow'); } else {$("#debug").fadeOut('slow'); }
+                if (GM.site.debug) {
+                    $("#debug").fadeIn('slow');
+                    $("#upload_target").addClass("debug");
+                } else {
+                    $("#upload_target").removeClass("debug");
+                    $("#debug").fadeOut('slow');
+                }
                 if (GM.site.location) {$("#location").fadeIn('slow'); } else {$("#location").fadeOut('slow'); }
                 if (GM.site.legend) {$("#legend").fadeIn('slow'); } else {$("#legend").fadeOut('slow'); }
             },
@@ -765,8 +775,8 @@ var GM = {
         GM.user.viewAsId = $("#user").data("user-id");
         if (GM.user.privilege === "admin") {
             GM._fn.admin.viewAs();
+            GM._fn.settings.getSettings();
         }
-        GM._fn.settings.getSettings();
     }
 
 };
@@ -829,6 +839,12 @@ $(function () {
         GM._fn.user.saveUser();
     });
 
+    // marker upload image
+    $("#modal-marker .upload-image").click(function (e) {
+        e.preventDefault();
+        GM._fn.marker.startUpload();
+    });
+
     // marker save
     $("#modal-marker a.save").click(function (e) {
         e.preventDefault();
@@ -872,7 +888,7 @@ $(function () {
     });
 
     // progress tooltip
-    $('.progress div a').popover({placement: "top", trigger : "hover", toggle : "popover" });
+    $('#legend .progress div a').popover({placement: "top", trigger : "hover", toggle : "popover" });
 
     // Scroll Spy
     $('#navbar').scrollspy();
