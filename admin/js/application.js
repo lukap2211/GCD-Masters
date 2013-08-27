@@ -10,8 +10,8 @@ var GM = {
 
     // settings
     apiKey          : "AIzaSyCGHVSkXtwVy4D6GDK5WVVgFXs_SKg-0Z0",
-    // rootURL         : "http://github/GCD-masters/",         // local
-    rootURL         : "http://lukap.info/gcd/masters/",     // production
+    rootURL         : "http://github/GCD-masters/",         // local
+    // rootURL         : "http://lukap.info/gcd/masters/",     // production
     latitude        : "",
     longitude       : "",
     accuracy        : "",
@@ -370,8 +370,8 @@ var GM = {
             deleteMarker : function (i) {
 
                 // confirm delete
-                var x = window.confirm("Are you sure you want to delete this?");
-                if (x) {
+                var dialog = window.confirm("Are you sure you want to delete this?");
+                if (dialog) {
                     var param = "API/?c=content&a=delete&id=" + GM.locations[i].id;
                     xhr = $.getJSON(GM.rootURL + param)
                         .done(function (data) {
@@ -438,6 +438,8 @@ var GM = {
                 // load image from database based on id
                 if (data.image_name) {
                     GM._fn.marker.loadImage(data.id);
+                    $("#modal-marker .load-image .btn").html("Upload New Image Here!")
+
                 } else {
                     console.log("ID: " + GM.locations[i].id + " - NO Image.");
                     $("#modal-marker .image").prop("src", GM.rootURL + "admin/img/noimage.png");
@@ -485,13 +487,13 @@ var GM = {
 
         user : {
 
-            getUser : function (id) {
+            getUser : function (id, admin) {
                 var param = "API/?c=user&a=id&id=" + id;
                 xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
                         if (data.result) {
                             var user = data.items[0];
-                            GM._fn.user.showUser(user);
+                            GM._fn.user.showUser(user, admin);
                         }
                     })
                     .fail(function () {
@@ -499,23 +501,129 @@ var GM = {
                     });
             },
 
-            showUser : function (user) {
-                $("#modal-user h3").html(" My Settings <span>(" + user.username + " - " + user.privilege + ")</span>");
+            // TODO
+            showUser : function (user, admin) {
 
-                $("#modal-user [name='id']").val(user.id);
-                $("#modal-user [name='first_name']").val(user.first_name);
-                $("#modal-user [name='last_name']").val(user.last_name);
-                $("#modal-user [name='bio']").html(user.bio);
-                $("#modal-user [name='admin']").prop('checked', user.admin);
-                $("#modal-user [type='password']").val("");
+                $("#modal-user form")[0].reset();
+                $("#modal-user textarea").html("");
+                $("#modal-user .save-me").removeClass("add-user");
+                $("#modal-user .delete").hide();
+                $("#modal-user .cancel").show();
+                $("#modal-user .back-to-users").hide();
 
-                $('#modal-user').modal({
-                    keyboard : true,
-                    backdrop : true
-                });
+
+                if (user) {
+                    $("#modal-user h3").html("User Settings: " + user.username + " - " + user.privilege);
+                    $("#modal-user [name='id']").val(user.id);
+                    $("#modal-user [name='username']").val(user.username);
+                    $("#modal-user [name='first_name']").val(user.first_name);
+                    $("#modal-user [name='last_name']").val(user.last_name);
+                    $("#modal-user [name='bio']").html(user.bio);
+                    $("#modal-user [name='admin']").prop('checked', user.admin);
+                    $("#modal-user [type='password']").val("");
+                    $("#modal-user .save-me").removeClass("back").addClass("default");
+                    // user save & go back to list
+                    $("#modal-user")
+                    .undelegate("a.save-me", "click")
+                    .delegate("a.save-me.default", "click", function (e) {
+                        e.preventDefault();
+                        GM._fn.user.saveUser();
+                    })
+
+                } else {
+                    $("#modal-user h3").html("Add New User");
+                    $("#modal-user [name='username']").prop("disabled", "");
+                    $("#modal-user .save-me").removeClass("back").addClass("add-user");
+                    $("#modal-users").modal('hide');
+                    $("#modal-user")
+                    .undelegate("a.save-me", "click")
+                    .delegate("a.save-me.add-user", "click", function (e) {
+                        e.preventDefault();
+                        GM._fn.user.addUser();
+                    })
+                }
+
+                if (admin) {
+                    $("#modal-user [name='username']").prop("disabled", "disabled");
+                    $("#modal-user .back-to-users").show();
+                    $("#modal-user .cancel").hide();
+                    if (parseInt(user.id,10) !== parseInt(GM.user.id)) {
+                        $("#modal-user .delete").show();
+                    }
+                    $("#modal-user .save-me").addClass("back").removeClass("default").removeClass("add-user");
+                    $("#modal-users").modal('hide');
+                    $("#modal-user")
+                    .undelegate("a.save-me", "click")
+                    .delegate("a.save-me.back", "click", function (e) {
+                        e.preventDefault();
+                        GM._fn.user.saveUser(true);
+                    })
+                }
+
+                $('#modal-user').modal({keyboard : true});
             },
 
-            saveUser : function () {
+            deleteUser : function (id) {
+
+                // confirm delete
+                var dialog = window.confirm("Are you sure you want to delete this?");
+                if (dialog) {
+
+                    var param = "API/?c=user&a=delete&id=" + $("#modal-user input[name=id]").val();
+                    xhr = $.getJSON(GM.rootURL + param)
+                        .done(function () {
+                            $('#modal-user').modal('hide');
+                            GM._fn.user.getAllUsers();
+                        })
+                        .fail(function () {
+                            alert("ERROR: " + param);
+                        });
+                    console.log(GM.rootURL + param);
+                    console.log("User Deleted!");
+
+                }
+            },
+
+            addUser : function () {
+
+                var pass = GM._fn.user.passCheck();
+
+                if (pass) {
+                    var param = "API/?c=user&a=add&" + $("#modal-user input[type=text], #modal-user textarea").serialize() + pass;
+                    xhr = $.getJSON(GM.rootURL + param)
+                        .done(function () {
+                            $('#modal-user').modal('hide');
+                            GM._fn.user.getAllUsers();
+                        })
+                        .fail(function () {
+                            alert("ERROR: " + param);
+                        });
+                    // console.log(GM.rootURL + param);
+                }
+            },
+
+            saveUser : function (admin) {
+
+                var pass = GM._fn.user.passCheck();
+
+                if (pass) {
+
+                    var param = "API/?c=user&a=edit&" + $("#modal-user form").serialize() + pass;
+                    xhr = $.getJSON(GM.rootURL + param)
+                        .done(function () {
+                            $('#modal-user').modal('hide');
+                            if (admin){
+                                GM._fn.user.getAllUsers();
+                            }
+                        })
+                        .fail(function () {
+                            alert("ERROR: " + param);
+                        });
+                    // console.log(GM.rootURL + param);
+                }
+            },
+
+            passCheck : function () {
 
                 var pass = "";
 
@@ -531,16 +639,7 @@ var GM = {
                     }
                 }
 
-                var param = "API/?c=user&a=edit&" + $("#modal-user form").serialize() + pass;
-                xhr = $.getJSON(GM.rootURL + param)
-                    .done(function () {
-                        $('#modal-user').modal('hide');
-                        GM._fn.settings.get();
-                    })
-                    .fail(function () {
-                        alert("ERROR: " + param);
-                    });
-                console.log(param);
+                return pass;
             },
 
             getAllUsers : function () {
@@ -557,8 +656,8 @@ var GM = {
                                 html += '<td>' +  data.items[i].username + '</td>';
                                 html += '<td>' +  data.items[i].first_name + '</td>';
                                 html += '<td>' +  data.items[i].last_name + '</td>';
-                                html += (data.items[i].privilege === "admin") ? '<td><i class="icon-ok-sign"></i></td>' : '<td></td>';
-                                html += '<td><a href="#modal-users" data-slide="next" data-user-id="' +  data.items[i].id + '">Details</a></td>';
+                                html += (data.items[i].privilege === "admin") ? '<td><span class="label label-info">ADMIN</span></td>' : '<td></td>';
+                                html += '<td><a class="details" href="#" data-user-id="' +  data.items[i].id + '">Details</a></td>';
                                 html += '</tr>';
                             }
 
@@ -566,14 +665,12 @@ var GM = {
 
                             // load modal & options
                             $('#modal-users').modal({keyboard : true});
-                            // load carousel
-                            $('#users-carousel').carousel({'interval' : false});
 
                         }
                     })
                     .fail(function () {
                         alert("ERROR: " + param);
-                    });
+                        });
             }
         },
 
@@ -858,11 +955,27 @@ $(function () {
         GM._fn.settings.saveSettings();
     });
 
-    // user save
-    $("#modal-user a.save").click(function (e) {
+    $("#modal-user")
+    .delegate("a.back-to-users", "click", function (e) {
         e.preventDefault();
-        GM._fn.user.saveUser();
+        $("#modal-user").modal('hide');
+        GM._fn.user.getAllUsers();
+    })
+    .delegate("a.delete", "click", function (e) {
+        e.preventDefault();
+        GM._fn.user.deleteUser();
     });
+
+    // users details
+    $("#modal-users")
+    .delegate("a.details", "click", function (e) {
+        e.preventDefault();
+        GM._fn.user.getUser($(this).data("user-id"), true);
+    })
+    .delegate("a.add-user", "click", function (e) {
+        e.preventDefault();
+        GM._fn.user.showUser();
+    })
 
     // marker upload image
     // $("#modal-marker .upload-image").click(function (e) {
@@ -875,7 +988,6 @@ $(function () {
         e.preventDefault();
         GM._fn.marker.saveMarkerStart();
         $("#upload_form").submit();
-
     });
 
     $('#modal-marker a.delete').click(function (e) {

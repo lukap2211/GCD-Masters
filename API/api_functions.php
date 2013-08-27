@@ -231,7 +231,21 @@ function user_id() {
 }
 
 function user_add() {
-    // code...
+
+    $hashed_password = "";
+
+    // crypt password
+    if (!empty($_GET['pass'])) {
+        $hashed_password = md5($_GET['pass']);
+    }
+
+    // query
+    $query = "INSERT INTO users";
+    $query.= " (id, username, password, bio, last_name, first_name)";
+    $query.= " VALUES (NULL, '{$_GET['username']}', '$hashed_password', '{$_GET['bio']}', '{$_GET['last_name']}', '{$_GET['first_name']}')";
+
+    // execute
+    run_query($query);
 }
 
 function user_edit() {
@@ -253,7 +267,21 @@ function user_edit() {
 }
 
 function user_delete() {
-    // code...
+
+    $filter = "";
+
+    // by id
+    if(!empty($_GET['id']) && intval($_GET['id'])){
+        $filter .= "id in ('{$_GET['id']}')";
+    }
+
+    // query
+    $query = "DELETE FROM users";
+    $query.= " WHERE $filter";
+
+    // execute
+    run_query($query);
+
 }
 
 // site functions
