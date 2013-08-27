@@ -64,7 +64,7 @@
 
                             <fieldset class="float-left ">
                                 <label class="load-image">
-                                    <a class="btn">Upload lmage here </a>
+                                    <a class="btn">Upload lmage Here! </a>
                                     <input type="file" name="file" id="file">
                                 </label>
                             </fieldset>
@@ -79,7 +79,10 @@
                                         <label>
                                             <div class="switch cat">
                                                 <p>Activity</p>
-                                                <img width="47" height="47" src="http://o.aolcdn.com/os/industry/misc/pin_green.png" />
+                                                <div class="pin">
+                                                    <img width="47" height="47" src="http://o.aolcdn.com/os/industry/misc/pin_green.png" />
+                                                    <img width="47" height="47" src="http://o.aolcdn.com/os/industry/misc/pin_shadow.png" class="shadow" />
+                                                </div>
                                                 <input type="radio" name="category" value="activity">
                                             </div>
                                         </label>
@@ -88,8 +91,11 @@
                                         <label>
                                             <div class="switch cat">
                                                 <p>History</p>
-                                                <img width="47" height="47" src="http://o.aolcdn.com/os/industry/misc/pin_orange.png" />
-                                                <input type="radio" name="category" value="history">
+                                                <div class="pin">
+                                                    <img width="47" height="47" src="http://o.aolcdn.com/os/industry/misc/pin_orange.png" />
+                                                    <img width="47" height="47" src="http://o.aolcdn.com/os/industry/misc/pin_shadow.png" class="shadow" />
+                                                </div>
+                                            <input type="radio" name="category" value="history">
                                             </div>
                                         </label>
                                     </li>
@@ -97,7 +103,10 @@
                                         <label>
                                             <div class="switch cat">
                                                 <p>Study</p>
-                                                <img width="47" height="47" src="http://o.aolcdn.com/os/industry/misc/pin_blue.png" />
+                                                <div class="pin">
+                                                    <img width="47" height="47" src="http://o.aolcdn.com/os/industry/misc/pin_blue.png" />
+                                                    <img width="47" height="47" src="http://o.aolcdn.com/os/industry/misc/pin_shadow.png" class="shadow" />
+                                                </div>
                                                 <input type="radio" name="category" value="study">
                                             </div>
                                         </label>
@@ -106,7 +115,10 @@
                                         <label>
                                             <div class="switch cat">
                                                 <p>Todo!</p>
-                                                <img width="47" height="47" src="http://o.aolcdn.com/os/industry/misc/pin_todo.png" />
+                                                <div class="pin">
+                                                    <img width="47" height="47" src="http://o.aolcdn.com/os/industry/misc/pin_todo.png" />
+                                                    <img width="47" height="47" src="http://o.aolcdn.com/os/industry/misc/pin_shadow.png" class="shadow" />
+                                                </div>
                                                 <input type="radio" name="category" value="todo">
                                             </div>
                                         </label>
@@ -177,7 +189,8 @@
 
                 <a href="#" class="btn" data-dismiss="modal">Cancel</a>
                 <a href="#" class="btn btn-primary save" data-loading-text="Saving..."><i class="icon-ok"></i> Save</a>
-                <a href="#" class="btn btn-danger delete float-left" data-dismiss="modal"><i class="icon-remove"></i> Delete</a>            </div>
+                <a href="#" class="btn btn-danger delete float-left"><i class="icon-remove"></i> Delete</a>
+        </div>
 
             <div class="loader">
                 <div class="progress progress-striped active">
