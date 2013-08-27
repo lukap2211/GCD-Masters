@@ -506,11 +506,10 @@ var GM = {
 
                 $("#modal-user form")[0].reset();
                 $("#modal-user textarea").html("");
-                $("#modal-user .save-me").removeClass("add-user");
+                $("#modal-user .btn-primary").hide();
                 $("#modal-user .delete").hide();
-                $("#modal-user .cancel").show();
+                $("#modal-user .cancel").hide();
                 $("#modal-user .back-to-users").hide();
-
 
                 if (user) {
                     $("#modal-user h3").html("User Settings: " + user.username + " - " + user.privilege);
@@ -521,26 +520,18 @@ var GM = {
                     $("#modal-user [name='bio']").html(user.bio);
                     $("#modal-user [name='admin']").prop('checked', user.admin);
                     $("#modal-user [type='password']").val("");
-                    $("#modal-user .save-me").removeClass("back").addClass("default");
-                    // user save & go back to list
-                    $("#modal-user")
-                    .undelegate("a.save-me", "click")
-                    .delegate("a.save-me.default", "click", function (e) {
-                        e.preventDefault();
-                        GM._fn.user.saveUser();
-                    })
 
+                    // buttons
+                    $("#modal-user .save-me").show();
+                    $("#modal-user .cancel").show();
                 } else {
                     $("#modal-user h3").html("Add New User");
                     $("#modal-user [name='username']").prop("disabled", "");
-                    $("#modal-user .save-me").removeClass("back").addClass("add-user");
                     $("#modal-users").modal('hide');
-                    $("#modal-user")
-                    .undelegate("a.save-me", "click")
-                    .delegate("a.save-me.add-user", "click", function (e) {
-                        e.preventDefault();
-                        GM._fn.user.addUser();
-                    })
+
+                    // buttons
+                    $("#modal-user .add-user").show();
+                    $("#modal-user .back-to-users").show();
                 }
 
                 if (admin) {
@@ -550,14 +541,12 @@ var GM = {
                     if (parseInt(user.id,10) !== parseInt(GM.user.id)) {
                         $("#modal-user .delete").show();
                     }
-                    $("#modal-user .save-me").addClass("back").removeClass("default").removeClass("add-user");
                     $("#modal-users").modal('hide');
-                    $("#modal-user")
-                    .undelegate("a.save-me", "click")
-                    .delegate("a.save-me.back", "click", function (e) {
-                        e.preventDefault();
-                        GM._fn.user.saveUser(true);
-                    })
+
+                    // buttons
+                    $("#modal-user .save-me").hide();
+                    $("#modal-user .save-changes").show();
+                    $("#modal-user .back-to-users").show();
                 }
 
                 $('#modal-user').modal({keyboard : true});
@@ -608,6 +597,8 @@ var GM = {
 
                 if (pass) {
 
+                    pass = (pass === true) ? "" : pass;
+
                     var param = "API/?c=user&a=edit&" + $("#modal-user form").serialize() + pass;
                     xhr = $.getJSON(GM.rootURL + param)
                         .done(function () {
@@ -625,7 +616,7 @@ var GM = {
 
             passCheck : function () {
 
-                var pass = "";
+                var pass = true;
 
                 // new password check
                 if ($("#modal-user [name='new-pass']").val() !== "" || $("#modal-user [name='repeat-pass']").val() !== "") {
@@ -964,6 +955,21 @@ $(function () {
     .delegate("a.delete", "click", function (e) {
         e.preventDefault();
         GM._fn.user.deleteUser();
+    })
+
+    $("#modal-user a.save-me").on("click", function (e) {
+        e.preventDefault();
+        GM._fn.user.saveUser();
+    });
+
+    $("#modal-user a.save-changes").click(function (e) {
+        e.preventDefault();
+        GM._fn.user.saveUser(true);
+    });
+
+    $("#modal-user a.add-user").click(function (e) {
+        e.preventDefault();
+        GM._fn.user.addUser();
     });
 
     // users details

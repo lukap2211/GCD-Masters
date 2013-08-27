@@ -52,6 +52,8 @@
         <div class="modal-footer">
             <a href="#" class="btn cancel" data-dismiss="modal">Cancel</a>
             <a href="#" class="btn back-to-users">Back</a>
+            <a href="#" class="btn btn-primary add-user"><i class="icon-ok"></i> Add User</a>
+            <a href="#" class="btn btn-primary save-changes"><i class="icon-ok"></i> Save Changes</a>
             <a href="#" class="btn btn-primary save-me"><i class="icon-ok"></i> Save</a>
             <a href="#" class="btn btn-danger delete float-left"><i class="icon-remove"></i> Delete</a>
 
