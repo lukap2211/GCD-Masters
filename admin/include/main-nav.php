@@ -24,7 +24,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-fixed-width icon-eye-open"></i> View as <span id="view-as"><?="{$_SESSION['first_name']} {$_SESSION['last_name']}"?></span> <b class="caret"></b> </a>
                             <ul id="viewAsId" class="dropdown-menu">
                                 <li class="divider"></li>
-                                <li><a class="view_as" data-user-id="<?=$_SESSION['id']?>" data-user-fullname="<?="{$_SESSION['first_name']} {$_SESSION['last_name']}"?>" href="#"><i class="icon-fixed-width icon-remove"></i> Reset</a></li>
+                                <li><a class="view_as" data-user-id="<?=$_SESSION['id']?>" data-user-fullname="<?="{$_SESSION['first_name']} {$_SESSION['last_name']}"?>" href="#"><i class="icon-fixed-width icon-user"></i> <?="{$_SESSION['first_name']} {$_SESSION['last_name']}"?> (admin)</a></li>
                             </ul>
                         </li>
                         <?php } else { ?>

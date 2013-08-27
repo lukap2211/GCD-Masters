@@ -23,9 +23,9 @@ function item_all() {
     }
 
     // query
-    $query = "SELECT c.id, c.title, t.type, c.content, c.excerpt, c.date, c.status, u.id as user_id, c.geo_lat, c.geo_lng, u.username, c.category, t.type, c.image_name, c.comments, c.twitter, c.facebook";
-    $query.= " FROM contents c, users u, types t";
-    $query.= " WHERE c.user_id = u.id AND c.type_id = t.id $filter";
+    $query = "SELECT c.id, c.title, t.type, c.content, u.id as user_id, u.username, c.date, e.username as user_edit, c.date_modified, c.image_name, c.geo_lat, c.geo_lng, c.category, c.comments, c.twitter, c.facebook";
+    $query.= " FROM contents c, users u, users e, types t";
+    $query.= " WHERE c.user_id = u.id AND c.edit_user_id = e.id AND c.type_id = t.id $filter";
     $query.= " ORDER BY c.category ASC, c.date DESC";
 
     // execute
@@ -70,7 +70,7 @@ function item_id() {
     }
 
     // query
-    $query = "SELECT c.id, c.title, t.type, c.content, u.id as user_id, u.username, c.date, e.username as user_edit, c.date_modified, c.geo_lat, c.geo_lng, c.category, t.type, c.comments, c.twitter, c.facebook";
+    $query = "SELECT c.id, c.title, t.type, c.content, u.id as user_id, u.username, c.date, e.username as user_edit, c.date_modified, c.image_name, c.geo_lat, c.geo_lng, c.category, c.comments, c.twitter, c.facebook";
     $query.= " FROM contents c, users u, users e, types t";
     $query.= " WHERE c.user_id = u.id AND c.edit_user_id = e.id AND c.type_id = t.id $filter";
 
@@ -101,11 +101,13 @@ function item_edit() {
         || ($_FILES["file"]["type"] == "image/pjpeg")
         || ($_FILES["file"]["type"] == "image/x-png")
         || ($_FILES["file"]["type"] == "image/png"))
-        && ($_FILES["file"]["size"] < 5242880)
+        && ($_FILES["file"]["size"] < 5242880) // 5MB limit
         && in_array($extension, $allowedExts)){
 
             if ($_FILES["file"]["error"] > 0) {
+
                 echo "Error: " . $_FILES["file"]["error"] . "<br>";
+
             } else {
 
                 $image_file = mysql_real_escape_string(file_get_contents($_FILES["file"]["tmp_name"]));
@@ -113,10 +115,8 @@ function item_edit() {
                 $image_type = $_FILES["file"]["type"];
 
                 $upload_image = " image_name = '{$image_name}', image = '{$image_file}', image_type = '{$image_type}',";
-
             }
     }
-
 
     // set checkbox values
     $comments = (!empty($_POST['comments']) && ($_POST['comments'] = 'on')) ? 1 : 0;
@@ -132,14 +132,13 @@ function item_edit() {
     $query.= " WHERE id = {$_POST['id']};";
 
 
-    // echo "<pre>";
-    // print_r($_POST);
-    // echo "$query";
-    // echo "</pre>";
+    echo "<pre>";
+    print_r($_POST);
+    echo "$query";
+    echo "</pre>";
 
     // execute
-    run_query($query);
-
+    return $query;
 }
 
 function item_get_image() {
@@ -150,9 +149,8 @@ function item_get_image() {
     $query.= " WHERE c.id = '{$_GET['id']}'";
 
     // execute
-    return($query);
+    return $query ;
 }
-
 
 function item_edit_loc() {
 
@@ -330,8 +328,6 @@ function run_query ($query) {
         echo json_encode($output);
 
     }
-
-
 }
 
 ?>

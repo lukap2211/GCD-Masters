@@ -10,7 +10,7 @@ var GM = {
 
     // settings
     apiKey          : "AIzaSyCGHVSkXtwVy4D6GDK5WVVgFXs_SKg-0Z0",
-    rootURL         : "http://github/GCD-masters/",         // local
+    // rootURL         : "http://github/GCD-masters/",         // local
     rootURL         : "http://lukap.info/gcd/masters/",     // production
     latitude        : "",
     longitude       : "",
@@ -38,7 +38,7 @@ var GM = {
     iterator        : 0,
     pin  : {
 
-        /* backup icon */
+        /* backup icons */
         // green       : "http://o.aolcdn.com/os/industry/misc/pin_green",
         // orange      : "http://o.aolcdn.com/os/industry/misc/pin_orange",
         // blue        : "http://o.aolcdn.com/os/industry/misc/pin_blue",
@@ -156,7 +156,7 @@ var GM = {
 
             setMap : function () {
 
-                GM._fn.markers.loadMarkers();
+                GM._fn.markers.loadMarkers(true);
                 GM._fn.admin.customZoom();
                 GM._fn.admin.loadLegend();
 
@@ -205,7 +205,7 @@ var GM = {
 
         markers : {
 
-            loadMarkers : function () {
+            loadMarkers : function (timeout) {
 
                 var filter;
                 // reset values
@@ -228,20 +228,27 @@ var GM = {
                         // $(".progress div").css({"width" : 0});
                         // drop all markers on map
                         setTimeout(function () {
-                            GM._fn.markers.placeMarkers();
+                            GM._fn.markers.placeMarkers(timeout);
                         }, 1000);
+
+
                     })
                     .fail(function () {
                         alert("ERROR: " + param);
                     });
             },
 
-            placeMarkers : function () {
+            placeMarkers : function (timeout) {
                 for (var i = 0; i < GM.locations.length; i++) {
-                    setTimeout(function () {
+                    if (timeout) {
+                        setTimeout(function () {
+                            GM._fn.marker.placeMarker();
+                        }, i * 200);
+                    } else {
                         GM._fn.marker.placeMarker();
-                    }, i * 300);
                     }
+
+                }
             }
         },
 
@@ -274,7 +281,7 @@ var GM = {
                 var param = "API/?c=content&a=id&id=" + id;
                 xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
-                        if(data.results){
+                        if(data.result){
                             console.log("ID: " + id + " - Marker Fetched");
                             // add record into locations array
                             GM.locations.push(data.items[0]);
@@ -289,7 +296,8 @@ var GM = {
 
             placeMarker : function () {
 
-                var i = GM.iterator;
+                var i = GM.iterator, animate_me;
+
 
                 GM.markers[i] = (new google.maps.Marker({
                     animation   : google.maps.Animation.DROP,
@@ -351,7 +359,7 @@ var GM = {
                 xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
                         if (data.result) {
-                            console.log("Marker updated!");
+                            console.log("Id: " + GM.locations[i].id + " - Marker location updated!");
                         }
                     })
                     .fail(function () {
@@ -378,7 +386,7 @@ var GM = {
 
                                 // close and refresh
                                 $("#marker-modal").modal('hide');
-                                GM._fn.map.setMap();
+                                GM._fn.markers.loadMarkers();
                             } else {
                                 // TODO
                                 alert("ERROR: no results!");
@@ -403,12 +411,17 @@ var GM = {
                 var data = GM.locations[i];
 
                 console.log("ID: " + GM.locations[i].id + " - View Marker");
-                console.log(data);
+                // console.log(data);
 
                 var src = "http://maps.googleapis.com/maps/api/staticmap?markers=icon:" + GM._fn.admin.getIcon(GM.locations[i].category, true) + "|" + GM.locations[i].geo_lat + "," + GM.locations[i].geo_lng + "|shadow:true&center=" + GM.locations[i].geo_lat + "," + GM.locations[i].geo_lng + "&zoom=" + GM.options.zoom + "&maptype=hybrid&size=530x250&sensor=false";
 
+                // add info
+                $("#modal-marker .edit-info").html("Edited on " +  data.date_modified + " by " + data.user_edit);
+
+
+
                 $("#modal-marker [name='id']").val(data.id);
-                $("#modal-marker [name='user_id']").val(GM.user.id);
+                $("#modal-marker [name='user_id']").val(GM.user.viewAsId);
                 $("#modal-marker [name='title']").val(data.title);
                 $("#modal-marker [name='content']").html(data.content);
                 $("#modal-marker .geo_lat").html(data.geo_lat);
@@ -426,7 +439,7 @@ var GM = {
                 if (data.image_name) {
                     GM._fn.marker.loadImage(data.id);
                 } else {
-                    console.log("NOIMAGE!");
+                    console.log("ID: " + GM.locations[i].id + " - NO Image.");
                     $("#modal-marker .image").prop("src", GM.rootURL + "admin/img/noimage.png");
                 }
 
@@ -439,33 +452,33 @@ var GM = {
 
             loadImage : function (id) {
                 // load iamge from database based on id
-                console.log("ID: " + id + " - Loading image");
+                console.log("ID: " + id + " - Loading image...");
                 $("#modal-marker .image").prop("src", GM.rootURL + "API/load_image.php?id=" + id);
             },
 
-            saveMarker : function () {
-                setTimeout(function () {
-                    $('#modal-marker').modal('hide');
-                    GM._fn.map.getMap();
-                }, 1000)
-            },
-
-            startUpload : function () {
-                // $("#upload_form").submit();
+            saveMarkerStart : function () {
+                console.log("ID: " + GM.currentId + " - Saving Marker...");
                 $('.modal .loader').css("display", "block");
                 $('.modal .actions').css("display", "none");
                 return false;
             },
 
-            stopUpload : function (success) {
+            saveMarkerStop : function (output) {
 
-                $(".loader").css("display", "none");
+                console.log("ID: " + GM.currentId + " - Done!");
+                // console.log(output);
 
-                if (success == 1){
-                    GM._fn.marker.saveMarker();
+                if (output.result === 1){
+                    setTimeout(function () {
+                        $(".loader").css("display", "none");
+                        $('#modal-marker').modal('hide');
+                        GM._fn.markers.loadMarkers();
+                    }, 1000)
                 } else {
-                    alert("ERROR: Marker not Saved!");
+                    alert(output.error);
+                    $(".loader").css("display", "none");
                 }
+
                 return true;
             }
         },
@@ -818,7 +831,7 @@ $(function () {
         e.preventDefault();
         GM.user.viewAsId = $(this).data("user-id");
         $("#view-as").html($(this).data("user-fullname"));
-        GM._fn.map.setMap();
+        GM._fn.markers.loadMarkers();
     });
 
     // site settings get
@@ -854,13 +867,13 @@ $(function () {
     // marker upload image
     // $("#modal-marker .upload-image").click(function (e) {
     //     e.preventDefault();
-    //     GM._fn.marker.startUpload();
+    //     GM._fn.marker.saveStart();
     // });
 
     // marker save
     $("#modal-marker a.save").click(function (e) {
         e.preventDefault();
-        GM._fn.marker.startUpload();
+        GM._fn.marker.saveMarkerStart();
         $("#upload_form").submit();
 
     });

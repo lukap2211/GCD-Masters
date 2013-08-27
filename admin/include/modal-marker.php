@@ -6,8 +6,10 @@
         </div>
         <div class="modal-body">
 
+            <p class="muted text-right edit-info">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+
             <!-- <form> -->
-            <form id="upload_form" action="../API/upload_image.php" method="post" enctype="multipart/form-data" target="upload_target" onsubmit="GM._fn.marker.startUpload();" >
+            <form id="upload_form" action="../API/upload_image.php" method="post" enctype="multipart/form-data" target="upload_target" >
 
                 <input type="hidden" name="c" value="content" />
                 <input type="hidden" name="a" value="edit" />
@@ -55,7 +57,9 @@
                         <div class="tab-pane" id="tab3">
                             <div class="image-container">
                                 <div class="dimensions">530x250px</div>
-                                <img class="image" />
+                                <div class="image-wrapper">
+                                    <img class="image" />
+                                </div>
                             </div>
 
                             <fieldset class="float-left ">

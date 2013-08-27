@@ -25,6 +25,7 @@
     while($row = mysqli_fetch_array($result, MYSQL_ASSOC)){
         $output["items"][] = $row;
     }
+
     // echo "<pre>";
     // print_r($output);
     // echo "</pre>";
