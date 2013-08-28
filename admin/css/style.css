@@ -10,7 +10,7 @@
 #map-canvas .loader {overflow: hidden; margin-top: 200px; /*min-height:100%;*/ }
 #map-canvas .loader .bar {height: 100px; }
 #map-controls {float:left;}
-#legend {position: absolute; bottom: 0px; height: 80px; width: 100%; display: none;}
+#legend {position: absolute; bottom: 0px; height: 80px; width: 100%; }
 #legend .container {z-index: 1060; padding: 10px; background: white; }
 #legend .progress {width: 100%; margin: auto;}
 #legend .progress div.bar a {display: block; text-decoration: none; color: white; overflow: hidden;}
