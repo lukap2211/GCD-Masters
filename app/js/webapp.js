@@ -1021,11 +1021,6 @@ $(function () {
         GM._fn.admin.customZoom();
     });
 
-    // progress tooltip
-    $('#legend .progress div a').popover({placement: "top", trigger : "hover", toggle : "popover" });
-
-    // Scroll Spy
-    $('#navbar').scrollspy();
 
 });
 

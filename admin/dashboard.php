@@ -42,15 +42,15 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
     <link type="text/css" rel="stylesheet" href="css/style.css" />
 
     <!-- icons -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../icons/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../icons/favicon.ico" type="image/x-icon">
 
-    <link rel="apple-touch-icon" href="img/touch-icon-iphone.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="img/touch-icon-ipad.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="img/touch-icon-iphone-retina.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="img/touch-icon-ipad-retina.png" />
+    <link rel="apple-touch-icon" href="../icons/touch-icon-iphone.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="../icons/touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="../icons/touch-icon-iphone-retina.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="../icons/touch-icon-ipad-retina.png" />
 
-    <link rel="apple-touch-startup-image" href="img/touch-icon-ipad-retina.png  ">
+    <link rel="apple-touch-startup-image" href="../icons/touch-icon-ipad-retina.png  ">
 
     <!-- iPad standalone app -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
