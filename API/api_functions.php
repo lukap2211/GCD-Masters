@@ -17,6 +17,11 @@ function item_all() {
         $filter .= " AND t.type = '{$_GET['type']}'";
     }
 
+    // exclude todo
+    if(!empty($_GET['todo']) /*&& is_bool($_GET['todo'])*/){
+        $filter .= " AND c.category <> 'todo'";
+    }
+
     // by user id (view as user)
     if(!empty($_GET['id']) && is_string($_GET['id'])){
         $filter .= " AND u.id = '{$_GET['id']}'";
