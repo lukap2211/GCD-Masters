@@ -1,0 +1,142 @@
+/*!
+* Copyright 2013 Luka Puharic
+* http://www.apache.org/licenses/LICENSE-2.0.txt
+*/
+
+#login_container {width:450px; margin-top:100px;}
+#dashboard {height:40px; position: relative;}
+#map-canvas {height: 100%; min-height:100%;background-color: #e5e5e5; border:1px solid #ccc; width: 100%; position: absolute;top:0; z-index: -1;}
+#map-canvas img {max-width: none; }
+#map-canvas .loader {overflow: hidden; margin-top: 200px; /*min-height:100%;*/ }
+#map-canvas .loader .bar {height: 100px; }
+#map-controls {float:left;}
+#legend {position: absolute; bottom: 0px; height: 80px; width: 100%; }
+#legend .container {z-index: 1060; padding: 10px; background: white; }
+#legend .progress {width: 100%; margin: auto;}
+#legend .progress div.bar a {display: block; text-decoration: none; color: white; overflow: hidden;}
+#legend .progress div.bar .popover {color:#333; text-shadow:none;}
+
+.container {padding: 10px; background: white; border-radius: 0px;box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); border: 1px solid #ddd;margin-top: 10px;}
+
+.float-left {float: left;}
+.float-right {float: right;}
+
+.info {transition:all 0.4s; -webkit-transition:all 0.4s; -moz-transition:all 0.4s; line-height:50px; height:50px; background: white; border: 1px solid #ddd; width: 450px; position: fixed; left:-400px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)}
+.info .title {font-size: 28px; color: #555; width: 50px; text-align: center; cursor: pointer; text-shadow:0 1px 0 #ffffff; margin-left:10px;}
+
+#copyright {bottom:80px;}
+#location {bottom:140px; display: none;}
+#debug {bottom:200px; display: none;}
+
+.info:hover {left:0;}
+
+label {color: #999; cursor: initial;}
+
+#view-filter {margin-left: 70px}
+.admin {position: absolute; top:0; right: 150px;overflow: hidden; width: 100px; height: 62px;}
+.admin span{position: absolute; left: 0px; top: 20px; font-size: 10px; font-weight: bold; letter-spacing: 0.2em; color: white; background: rgba(255,0,0,0.95); background: #999; width: 100px; text-align: center; padding: 0px 5px; z-index: 999; text-shadow: 0 1px 0 #000; box-shadow: 0 1px 0 #666; transform: rotate(45deg); -ms-transform: rotate(45deg); -webkit-transform: rotate(-45deg);}
+
+
+.modal form {margin:0;}
+.modal input.name {width:500px;}
+.modal textarea {width:515px; min-width: 515px; max-width: 515px;}
+.modal .switch {width: 100px; margin:0 7px; padding: 10px 30px 20px ; border-radius: 10px; border:1px solid #ccc; float: left; background:#f1f1f1;}
+.modal .switch .head {color: #666; margin:20px; text-align: center;}
+.modal .switch .head i {font-size: 28px;}
+.modal .switch .onoffswitch {margin: 0 10px;}
+.modal .switch .pin {position: relative; }
+.modal .switch .pin img {z-index: 2; position: relative;}
+.modal .switch .pin img.shadow {z-index: 1; position: absolute; bottom: 3px;left: 10px;}
+.modal .load-image {overflow: hidden; position: relative; margin:10px 0; float: left;}
+.modal .load-image [type='file'] {cursor: inherit; display: block; font-size: 999px; filter: alpha(opacity=0); min-height: 100%; min-width: 100%; opacity: 0; position: absolute; right: 0; text-align: right; top: 0; }
+.modal .upload-image {float: left; margin: 10px 0;}
+.modal iframe {width:0%;height:0px;border:0px solid #FFF;}
+.modal iframe.debug {width:100%;height:200px;}
+
+.modal .image-wrapper {width: 526px; height: 250px; overflow: auto;}
+.modal .loc-container,
+.modal .image-container {display: inline-block; width: 526px; height: 250px; font-size: 0; line-height: 0; vertical-align: middle; background-size: 100%; background-position: 50% 50%; background-repeat: no-repeat; background-image: url('../img/530x250px.png'); overflow: hidden; position: relative; }
+.modal .image-container { border: 1px dashed #999; }
+.modal .image-container .dimensions { position: absolute; background: #333; color:#FFF; width:80px; height: 20px; right:0; top:0; font-size: 12px; line-height: 20px; text-align: center;}
+.modal .loc-container .longlat { position: absolute; background: #333; color:#FFF; width:140px; height: 20px; right:0; top:0; font-size: 12px; line-height: 20px; text-align: center;}
+#modal-marker .loader {display: none; margin: 10px 0; width: 560px;}
+.modal .progress {margin: 20px 10px}
+#modal-marker .switch.cat {width: 60px; padding: 20px 25px; margin: 0 3px; cursor: pointer; text-align: center;}
+#modal-marker .switch.cat .head {margin: 10px;}
+#modal-marker .switch.cat input {margin-top: 30px;}
+#modal-marker #tab4 ul {padding-left: 5px;}
+
+
+/*
+
+ON - OFF switch
+
+Following CSS taken from http://proto.io/freebies/onoff/
+
+*/
+
+.onoffswitch {
+    position: relative; width: 80px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+    display: none;
+}
+
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #DDD; border-radius: 50px;
+}
+
+.onoffswitch-inner {
+    width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.1s ease-in 0s;
+    -webkit-transition: margin 0.1s ease-in 0s;
+    -o-transition: margin 0.1s ease-in 0s;
+    transition: margin 0.1s ease-in 0s;
+}
+
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
+    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 12px;
+    background-color: #FFFFFF;
+    color: #333333;
+}
+
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 12px;
+    background-color: #FFFFFF;
+    color: #333333;
+    text-align: right;
+}
+
+.onoffswitch-switch {
+    width: 20px; margin: 2.5px;
+    background: #A1A1A1;
+    border: 2px solid #FFF; border-radius: 50px;
+    position: absolute; top: 0; bottom: 0; right: 51px;
+    -moz-transition: all 0.1s ease-in 0s;
+    -webkit-transition: all 0.1s ease-in 0s;
+    -o-transition: all 0.1s ease-in 0s;
+    transition: all 0.1s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+    background-color: #5EB95E;
+}
+
+/* ON - OFF switch END */
+

@@ -177,7 +177,7 @@ include("include/login_form.php");
     <!-- JAVASCRIPT -->
     <script src="js/jquery-1.10.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/application.js"></script>
+    <script src="js/cms.js"></script>
 
 </body>
 

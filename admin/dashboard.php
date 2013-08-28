@@ -164,7 +164,7 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
     <!-- JAVASCRIPT -->
     <script src="js/jquery-1.10.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/application.js"></script>
+    <script src="js/cms.js"></script>
 
 </body>
 

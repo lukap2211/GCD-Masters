@@ -3,7 +3,7 @@
 * http://www.apache.org/licenses/LICENSE-2.0.txt
 */
 
-var marker, map, xhr;
+var map, xhr;
 
 // Google Maps object
 var GM = {
@@ -118,28 +118,20 @@ var GM = {
                 map.panTo(center);
 
                 // set Map
-                GM._fn.map.setMap();
+                GM._fn.map.setMap(true);
 
                 // set listeners
 
                 // on click add new location
                 google.maps.event.addListener(map, 'dblclick', function (e) {
-                    // if (GM.user.id !== GM.user.viewAsId) {
-                        // alert("You cant add marker while viewing as another user!");
-                    // } else {
-                        // disable more than one at the setTimeout
-                        // console.log(marker === undefined);
-                        // if(marker === undefined){
-                        GM._fn.marker.addMarker(e.latLng, map);
-                        // }
-                    // }
+                    GM._fn.marker.addMarker(e.latLng, map);
                 });
 
                 google.maps.event.addListener(map, 'tilesloaded', function () {
                     // $('#map-canvas').find('img').parent().css('border', '1px solid red');
                 });
 
-                // pan offset
+                // pan offset - NOT USED
                 google.maps.Map.prototype.panToWithOffset = function (latlng, offsetX, offsetY) {
                     var map = this;
                     var ov = new google.maps.OverlayView();
@@ -154,9 +146,9 @@ var GM = {
                 };
             },
 
-            setMap : function () {
+            setMap : function (timeout) {
 
-                GM._fn.markers.loadMarkers(true);
+                GM._fn.markers.loadMarkers(timeout);
                 GM._fn.admin.customZoom();
                 GM._fn.admin.loadLegend();
 
@@ -223,6 +215,7 @@ var GM = {
                         if (data.result) {
                             $.each(data.items, function (i, item) {
                                 GM.locations.push(item);
+                                console.log(item);
                             });
                         }
                         // $(".progress div").css({"width" : 0});
@@ -254,7 +247,7 @@ var GM = {
 
         marker : {
 
-            addMarker : function (position, map) {
+            addMarker : function (position) {
 
                 // update position
                 if (GM.user.privilege === "admin") {
@@ -281,7 +274,7 @@ var GM = {
                 var param = "API/?c=content&a=id&id=" + id;
                 xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
-                        if(data.result){
+                        if (data.result) {
                             console.log("ID: " + id + " - Marker Fetched");
                             // add record into locations array
                             GM.locations.push(data.items[0]);
@@ -296,7 +289,7 @@ var GM = {
 
             placeMarker : function () {
 
-                var i = GM.iterator, animate_me;
+                var i = GM.iterator;
 
 
                 GM.markers[i] = (new google.maps.Marker({
@@ -385,8 +378,8 @@ var GM = {
                                 GM.markers.splice(i, 1);
 
                                 // close and refresh
-                                $("#marker-modal").modal('hide');
-                                GM._fn.markers.loadMarkers();
+                                $("#modal-marker").modal('hide');
+                                GM._fn.map.setMap(true);
                             } else {
                                 // TODO
                                 alert("ERROR: no results!");
@@ -438,7 +431,7 @@ var GM = {
                 // load image from database based on id
                 if (data.image_name) {
                     GM._fn.marker.loadImage(data.id);
-                    $("#modal-marker .load-image .btn").html("Upload New Image Here!")
+                    $("#modal-marker .load-image .btn").html("Upload New Image Here!");
 
                 } else {
                     console.log("ID: " + GM.locations[i].id + " - NO Image.");
@@ -468,14 +461,15 @@ var GM = {
             saveMarkerStop : function (output) {
 
                 console.log("ID: " + GM.currentId + " - Done!");
-                // console.log(output);
+                console.log(output);
 
-                if (output.result === 1){
+                if (output.result === 1) {
                     setTimeout(function () {
                         $(".loader").css("display", "none");
                         $('#modal-marker').modal('hide');
-                        GM._fn.markers.loadMarkers();
-                    }, 1000)
+                        GM._fn.markers.loadMarkers(true);
+                        GM._fn.admin.loadLegend();
+                    }, 1000);
                 } else {
                     alert(output.error);
                     $(".loader").css("display", "none");
@@ -510,6 +504,8 @@ var GM = {
                 $("#modal-user .delete").hide();
                 $("#modal-user .cancel").hide();
                 $("#modal-user .back-to-users").hide();
+                $("#modal-user [name='new-pass']").val("");
+                $("#modal-user [name='repeat-pass']").val("");
 
                 if (user) {
                     $("#modal-user h3").html("User Settings: " + user.username + " - " + user.privilege);
@@ -538,7 +534,7 @@ var GM = {
                     $("#modal-user [name='username']").prop("disabled", "disabled");
                     $("#modal-user .back-to-users").show();
                     $("#modal-user .cancel").hide();
-                    if (parseInt(user.id,10) !== parseInt(GM.user.id)) {
+                    if (parseInt(user.id, 10) !== parseInt(GM.user.id, 10)) {
                         $("#modal-user .delete").show();
                     }
                     $("#modal-users").modal('hide');
@@ -552,12 +548,11 @@ var GM = {
                 $('#modal-user').modal({keyboard : true});
             },
 
-            deleteUser : function (id) {
+            deleteUser : function () {
 
                 // confirm delete
                 var dialog = window.confirm("Are you sure you want to delete this?");
                 if (dialog) {
-
                     var param = "API/?c=user&a=delete&id=" + $("#modal-user input[name=id]").val();
                     xhr = $.getJSON(GM.rootURL + param)
                         .done(function () {
@@ -603,7 +598,7 @@ var GM = {
                     xhr = $.getJSON(GM.rootURL + param)
                         .done(function () {
                             $('#modal-user').modal('hide');
-                            if (admin){
+                            if (admin) {
                                 GM._fn.user.getAllUsers();
                             }
                         })
@@ -661,7 +656,7 @@ var GM = {
                     })
                     .fail(function () {
                         alert("ERROR: " + param);
-                        });
+                    });
             }
         },
 
@@ -898,8 +893,8 @@ var GM = {
 
 $(function () {
 
-    // default map on dashboard
-    GM.currentMap = "smi";
+    // MAIN SETTINGS
+    GM.currentMap = "smi"; // default map on dashboard
     GM.options.draggable = true;
 
     // init
@@ -911,7 +906,7 @@ $(function () {
     $(".nav .set_map").click(function (e) {
         e.preventDefault();
         GM.currentMap = $(this).data("map");
-        GM._fn.map.setMap();
+        GM._fn.map.setMap(true);
     });
 
     // view as
@@ -919,7 +914,7 @@ $(function () {
         e.preventDefault();
         GM.user.viewAsId = $(this).data("user-id");
         $("#view-as").html($(this).data("user-fullname"));
-        GM._fn.markers.loadMarkers();
+        GM._fn.map.setMap(true);
     });
 
     // site settings get
@@ -940,12 +935,15 @@ $(function () {
         GM._fn.user.getAllUsers();
     });
 
-    // site settings save
+    // MODAL BUTTONS
+
+    // site actions
     $("#modal-site a.save").click(function (e) {
         e.preventDefault();
         GM._fn.settings.saveSettings();
     });
 
+    // user actions
     $("#modal-user")
     .delegate("a.back-to-users", "click", function (e) {
         e.preventDefault();
@@ -956,23 +954,20 @@ $(function () {
         e.preventDefault();
         GM._fn.user.deleteUser();
     })
-
-    $("#modal-user a.save-me").on("click", function (e) {
+    .delegate("a.save-me", "click", function (e) {
         e.preventDefault();
         GM._fn.user.saveUser();
-    });
-
-    $("#modal-user a.save-changes").click(function (e) {
+    })
+    .delegate("a.save-changes", "click", function (e) {
         e.preventDefault();
         GM._fn.user.saveUser(true);
-    });
-
-    $("#modal-user a.add-user").click(function (e) {
+    })
+    .delegate("a.add-user", "click", function (e) {
         e.preventDefault();
         GM._fn.user.addUser();
     });
 
-    // users details
+    // users actions
     $("#modal-users")
     .delegate("a.details", "click", function (e) {
         e.preventDefault();
@@ -981,32 +976,27 @@ $(function () {
     .delegate("a.add-user", "click", function (e) {
         e.preventDefault();
         GM._fn.user.showUser();
-    })
+    });
 
-    // marker upload image
-    // $("#modal-marker .upload-image").click(function (e) {
-    //     e.preventDefault();
-    //     GM._fn.marker.saveStart();
-    // });
-
-    // marker save
-    $("#modal-marker a.save").click(function (e) {
+    // marker actions
+    $("#modal-marker")
+    .delegate("a.save", "click", function (e) {
         e.preventDefault();
         GM._fn.marker.saveMarkerStart();
         $("#upload_form").submit();
-    });
-
-    $('#modal-marker a.delete').click(function (e) {
+    })
+    .delegate("a.delete", "click", function (e) {
         GM._fn.marker.deleteMarker(GM.currentId);
         e.preventDefault();
     });
+
+    // MAP CONTROL
 
     // custom map type
     $("#map-controls #mapType").click(function (e) {
         e.preventDefault();
         var typeId = $(this).data("type-id") + 1;
-        // alert(typeId);
-        if (typeId === 5) {typeId = 0; }
+        if (typeId === 3) {typeId = 1; }
         $(this).data("type-id", typeId);
         GM._fn.admin.customType(typeId);
     });
