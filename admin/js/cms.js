@@ -114,8 +114,8 @@ var GM = {
                 // google.maps.visualRefresh = true;
                 map = new google.maps.Map(document.getElementById('map-canvas'), GM.options);
                 // move to current location
-                var center = new google.maps.LatLng(GM.latitude, GM.longitude);
-                map.panTo(center);
+                // var center = new google.maps.LatLng(GM.latitude, GM.longitude);
+                // map.panTo(center);
 
                 // set Map
                 GM._fn.map.setMap(true);
@@ -125,10 +125,6 @@ var GM = {
                 // on click add new location
                 google.maps.event.addListener(map, 'dblclick', function (e) {
                     GM._fn.marker.addMarker(e.latLng, map);
-                });
-
-                google.maps.event.addListener(map, 'tilesloaded', function () {
-                    // $('#map-canvas').find('img').parent().css('border', '1px solid red');
                 });
 
                 // pan offset - NOT USED
@@ -877,7 +873,8 @@ var GM = {
     },
 
     init : function () {
-        navigator.geolocation.getCurrentPosition(GM._fn.map.getLocation);
+        // navigator.geolocation.getCurrentPosition(GM._fn.map.getLocation);
+        GM._fn.map.getMap();
         GM.user.id = $("#user").data("user-id");
         GM.user.privilege = $("#user").data("user-privilege");
         GM.user.viewAsId = $("#user").data("user-id");
@@ -894,7 +891,7 @@ var GM = {
 $(function () {
 
     // MAIN SETTINGS
-    GM.currentMap = "smi"; // default map on dashboard
+    GM.currentMap = "gcd"; // default map on dashboard
     GM.options.draggable = true;
 
     // init
