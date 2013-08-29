@@ -22,6 +22,11 @@ function item_all() {
         $filter .= " AND c.category <> 'todo'";
     }
 
+    // filter category
+    if(!empty($_GET['category']) /*&& is_bool($_GET['todo'])*/){
+        $filter .= " AND c.category = '{$_GET['category']}'";
+    }
+
     // by user id (view as user)
     if(!empty($_GET['id']) && is_string($_GET['id'])){
         $filter .= " AND u.id = '{$_GET['id']}'";

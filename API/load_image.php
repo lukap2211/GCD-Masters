@@ -5,7 +5,7 @@
     ini_set('display_errors', TRUE);
 
     //open connection
-    require("../admin/include/connect.php");
+    require("../cms/include/connect.php");
     global $conn;
 
     // include

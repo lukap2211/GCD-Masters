@@ -38,8 +38,7 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-    <meta name="viewport" content="width=321, initial-scale=1.0">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- GOOGLE MAPS API -->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.6&sensor=false"></script>
@@ -50,24 +49,26 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
 
     <!-- MAIN HEADER -->
     <header class="main">
-        <div class="banner-wrapper">
-            <a class="logo" href="#siteInfo" ><img src="../assets/icons/logo.png" />
-                <h1></h1>
+        <div class="info">
+            <a class="title scrollSection" data-section="about" >
+                <img src="../assets/icons/logo.png" />
+                <h1 class="siteTitle"></h1>
             </a>
             <div class="toggle-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <i class="icon-list-ul"></i>
             </div>
         </div>
 
         <!-- MAIN NAVIGATION -->
-        <nav class="header-nav">
+        <nav class="header-nav nav">
             <ul class="nav-list">
-                <li><a class="button all" href="#">Show All</a></li>
-                <li><a class="button nearby" href="#">Show Nearby</a></li>
-                <li><a class="button category">Filter by Category</a></li>
-                <li><a class="button legal">Terms And Conditions</a></li>
+                <li><a class="button scrollSection" data-section="browse">Browse Locations</a></li>
+                <!-- <li><a class="button nearby" href="#">Show Nearby</a></li> -->
+                <li><a class="button scrollSection" data-section="category">Filter by Category</a></li>
+                <li><a class="button scrollSection" data-section="locations">Change Location</a></li>
+            </ul>
+            <ul class="nav-list">
+                <li><a class="button scrollSection" data-section="about">About</a></li>
             </ul>
             <ul class="nav-list close">
                 <li><a class="button black" href="javascript:void(0);"><i class="icon-remove"></i></a></li>
@@ -85,44 +86,92 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
 
     <!-- MAP CONTROLS -->
     <div id="map-controls">
-        <div class="btn-group btn-group-vertical">
+        <div class="group ">
             <button id="zoomIn"  class="button"><i class="icon-plus"></i></button>
             <button id="mapType" data-type-id="1" class="button"><i class="icon-globe"></i></button>
             <button id="zoomOut" class="button"><i class="icon-minus"></i></button>
         </div>
     </div>
 
-    <article>
-        <a class="scrollTop" href="#">Back to top <i class="icon-arrow-up"></i></a>
-        <header>Content Title!</header>
-        <div class="location">
-            <img src="http://maps.googleapis.com/maps/api/staticmap?markers=icon:http://lukap.info/gcd/masters/admin/img/pin_todo_small.png|53.349379,-6.278376|shadow:true&center=53.349379,-6.278376&zoom=17&maptype=hybrid&size=1060x500&sensor=false" />
-        </div>
-        <div class="body">
-            <div class="content">Content Comes Here!</div>
-        </div>
+    <div class="main-container">
 
-        <footer>Social LINKS</footer>
-    </article>
+        <!-- ARTICLE -->
+        <article>
+
+            <!-- ARTICLE CONTROLS -->
+            <div class="browse article-header">
+                <nav>
+                    <button id="prev" class="button scrollSection" data-section="browse" ><i class="icon-chevron-left"></i></button>
+                    <button id="next" class="button scrollSection" data-section="browse"><i class="icon-chevron-right"></i></button>
+                </nav>
+            </div>
+
+            <h1 class="title"></h1>
+
+            <div class="image"></div>
+
+            <div class="content"></div>
+
+            <div class="location"></div>
+
+            <div class="social"></div>
+
+            <div class="scrollTop separator" href="#">Back to top <i class="icon-arrow-up"></i></div>
+        </article>
 
 
-    <!-- FOOTER -->
-    <hr />
-    <footer class="main">
+        <!-- CATEGORIES -->
+        <section class="category light">
 
-    <h2>SITE INFO</h2>
-        <ul>
-            <li><a href="#">Terms And Conditions</a></li>
-            <li><a href="#">Terms And Conditions</a></li>
-            <li><a href="#">Terms And Conditions</a></li>
-            <li class="admin"><a href="/admin">Admin</a></li>
-        </ul>
-        <ul>
-            <li><a class="set_map button" data-map="gcd" href="#">GCD Campus</a></li>
-            <li><a class="set_map button" data-map="smi" href="#">Smithfield Square</a></li>
-            <li><a class="set_map button" data-map="pho" href="#">Phoenix Park</a></li>
-            <li><a class="set_map button" data-map="dub" href="#">Dublin</a></li>
-        </ul>
+            <h2>Filter</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><img src="http://lukap.info/gcd/masters/assets/pins/pin_green.png" width="70" height="70" /><a class="set_category button" data-category="activity" href="#">Activity</a></li>
+                    <li><img src="http://lukap.info/gcd/masters/assets/pins/pin_orange.png" width="70" height="70" /><a class="set_category button" data-category="history" href="#">History</a></li>
+                    <li><img src="http://lukap.info/gcd/masters/assets/pins/pin_blue.png" width="70" height="70" /><a class="set_category button" data-category="study" href="#">Study</a></li>
+                    <li><div class="reset" /><i class="icon-remove"> </i></div><a class="set_category button" data-category="" href="#">Reset</a></li>
+                </ul>
+            </nav>
+
+            <div class="scrollTop separator" href="#">Back to top <i class="icon-arrow-up"></i></div>
+
+        </section>
+
+        <!-- LOCATIONS -->
+        <section class="locations light">
+
+            <h2>Locations</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a class="set_map button" data-map="gcd" href="#">GCD Campus</a></li>
+                    <li><a class="set_map button" data-map="smi" href="#">Smithfield Square</a></li>
+                    <li><a class="set_map button" data-map="pho" href="#">Phoenix Park</a></li>
+                    <li><a class="set_map button" data-map="dub" href="#">Dublin</a></li>
+                </ul>
+
+                <div class="scrollTop separator" href="#">Back to top <i class="icon-arrow-up"></i></div>
+            </nav>
+        </section>
+
+        <div class="clearfix"></div>
+
+    </div>
+
+    <footer class="about dark">
+
+        <div class="scrollTop separator" href="#">Back to top <i class="icon-arrow-up"></i></div>
+
+        <img src="../assets/icons/logo.png" />
+        <h3 class="siteTitle"></h3>
+        <p class="siteDesc"></p>
+
+        <p class="small" >&copy; Luka Puharic, 2013, except where stated differently.</p>
+
+        <p>
+            <a class="github" href="https://github.com/lukap2211/GCD-Masters"><i class="icon-github"></i></a>
+        </p>
 
     </footer>
 

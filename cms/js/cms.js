@@ -47,12 +47,12 @@ var GM = {
         // shadow      : "http://o.aolcdn.com/os/industry/misc/pin_shadog"
 
         /* originals */
-        green       : "http://lukap.info/gcd/masters/admin/img/pin_green",
-        orange      : "http://lukap.info/gcd/masters/admin/img/pin_orange",
-        blue        : "http://lukap.info/gcd/masters/admin/img/pin_blue",
-        black       : "http://lukap.info/gcd/masters/admin/img/pin_black",
-        todo        : "http://lukap.info/gcd/masters/admin/img/pin_todo",
-        shadow      : "http://lukap.info/gcd/masters/admin/img/pin_shadow"
+        green       : "http://lukap.info/gcd/masters/assets/pins/pin_green",
+        orange      : "http://lukap.info/gcd/masters/assets/pins/pin_orange",
+        blue        : "http://lukap.info/gcd/masters/assets/pins/pin_blue",
+        black       : "http://lukap.info/gcd/masters/assets/pins/pin_black",
+        todo        : "http://lukap.info/gcd/masters/assets/pins/pin_todo",
+        shadow      : "http://lukap.info/gcd/masters/assets/pins/pin_shadow"
     },
 
     // legend
@@ -431,7 +431,7 @@ var GM = {
 
                 } else {
                     console.log("ID: " + GM.locations[i].id + " - NO Image.");
-                    $("#modal-marker .image").prop("src", GM.rootURL + "admin/img/noimage.png");
+                    $("#modal-marker .image").prop("src", GM.rootURL + "cms/img/noimage.png");
                 }
 
                 // load modal

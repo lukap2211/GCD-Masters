@@ -25,7 +25,8 @@ var GM = {
     // markers
     locations       : [],
     markers         : [],
-    currentId         : "",
+    currentId       : "",
+    filterCategory  : "",
     iterator        : 0,
     pin  : {
 
@@ -38,13 +39,13 @@ var GM = {
         // shadow      : "http://o.aolcdn.com/os/industry/misc/pin_shadog"
 
         /* originals */
-        green       : "http://lukap.info/gcd/masters/admin/img/pin_green",
-        orange      : "http://lukap.info/gcd/masters/admin/img/pin_orange",
-        blue        : "http://lukap.info/gcd/masters/admin/img/pin_blue",
-        black       : "http://lukap.info/gcd/masters/admin/img/pin_black",
-        todo        : "http://lukap.info/gcd/masters/admin/img/pin_todo",
-        shadow      : "http://lukap.info/gcd/masters/admin/img/pin_shadow",
-        me          : "http://lukap.info/gcd/masters/admin/img/me"
+        green       : "http://lukap.info/gcd/masters/assets/pins/pin_green",
+        orange      : "http://lukap.info/gcd/masters/assets/pins/pin_orange",
+        blue        : "http://lukap.info/gcd/masters/assets/pins/pin_blue",
+        black       : "http://lukap.info/gcd/masters/assets/pins/pin_black",
+        todo        : "http://lukap.info/gcd/masters/assets/pins/pin_todo",
+        shadow      : "http://lukap.info/gcd/masters/assets/pins/pin_shadow",
+        me          : "http://lukap.info/gcd/masters/assets/pins/me"
     },
 
     // legend
@@ -95,11 +96,7 @@ var GM = {
                 GM.accuracy  = position.coords.accuracy;
 
                 // showing current location
-                $("#my_location").html("<a href='//maps.google.com/?q=" + GM.latitude + "," + GM.longitude + "' target=_blank>" + GM.latitude + ", " + GM.longitude + "</a>").hide().fadeIn();
-                $("#my_accuracy").html(Math.round(GM.accuracy)).hide().fadeIn();
-
-                // load map when location retrieved
-                // GM._fn.map.getMap();
+                GM._fn.marker.addMarker();
             },
 
             getMap : function () {
@@ -174,14 +171,15 @@ var GM = {
 
             loadMarkers : function (timeout) {
 
-                var filter;
+                var filter = "";
                 // reset values
                 GM._fn.map.clearMap();
 
-                // TODO
-                filter = "";
+                if (GM.filterCategory !== "") {
+                    filter = "&category=" + GM.filterCategory;
+                }
 
-                var param = "API/?c=content&a=all&todo=false" + filter;
+                var param = "API/?c=content&a=all&todo=false&map=" + GM.currentMap + filter;
                 xhr = $.getJSON(GM.rootURL + param)
                     .done(function (data) {
                         if (data.result) {
@@ -191,8 +189,7 @@ var GM = {
                             });
                         }
                         GM._fn.markers.placeMarkers(timeout);
-
-
+                        GM._fn.marker.viewMarker(0);
 
                     })
                     .fail(function () {
@@ -269,7 +266,8 @@ var GM = {
 
                 // show details ??
                 google.maps.event.addListener(GM.markers[i], 'click', function () {
-                    alert(i);
+
+                    // TODO ?? BUG? wont
                     GM._fn.marker.viewMarker(i);
                 });
 
@@ -290,62 +288,61 @@ var GM = {
                 GM.iterator++;
             },
 
+            resetView : function (){
+                $("article .title").html("");
+                $("article .image").html("");
+                $("article .content").html("");
+                $("article .location").html("");
+                $("article footer .comments").hide();
+                $("article footer .twitter").hide();
+                $("article footer .facebook").hide();
+
+                for (var i = 0; i<GM.locations.length; i++) {
+                    GM.markers[i].setIcon(GM._fn.admin.getIcon(GM.locations[i].category));
+                }
+            },
 
             viewMarker : function (i) {
-                // reset form
-                $("#upload_form")[0].reset();
-                $('#marker-tabs a:first').tab('show');
+                // reset view
+                GM._fn.marker.resetView();
 
                 GM.currentId = i;
+                GM.markers[GM.currentId].setIcon(GM._fn.admin.getIcon("black"));
 
                 var data = GM.locations[i];
 
                 console.log("ID: " + GM.locations[i].id + " - View Marker");
-                // console.log(data);
 
-                var src = "http://maps.googleapis.com/maps/api/staticmap?markers=icon:" + GM._fn.admin.getIcon(GM.locations[i].category, true) + "|" + GM.locations[i].geo_lat + "," + GM.locations[i].geo_lng + "|shadow:true&center=" + GM.locations[i].geo_lat + "," + GM.locations[i].geo_lng + "&zoom=" + GM.options.zoom + "&maptype=hybrid&size=530x250&sensor=false";
+                var map_src = "http://maps.googleapis.com/maps/api/staticmap?markers=icon:" + GM._fn.admin.getIcon(GM.locations[i].category, true) + "|" + GM.locations[i].geo_lat + "," + GM.locations[i].geo_lng + "|shadow:true&center=" + GM.locations[i].geo_lat + "," + GM.locations[i].geo_lng + "&zoom=" + GM.options.zoom + "&maptype=hybrid&size=530x250&sensor=false";
 
-                // add info
-                $("#modal-marker .edit-info").html("Edited on " +  data.date_modified + " by " + data.user_edit);
-
-
-
-                $("#modal-marker [name='id']").val(data.id);
-                $("#modal-marker [name='user_id']").val(GM.user.viewAsId);
-                $("#modal-marker [name='title']").val(data.title);
-                $("#modal-marker [name='content']").html(data.content);
-                $("#modal-marker .geo_lat").html(data.geo_lat);
-                $("#modal-marker .geo_lng").html(data.geo_lng);
-
-                $("#modal-marker :radio[name ='category']").prop('checked', false);
-                $("#modal-marker input[value='" + data.category + "']").prop('checked', true);
-                $("#modal-marker .sat_map").prop("src", src);
-
-                $("#modal-marker [name='comments']").prop('checked', data.comments === '1' ? true : false);
-                $("#modal-marker [name='twitter']").prop('checked', data.twitter === '1' ? true : false);
-                $("#modal-marker [name='facebook']").prop('checked', data.facebook === '1' ? true : false);
-
-                // load image from database based on id
                 if (data.image_name) {
                     GM._fn.marker.loadImage(data.id);
-                    $("#modal-marker .load-image .btn").html("Upload New Image Here!");
-
                 } else {
+                    $("article .image").html("<img />");
+                    $("article .image img").prop("src", GM.rootURL + "cms/img/noimage.png");
                     console.log("ID: " + GM.locations[i].id + " - NO Image.");
-                    $("#modal-marker .image").prop("src", GM.rootURL + "admin/img/noimage.png");
                 }
 
-                // load modal
-                $('#modal-marker').modal({
-                    keyboard : true,
-                    backdrop : true
-                });
+                // add info
+                if (data.title) {
+                    $("article .title").html(data.title);
+                } else {
+                    $("article .title").html("<span class='empty'>No Title Provided</span>");
+                }
+                $("article .content").html(data.content);
+
+                $("article .sat_map").prop("src", map_src);
+
+                if (data.comments === 1) {$("article footer .comments").show();}
+                if (data.twitter === 1) {$("article footer .twitter").show();}
+                if (data.facebook === 1) {$("article footer .facebook").show();}
             },
 
             loadImage : function (id) {
                 // load iamge from database based on id
                 console.log("ID: " + id + " - Loading image...");
-                $("#modal-marker .image").prop("src", GM.rootURL + "API/load_image.php?id=" + id);
+                    $("article .image").html("<img />");
+                    $("article .image img").prop("src", GM.rootURL + "API/load_image.php?id=" + id);
             }
 
         },
@@ -505,8 +502,8 @@ var GM = {
             },
 
             showSiteDetails : function () {
-                $("header.main h1").html(GM.site.name);
-                $("header.main .desc").html(GM.site.desc);
+                $(".siteTitle").html(GM.site.name);
+                $(".siteDesc").html(GM.site.desc);
             }
         }
     },
@@ -514,7 +511,6 @@ var GM = {
     init : function () {
         navigator.geolocation.getCurrentPosition(GM._fn.map.getLocation);
         GM._fn.map.getMap();
-        GM._fn.marker.addMarker();
         GM._fn.site.getSiteDetails();
     }
 
@@ -533,10 +529,19 @@ $(function () {
     // NAVIGATION
 
     // change map
-    $("footer.main .set_map").click(function (e) {
+    $(".locations .set_map").click(function (e) {
         e.preventDefault();
         GM.currentMap = $(this).data("map");
         GM._fn.map.setMap(false);
+        $(".scrollTop").click();
+    });
+
+    // filterCategory
+    $(".category .set_category").click(function (e) {
+        e.preventDefault();
+        GM.filterCategory = $(this).data("category");
+        GM._fn.map.setMap(false);
+        $(".scrollTop").click();
     });
 
     // users settings
@@ -548,7 +553,6 @@ $(function () {
     // user actions
     $("header.main")
     .delegate(".toggle-menu, .nav-list a", "click", function (e) {
-        e.preventDefault();
         $(".header-nav").toggleClass('active');
     })
 
@@ -568,13 +572,29 @@ $(function () {
         e.preventDefault();
         GM._fn.user.saveUser();
     })
-    .delegate("a.legal", "click", function (e) {
+
+    // next Marker
+    $("#next").click(function (e) {
+        var i;
         e.preventDefault();
-        GM._fn.user.saveUser(true);
-    })
-    .delegate("a.add-user", "click", function (e) {
+        if (GM.currentId < GM.locations.length ) {
+            i = parseInt(GM.currentId,10) + 1;
+        } else {
+            i = 0;
+        }
+        GM._fn.marker.viewMarker(i);
+    });
+
+    // prev Marker
+    $("#prev").click(function (e) {
+        var i;
         e.preventDefault();
-        GM._fn.user.addUser();
+        if (GM.currentId > 0) {
+            i = parseInt(GM.currentId,10) - 1;
+        } else {
+            i = GM.locations.length - 1;
+        }
+        GM._fn.marker.viewMarker(i);
     });
 
     // MAP CONTROL
@@ -609,16 +629,16 @@ $(function () {
     });
 
     // scroll to info
-    $("header.main .logo").click(function (e) {
+    $(".scrollSection").click(function (e) {
+        var target = $(this).data("section");
         e.preventDefault();
         $('html, body').animate({
-            scrollTop: $("footer.main").offset().top
+            scrollTop: $("." + target).offset().top
         }, 400);
     });
 
     // scroll to top
     $(".scrollTop").click(function (e) {
-        e.preventDefault();
         $('html, body').animate({
             scrollTop: $("header.main").offset().top
         }, 400);

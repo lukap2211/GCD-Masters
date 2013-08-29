@@ -1,0 +1,10 @@
+#map-wrapper,
+#map-canvas {height: 500px; max-height: 500px;}
+
+header.main .info {padding:0 20px;}
+.header-nav ul,
+.header-nav li {float: left;}
+.header-nav ul.close {float: right;margin-right: 8px;}
+header.main .button {font-size: 1em;}
+article h1 {margin-left:20px;}
+article .content {padding:30px 20px;}

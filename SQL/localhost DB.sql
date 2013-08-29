@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 28, 2013 at 02:16 AM
+-- Generation Time: Aug 29, 2013 at 11:20 AM
 -- Server version: 5.5.9
 -- PHP Version: 5.3.6
 
@@ -51,7 +51,7 @@ CREATE TABLE `contents` (
   PRIMARY KEY (`id`),
   KEY `geo_lat` (`geo_lat`),
   KEY `geo_lon` (`geo_lng`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=47 ;
 
 --
 -- Dumping data for table `contents`
@@ -78,6 +78,14 @@ INSERT INTO `contents` VALUES(34, 5, 5, 1, '', '2013-08-28 01:09:15', '2013-08-2
 INSERT INTO `contents` VALUES(35, 5, 5, 1, '', '2013-08-28 01:09:42', '2013-08-28 01:09:49', '', 0, 0, 'pho', -6.337223, 53.350654, 'history', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);
 INSERT INTO `contents` VALUES(36, 5, 5, 1, '', '2013-08-28 01:09:53', '2013-08-28 01:10:01', '', 0, 0, 'pho', -6.322889, 53.350603, 'activity', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);
 INSERT INTO `contents` VALUES(37, 5, 5, 1, '', '2013-08-28 01:10:17', '2013-08-28 01:10:40', '', 0, 0, 'pho', -6.304521, 53.354086, 'activity', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);
+INSERT INTO `contents` VALUES(39, 0, 0, 1, '', '2013-08-29 11:16:01', '2013-08-29 11:16:01', '', 0, 0, 'gcd', -6.279116, 53.330924, 'todo', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);
+INSERT INTO `contents` VALUES(40, 6, 6, 1, '', '2013-08-29 11:16:25', '2013-08-29 11:16:38', '', 0, 0, 'pho', -6.325464, 53.359926, 'activity', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);
+INSERT INTO `contents` VALUES(41, 6, 6, 1, '', '2013-08-29 11:16:27', '2013-08-29 11:16:27', '', 0, 0, 'pho', -6.353617, 53.358850, 'todo', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);
+INSERT INTO `contents` VALUES(42, 6, 6, 1, '', '2013-08-29 11:16:28', '2013-08-29 11:16:47', '', 0, 0, 'pho', -6.330614, 53.365714, 'history', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);
+INSERT INTO `contents` VALUES(43, 6, 6, 1, '', '2013-08-29 11:16:30', '2013-08-29 11:16:56', '', 0, 0, 'pho', -6.332674, 53.359772, 'history', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);
+INSERT INTO `contents` VALUES(44, 6, 6, 1, '', '2013-08-29 11:16:33', '2013-08-29 11:16:33', '', 0, 0, 'pho', -6.298857, 53.349322, 'todo', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);
+INSERT INTO `contents` VALUES(45, 6, 6, 1, '', '2013-08-29 11:17:02', '2013-08-29 11:17:07', '', 0, 0, 'pho', -6.349583, 53.364382, 'study', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);
+INSERT INTO `contents` VALUES(46, 6, 6, 1, '', '2013-08-29 11:17:11', '2013-08-29 11:17:16', '', 0, 0, 'pho', -6.326580, 53.348041, 'study', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -121,7 +129,7 @@ CREATE TABLE `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` VALUES(1, 'GCD Geo CMS', 'site description', NULL, 'normal', 0, 1, 1);
+INSERT INTO `settings` VALUES(1, 'GCD Geo CMS', 'This is MScADM dissertation DEMO website', NULL, 'normal', 0, 1, 1);
 
 -- --------------------------------------------------------
 
