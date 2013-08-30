@@ -8,3 +8,4 @@ header.main .info {padding:0 20px;}
 header.main .button {font-size: 1em;}
 article h1 {margin-left:20px;}
 article .content {padding:30px 20px;}
+article .separator {display: none;}
