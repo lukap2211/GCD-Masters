@@ -12,7 +12,8 @@ a {color:#FFFFF;}
 .clearfix {clear: both;}
 .left {float: left;}
 .separator {padding: 30px; margin: 40px 0 0; display: block; text-decoration: none; text-align: right; cursor: pointer; border-top: 2px dashed #2A2A2A; color:#2A2A2A; }
-.button {font-weight: 400; -webkit-border-radius: 4px; background-color: #009FDD; text-shadow: 0 1px #0072C7; color: #FFF; border:0; cursor: pointer; border-radius: 4px; padding: 0.3em 0.8em; display: inline-block; line-height: 1.6em; font-size: 1.3em; text-decoration: none; letter-spacing: 0.1em; }
+.button,
+.button:active {font-weight: 400; -webkit-border-radius: 4px; background-color: #009FDD; text-shadow: 0 1px #0072C7; color: #FFF; border:0; cursor: pointer; border-radius: 4px; padding: 0.3em 0.8em; display: inline-block; line-height: 1.6em; font-size: 1.3em; text-decoration: none; letter-spacing: 0.1em; }
 .button:hover {background-color: #2a2a2a; color: #F1F1F1; text-shadow: 0 -1px 1px #0072C7;}
 .black {background: #2A2A2A; }
 

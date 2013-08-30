@@ -265,14 +265,14 @@ var GM = {
 
                 }));
 
-                // show details ??
+                // show details
                 google.maps.event.addListener(GM.markers[i], 'click', function () {
                     GM._fn.marker.viewMarker(i);
-                });
+                    // scroll to content
+                    $('html, body').animate({
+                        scrollTop: $(".browse").offset().top
+                    }, 400);
 
-                // edit
-                google.maps.event.addListener(GM.markers[i], 'dblclick', function () {
-                    GM._fn.marker.viewMarker(i);
                 });
 
                 // hover icon
@@ -348,11 +348,6 @@ var GM = {
                 if (data.comments === 1) {$("article footer .comments").show();}
                 if (data.twitter === 1) {$("article footer .twitter").show();}
                 if (data.facebook === 1) {$("article footer .facebook").show();}
-
-                // scroll to
-                $('html, body').animate({
-                    scrollTop: $(".browse").offset().top
-                }, 400);
             },
 
             loadImage : function (id) {
