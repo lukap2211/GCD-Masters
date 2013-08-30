@@ -1,7 +1,7 @@
 <?php
 
     //open connection
-    require("../admin/include/connect.php");
+    require("../cms/include/connect.php");
     global $conn;
 
     // include
