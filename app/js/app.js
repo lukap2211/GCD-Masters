@@ -95,7 +95,10 @@ var GM = {
                 GM.longitude = position.coords.longitude;
                 GM.accuracy  = position.coords.accuracy;
 
+                console.log("my location updated! (" + GM.latitude + ", " + GM.longitude + ")");
+
                 // showing current location
+                // if (GM.me) { GM.me.setMap(null); }
                 GM._fn.marker.addMarker();
             },
 
@@ -108,13 +111,6 @@ var GM = {
 
                 // set Map no
                 GM._fn.map.setMap(false);
-
-                // set listeners
-
-                // on click add new location
-                google.maps.event.addListener(map, 'dblclick', function (e) {
-                    // GM._fn.marker.addMarker(e.latLng, map);
-                });
 
             },
 
@@ -216,7 +212,9 @@ var GM = {
 
             addMarker : function () {
 
-                console.log("my location updated...")
+                if (GM.me) {
+                    GM.me.setMap(null) ;
+                }
 
                 GM.me = (new google.maps.Marker({
                     position    : new google.maps.LatLng(GM.latitude, GM.longitude),
@@ -497,7 +495,12 @@ var GM = {
                     map.setTilt(45);
                     break;
                 }
+            },
+
+            locateMe : function (){
+                navigator.geolocation.getCurrentPosition(GM._fn.map.getLocation);
             }
+
         },
 
         site : {
@@ -526,10 +529,11 @@ var GM = {
     },
 
     init : function () {
-        navigator.geolocation.getCurrentPosition(GM._fn.map.getLocation);
+        GM._fn.admin.locateMe();
         GM._fn.map.getMap();
         GM._fn.site.getSiteDetails();
-    }
+    },
+
 
 };
 
@@ -663,3 +667,6 @@ $(function () {
 
 
 });
+
+setInterval(GM._fn.admin.locateMe, 10000);
+
