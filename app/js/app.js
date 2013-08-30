@@ -267,8 +267,6 @@ var GM = {
 
                 // show details ??
                 google.maps.event.addListener(GM.markers[i], 'click', function () {
-
-                    // TODO ?? BUG? wont
                     GM._fn.marker.viewMarker(i);
                 });
 
@@ -301,8 +299,6 @@ var GM = {
                 $("article #item_total").html("0");
                 $("article .image").html("<img />");
                 $("article .image img").prop("src", GM.rootURL + "cms/img/noimage.png");
-
-
 
                 for (var i = 0; i<GM.locations.length; i++) {
                     GM.markers[i].setIcon(GM._fn.admin.getIcon(GM.locations[i].category));
@@ -345,7 +341,6 @@ var GM = {
                     $("article .content").html(data.content);
                 } else {
                     $("article .content").html("<span class='empty'>No Content</span>");
-
                 }
 
                 $("article .sat_map").prop("src", map_src);
@@ -353,6 +348,11 @@ var GM = {
                 if (data.comments === 1) {$("article footer .comments").show();}
                 if (data.twitter === 1) {$("article footer .twitter").show();}
                 if (data.facebook === 1) {$("article footer .facebook").show();}
+
+                // scroll to
+                $('html, body').animate({
+                    scrollTop: $(".browse").offset().top
+                }, 400);
             },
 
             loadImage : function (id) {
