@@ -100,17 +100,20 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
 
             <!-- ARTICLE CONTROLS -->
             <div class="browse article-header">
+                <div class="counter">
+                    <span id="item_no">0</span> / <span id="item_total">0</span>
+                </div>
                 <nav>
                     <button id="prev" class="button scrollSection" data-section="browse" ><i class="icon-chevron-left"></i></button>
                     <button id="next" class="button scrollSection" data-section="browse"><i class="icon-chevron-right"></i></button>
                 </nav>
             </div>
 
-            <h1 class="title"></h1>
+            <h1 class="title">No Title</h1>
 
-            <div class="image"></div>
+            <div class="image"><img src="../cms/img/noimage.png" /></div>
 
-            <div class="content"></div>
+            <div class="content">No Content</div>
 
             <div class="location"></div>
 

@@ -188,6 +188,7 @@ var GM = {
                                 // console.log(item);
                             });
                         }
+
                         GM._fn.markers.placeMarkers(timeout);
                         GM._fn.marker.viewMarker(0);
 
@@ -290,12 +291,18 @@ var GM = {
 
             resetView : function (){
                 $("article .title").html("");
-                $("article .image").html("");
-                $("article .content").html("");
+                $("article .title").html("<span class='empty'>No Title</span>");
+                $("article .content").html("<span class='empty'>No Content</span>");
                 $("article .location").html("");
                 $("article footer .comments").hide();
                 $("article footer .twitter").hide();
                 $("article footer .facebook").hide();
+                $("article #item_no").html("0");
+                $("article #item_total").html("0");
+                $("article .image").html("<img />");
+                $("article .image img").prop("src", GM.rootURL + "cms/img/noimage.png");
+
+
 
                 for (var i = 0; i<GM.locations.length; i++) {
                     GM.markers[i].setIcon(GM._fn.admin.getIcon(GM.locations[i].category));
@@ -313,6 +320,11 @@ var GM = {
 
                 console.log("ID: " + GM.locations[i].id + " - View Marker");
 
+                // set counter
+                $("article #item_no").html(parseInt(GM.currentId,10) +1);
+                $("article #item_total").html(GM.locations.length);
+
+                // set images
                 var map_src = "http://maps.googleapis.com/maps/api/staticmap?markers=icon:" + GM._fn.admin.getIcon(GM.locations[i].category, true) + "|" + GM.locations[i].geo_lat + "," + GM.locations[i].geo_lng + "|shadow:true&center=" + GM.locations[i].geo_lat + "," + GM.locations[i].geo_lng + "&zoom=" + GM.options.zoom + "&maptype=hybrid&size=530x250&sensor=false";
 
                 if (data.image_name) {
@@ -327,9 +339,14 @@ var GM = {
                 if (data.title) {
                     $("article .title").html(data.title);
                 } else {
-                    $("article .title").html("<span class='empty'>No Title Provided</span>");
+                    $("article .title").html("<span class='empty'>No Title</span>");
                 }
-                $("article .content").html(data.content);
+                if (data.content) {
+                    $("article .content").html(data.content);
+                } else {
+                    $("article .content").html("<span class='empty'>No Content</span>");
+
+                }
 
                 $("article .sat_map").prop("src", map_src);
 
@@ -577,7 +594,7 @@ $(function () {
     $("#next").click(function (e) {
         var i;
         e.preventDefault();
-        if (GM.currentId < GM.locations.length ) {
+        if (GM.currentId < GM.locations.length -1) {
             i = parseInt(GM.currentId,10) + 1;
         } else {
             i = 0;
