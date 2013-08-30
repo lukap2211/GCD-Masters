@@ -53,7 +53,7 @@ label {color: #999; cursor: initial;}
 
 .modal .image-wrapper {width: 526px; height: 250px; overflow: auto;}
 .modal .loc-container,
-.modal .image-container {display: inline-block; width: 526px; height: 250px; font-size: 0; line-height: 0; vertical-align: middle; background-size: 100%; background-position: 50% 50%; background-repeat: no-repeat; background-image: url('../img/530x250px.png'); overflow: hidden; position: relative; }
+.modal .image-container {display: inline-block; width: 526px; height: 250px; font-size: 0; line-height: 0; vertical-align: middle; background-size: 100%; background-position: 50% 50%; background-repeat: no-repeat; background-image: url('../img/bg.png'); overflow: hidden; position: relative; }
 .modal .image-container { border: 1px dashed #999; }
 .modal .image-container .dimensions { position: absolute; background: #333; color:#FFF; width:80px; height: 20px; right:0; top:0; font-size: 12px; line-height: 20px; text-align: center;}
 .modal .loc-container .longlat { position: absolute; background: #333; color:#FFF; width:140px; height: 20px; right:0; top:0; font-size: 12px; line-height: 20px; text-align: center;}
