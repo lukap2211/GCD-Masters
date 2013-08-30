@@ -221,7 +221,7 @@ var GM = {
                 GM.me = (new google.maps.Marker({
                     position    : new google.maps.LatLng(GM.latitude, GM.longitude),
                     map         : map,
-                    draggable   : true,
+                    draggable   : false,
                     icon        : GM._fn.admin.getIcon("me"),
                     optimized   : true
 
@@ -258,7 +258,7 @@ var GM = {
                     animation   : google.maps.Animation.DROP,
                     position    : new google.maps.LatLng(GM.locations[i].geo_lat, GM.locations[i].geo_lng),
                     map         : map,
-                    draggable   : true,
+                    draggable   : false,
                     icon        : GM._fn.admin.getIcon(GM.locations[i].category),
                     shadow      : GM._fn.admin.getIcon('shadow'),
                     optimized   : true

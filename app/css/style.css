@@ -18,9 +18,9 @@ a {color:#FFFFF;}
 
 /* MAP */
 #map-wrapper {height: 400px; max-height: 400px;position: relative;}
-#map-canvas  {height: 400px; max-height: 400px; background-color: #e5e5e5; width: 100%;  z-index: -1; position: absolute; top: 0; left: 0; }
+#map-canvas  {height: 400px; max-height: 400px; background-color: #e5e5e5; width: 100%;  z-index: -1; position: absolute; top: 0; left: 0; z-index: 1}
 #map-canvas img {max-width: none; }
-#map-controls {background: #2A2A2A;position: relative;}
+#map-controls {background: #2A2A2A;position: relative; z-index: 2;}
 #map-controls #zoomIn {position: absolute; left:10px; top: -170px;}
 #map-controls #mapType {position: absolute; left:10px; top: -120px;}
 #map-controls #zoomOut {position: absolute; left:10px; top: -70px}
