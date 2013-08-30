@@ -64,3 +64,4 @@ footer h2 {color:#333; background:0; }
 footer img {margin: 50px 0 0 20px; height: 80px;}
 footer p {margin: 50px 0}
 footer .separator {border-top: 2px dashed #F1F1F1; color:#F1F1F1 !important; margin-top:100px;}
+.separator.aboveFooter {display:none;}

@@ -1,13 +1,11 @@
 h2 {margin: 0;}
 article {width: 50%; float: right;}
-section {float: left; width: 28%; margin: 0 10px 20px 0;}
-section.category li {margin: 0; width: 43%;}
-section.category img {margin: 5px auto; display: block;}
-section.category .reset { margin:5px auto;}
-section .separator {display: none;}
+section {float: left; width: 28%;}
 footer .separator {display: block;}
 article {min-height: 500px;width: 70%}
 
 .header-nav {top: 0px; visibility: visible; padding:5px; }
 header.main .info .toggle-menu,
 .header-nav a.button.black {display: none;}
+
+section.locations .nav { margin-top:auto}

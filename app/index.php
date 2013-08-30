@@ -160,6 +160,8 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
 
         <div class="clearfix"></div>
 
+        <div class="scrollTop separator aboveFooter " href="#">Back to top <i class="icon-arrow-up"></i></div>
+
     </div>
 
     <footer class="dark">

@@ -10,18 +10,6 @@ ini_set('display_errors', TRUE);
 
 // API calls - JSON only
 
-/*
-
-CALLS TODO :
-
-- get all content (cache in object or local storage) - DONE!
-- get content by logitude and latitude
-- get content by id
-- get all content on that location
-- get content by type
-
-*/
-
 // c = controler (content, user)
 // a = action (all, id, add, edit, delete)
 // f = filter

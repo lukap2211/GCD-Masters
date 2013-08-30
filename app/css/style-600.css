@@ -9,3 +9,14 @@ header.main .button {font-size: 1em;}
 article h1 {margin-left:20px;}
 article .content {padding:30px 20px;}
 article .separator {display: none;}
+section .separator {display: none;}
+.separator.aboveFooter {display:block;}
+
+section {float: left; width: 48%; margin: 0 10px 20px 0;}
+section.category li {margin: 0; width: 43%;}
+section.category img {margin: 5px auto; display: block;}
+section.category .reset { margin:5px auto;}
+
+
+section.locations .nav { margin-top:30px;}
+
