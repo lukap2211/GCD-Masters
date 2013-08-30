@@ -63,7 +63,6 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
         <nav class="header-nav nav">
             <ul class="nav-list">
                 <li><a class="button scrollSection" data-section="browse">Browse Locations</a></li>
-                <!-- <li><a class="button nearby" href="#">Show Nearby</a></li> -->
                 <li><a class="button scrollSection" data-section="category">Filter by Category</a></li>
                 <li><a class="button scrollSection" data-section="locations">Change Location</a></li>
             </ul>
@@ -90,6 +89,7 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
             <button id="zoomIn"  class="button"><i class="icon-plus"></i></button>
             <button id="mapType" data-type-id="1" class="button"><i class="icon-globe"></i></button>
             <button id="zoomOut" class="button"><i class="icon-minus"></i></button>
+            <button id="centerMe" class="button"><i class="icon-screenshot"></i></button>
         </div>
     </div>
 

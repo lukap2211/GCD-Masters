@@ -4,7 +4,7 @@ section {float: left; width: 28%;}
 footer .separator {display: block;}
 article {min-height: 500px;width: 70%}
 
-.header-nav {top: 0px; visibility: visible; padding:5px; }
+.header-nav {top: 0px; visibility: visible; padding:5px 0; }
 header.main .info .toggle-menu,
 .header-nav a.button.black {display: none;}
 

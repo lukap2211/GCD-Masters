@@ -105,10 +105,6 @@ var GM = {
             getMap : function () {
                 // google.maps.visualRefresh = true;
                 map = new google.maps.Map(document.getElementById('map-canvas'), GM.options);
-                // move to current location
-                // var center = new google.maps.LatLng(GM.latitude, GM.longitude);
-                // map.panTo(center);
-
                 // set Map no
                 GM._fn.map.setMap(false);
 
@@ -160,6 +156,12 @@ var GM = {
                 GM.locations = [];
                 GM.markers   = [];
                 GM.iterator  = 0;
+            },
+
+            centerMap :function () {
+                // center my location
+                var center = new google.maps.LatLng(GM.latitude, GM.longitude);
+                map.panTo(center);
             }
         },
 
@@ -552,7 +554,9 @@ $(function () {
     // change map
     $(".locations .set_map").click(function (e) {
         e.preventDefault();
-        GM.currentMap = $(this).data("map");
+        var set_location = $(this).data("map");
+        map.panTo(GM.myMaps.gcd.map);
+        GM.currentMap = set_location;
         GM._fn.map.setMap(false);
         $(".scrollTop").click();
     });
@@ -647,6 +651,12 @@ $(function () {
             map.setZoom(GM.options.zoom);
         }
         GM._fn.admin.customZoom();
+    });
+
+    // custom map zoom -
+    $("#map-controls #centerMe").click(function (e) {
+        e.preventDefault();
+        GM._fn.map.centerMap();
     });
 
     // scroll to info
