@@ -19,7 +19,7 @@ var GM = {
     // site settings
     site   : {
         name        : "",
-        desc        : "",
+        desc        : ""
     },
 
     // markers
@@ -158,7 +158,7 @@ var GM = {
                 GM.iterator  = 0;
             },
 
-            centerMap :function () {
+            centerMap : function () {
                 // center my location
                 var center = new google.maps.LatLng(GM.latitude, GM.longitude);
                 map.panTo(center);
@@ -199,9 +199,7 @@ var GM = {
             placeMarkers : function (timeout) {
                 for (var i = 0; i < GM.locations.length; i++) {
                     if (timeout) {
-                        setTimeout(function () {
-                            GM._fn.marker.placeMarker();
-                        }, i * 200);
+                        setTimeout(GM._fn.marker.placeMarker, i * 200);
                     } else {
                         GM._fn.marker.placeMarker();
                     }
@@ -215,7 +213,7 @@ var GM = {
             addMarker : function () {
 
                 if (GM.me) {
-                    GM.me.setMap(null) ;
+                    GM.me.setMap(null);
                 }
 
                 GM.me = (new google.maps.Marker({
@@ -287,7 +285,7 @@ var GM = {
                 GM.iterator++;
             },
 
-            resetView : function (){
+            resetView : function () {
                 $("article .title").html("");
                 $("article .title").html("<span class='empty'>No Title</span>");
                 $("article .content").html("<span class='empty'>No Content</span>");
@@ -300,7 +298,7 @@ var GM = {
                 $("article .image").html("<img />");
                 $("article .image img").prop("src", GM.rootURL + "cms/img/noimage.png");
 
-                for (var i = 0; i<GM.locations.length; i++) {
+                for (var i = 0; i < GM.locations.length; i++) {
                     GM.markers[i].setIcon(GM._fn.admin.getIcon(GM.locations[i].category));
                 }
             },
@@ -317,7 +315,7 @@ var GM = {
                 console.log("ID: " + GM.locations[i].id + " - View Marker");
 
                 // set counter
-                $("article #item_no").html(parseInt(GM.currentId,10) +1);
+                $("article #item_no").html(parseInt(GM.currentId, 10) + 1);
                 $("article #item_total").html(GM.locations.length);
 
                 // set images
@@ -345,16 +343,16 @@ var GM = {
 
                 $("article .sat_map").prop("src", map_src);
 
-                if (data.comments === 1) {$("article footer .comments").show();}
-                if (data.twitter === 1) {$("article footer .twitter").show();}
-                if (data.facebook === 1) {$("article footer .facebook").show();}
+                if (data.comments === 1) {$("article footer .comments").show(); }
+                if (data.twitter === 1) {$("article footer .twitter").show(); }
+                if (data.facebook === 1) {$("article footer .facebook").show(); }
             },
 
             loadImage : function (id) {
                 // load iamge from database based on id
                 console.log("ID: " + id + " - Loading image...");
-                    $("article .image").html("<img />");
-                    $("article .image img").prop("src", GM.rootURL + "API/load_image.php?id=" + id);
+                $("article .image").html("<img />");
+                $("article .image img").prop("src", GM.rootURL + "API/load_image.php?id=" + id);
             }
 
         },
@@ -494,7 +492,7 @@ var GM = {
                 }
             },
 
-            locateMe : function (){
+            locateMe : function () {
                 navigator.geolocation.getCurrentPosition(GM._fn.map.getLocation);
             }
 
@@ -529,8 +527,7 @@ var GM = {
         GM._fn.admin.locateMe();
         GM._fn.map.getMap();
         GM._fn.site.getSiteDetails();
-    },
-
+    }
 
 };
 
@@ -572,10 +569,9 @@ $(function () {
 
     // user actions
     $("header.main")
-    .delegate(".toggle-menu, .nav-list a", "click", function (e) {
+    .delegate(".toggle-menu, .nav-list a", "click", function () {
         $(".header-nav").toggleClass('active');
-    })
-
+    });
 
     // user actions
     $("nav")
@@ -591,14 +587,14 @@ $(function () {
     .delegate("a.category", "click", function (e) {
         e.preventDefault();
         GM._fn.user.saveUser();
-    })
+    });
 
     // next Marker
     $("#next").click(function (e) {
         var i;
         e.preventDefault();
-        if (GM.currentId < GM.locations.length -1) {
-            i = parseInt(GM.currentId,10) + 1;
+        if (GM.currentId < GM.locations.length - 1) {
+            i = parseInt(GM.currentId, 10) + 1;
         } else {
             i = 0;
         }
@@ -610,7 +606,7 @@ $(function () {
         var i;
         e.preventDefault();
         if (GM.currentId > 0) {
-            i = parseInt(GM.currentId,10) - 1;
+            i = parseInt(GM.currentId, 10) - 1;
         } else {
             i = GM.locations.length - 1;
         }
@@ -665,6 +661,7 @@ $(function () {
 
     // scroll to top
     $(".scrollTop").click(function (e) {
+        e.preventDefault();
         $('html, body').animate({
             scrollTop: $("header.main").offset().top
         }, 400);

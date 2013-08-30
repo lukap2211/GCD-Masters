@@ -232,9 +232,7 @@ var GM = {
             placeMarkers : function (timeout) {
                 for (var i = 0; i < GM.locations.length; i++) {
                     if (timeout) {
-                        setTimeout(function () {
-                            GM._fn.marker.placeMarker();
-                        }, i * 200);
+                        setTimeout(GM._fn.marker.placeMarker, i * 200);
                     } else {
                         GM._fn.marker.placeMarker();
                     }
