@@ -144,7 +144,9 @@ var GM = {
 
             setMap : function (timeout) {
 
-                GM._fn.markers.loadMarkers(timeout);
+                if (GM.dashboard) {
+                    GM._fn.markers.loadMarkers(timeout);
+                }
                 GM._fn.admin.customZoom();
                 GM._fn.admin.loadLegend();
 
@@ -211,7 +213,7 @@ var GM = {
                         if (data.result) {
                             $.each(data.items, function (i, item) {
                                 GM.locations.push(item);
-                                console.log(item);
+                                // console.log(item);
                             });
                         }
                         // $(".progress div").css({"width" : 0});
@@ -889,13 +891,6 @@ var GM = {
 // other JS goes here
 
 $(function () {
-
-    // MAIN SETTINGS
-    GM.currentMap = "gcd"; // default map on dashboard
-    GM.options.draggable = true;
-
-    // init
-    GM.init();
 
     // NAVIGATION
 

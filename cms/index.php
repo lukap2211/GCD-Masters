@@ -178,6 +178,13 @@ include("include/login_form.php");
     <script src="js/bootstrap.js"></script>
     <script src="js/cms.js"></script>
 
+    <script>
+        GM.options.draggable = false;
+        GM.currentMap = "smi"; // default map on dashboard
+        GM.dashboard = false;
+        GM.init();
+    </script>
+
     <!-- GOOGLE ANALYTICS  -->
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
