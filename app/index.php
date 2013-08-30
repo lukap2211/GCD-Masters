@@ -130,10 +130,10 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
 
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><img src="http://lukap.info/gcd/masters/assets/pins/pin_green.png" width="70" height="70" /><a class="set_category button" data-category="activity" href="#">Activity</a></li>
-                    <li><img src="http://lukap.info/gcd/masters/assets/pins/pin_orange.png" width="70" height="70" /><a class="set_category button" data-category="history" href="#">History</a></li>
-                    <li><img src="http://lukap.info/gcd/masters/assets/pins/pin_blue.png" width="70" height="70" /><a class="set_category button" data-category="study" href="#">Study</a></li>
-                    <li><div class="reset" /><i class="icon-remove"> </i></div><a class="set_category button" data-category="" href="#">Reset</a></li>
+                    <li><a class="set_category " data-category="activity" href="#"><img src="http://lukap.info/gcd/masters/assets/pins/pin_green.png" width="70" height="70" /><div class="button" >Activity</div></a></li>
+                    <li><a class="set_category " data-category="history" href="#"><img src="http://lukap.info/gcd/masters/assets/pins/pin_orange.png" width="70" height="70" /><div class="button" >History</div></a></li>
+                    <li><a class="set_category " data-category="study" href="#"><img src="http://lukap.info/gcd/masters/assets/pins/pin_blue.png" width="70" height="70" /><div class="button" >Study</div></a></li>
+                    <li><a class="set_category " data-category="" href="#"><div class="reset"><i class="icon-remove"> </i></div><div class="button" >Reset</div></a></li>
                 </ul>
             </nav>
 
@@ -162,9 +162,7 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
 
     </div>
 
-    <footer class="about dark">
-
-        <div class="scrollTop separator" href="#">Back to top <i class="icon-arrow-up"></i></div>
+    <footer class="dark">
 
         <img src="../assets/icons/logo.png" />
         <h3 class="siteTitle"></h3>
@@ -176,6 +174,7 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
             <a class="github" href="https://github.com/lukap2211/GCD-Masters"><i class="icon-github"></i></a>
         </p>
 
+        <div class="scrollTop separator about" href="#">Back to top <i class="icon-arrow-up"></i></div>
     </footer>
 
     <!-- JAVASCRIPT -->
