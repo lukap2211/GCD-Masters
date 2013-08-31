@@ -60,7 +60,7 @@ var GM = {
     myMaps : {
         gcd         : { map : new google.maps.LatLng(53.33101073729732,  -6.278211772441864), zoom : 18, minZoom : 17, maxZoom : 21}, // Griffith
         smi         : { map : new google.maps.LatLng(53.348732478223454, -6.279000341892242), zoom : 17, minZoom : 16, maxZoom : 21}, // Smithfield Square
-        pho         : { map : new google.maps.LatLng(53.35890161658443,  -6.329755783081055), zoom : 14, minZoom : 14, maxZoom : 21}, // Phoenix park
+        pho         : { map : new google.maps.LatLng(53.35890161658443,  -6.329755783081055), zoom : 14, minZoom : 13, maxZoom : 21}, // Phoenix park
         dub         : { map : new google.maps.LatLng(53.34737470187197,  -6.263923645019531), zoom : 12, minZoom : 10, maxZoom : 21} // Dublin
     },
 
@@ -670,5 +670,5 @@ $(function () {
 
 });
 
-setInterval(GM._fn.admin.locateMe, 10000);
+setInterval(GM._fn.admin.locateMe, 30000); // check location every 30 sec
 
