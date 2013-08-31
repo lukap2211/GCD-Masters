@@ -41,6 +41,26 @@ function item_all() {
     // execute
     run_query($query);
 }
+function item_all_distance() {
+
+    $filter = "";
+    // filter category
+    if(!empty($_GET['category']) /*&& is_bool($_GET['todo'])*/){
+        $filter .= " AND c.category = '{$_GET['category']}'";
+    }
+
+    // by user id (view as user)
+    if(!empty($_GET['id']) && is_string($_GET['id'])){
+        $filter .= " AND u.id = '{$_GET['id']}'";
+    }
+
+    // query
+    $query = "SELECT id, ( 6371 * acos( cos( radians(37) ) * cos( radians( geo_lat ) ) * cos( radians( geo_lng ) - radians(-122) ) + sin( radians(37) ) * sin( radians( geo_lat ) ) ) ) AS distance" ;
+    $query = "FROM contents HAVING distance < 25 ORDER BY distance LIMIT 0 , 20;";
+
+    // execute
+    run_query($query);
+}
 
 function item_legend() {
 
