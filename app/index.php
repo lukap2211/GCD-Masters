@@ -10,6 +10,7 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
 <html>
 <head>
 
+    <meta charset="utf-8">
     <title>Geo App</title>
 
     <!-- Responsive CSS -->
@@ -41,7 +42,7 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- GOOGLE MAPS API -->
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.6&sensor=false"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.6&sensor=true"></script>
 
 </head>
 
@@ -51,7 +52,7 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
     <header class="main">
         <div class="info">
             <a class="title scrollSection" data-section="about" >
-                <img src="../assets/icons/logo.png" />
+                <img src="../assets/icons/logo.png" alt="" />
                 <h1 class="siteTitle"></h1>
             </a>
             <div class="toggle-menu">
@@ -72,7 +73,6 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
             <ul class="nav-list close">
                 <li><a class="button black" href="javascript:void(0);"><i class="icon-remove"></i></a></li>
             </ul>
-            </div>
         </nav>
     </header>
 
@@ -111,7 +111,7 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
 
             <h1 class="title">No Title</h1>
 
-            <div class="image"><img src="../cms/img/noimage.png" /></div>
+            <div class="image"><img src="../cms/img/noimage.png" alt="No image" /></div>
 
             <div class="content">No Content</div>
 
@@ -119,7 +119,7 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
 
             <div class="social"></div>
 
-            <div class="scrollTop separator" href="#">Back to top <i class="icon-arrow-up"></i></div>
+            <div class="scrollTop separator">Back to top <i class="icon-arrow-up"></i></div>
         </article>
 
 
@@ -130,14 +130,14 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
 
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a class="set_category " data-category="activity" href="#"><img src="http://lukap.info/gcd/masters/assets/pins/pin_green.png" width="70" height="70" /><div class="button" >Activity</div></a></li>
-                    <li><a class="set_category " data-category="history" href="#"><img src="http://lukap.info/gcd/masters/assets/pins/pin_orange.png" width="70" height="70" /><div class="button" >History</div></a></li>
-                    <li><a class="set_category " data-category="study" href="#"><img src="http://lukap.info/gcd/masters/assets/pins/pin_blue.png" width="70" height="70" /><div class="button" >Study</div></a></li>
+                    <li><a class="set_category " data-category="activity" href="#"><img src="http://lukap.info/gcd/masters/assets/pins/pin_green.png" width="70" height="70" alt="Activity" /><div class="button" >Activity</div></a></li>
+                    <li><a class="set_category " data-category="history" href="#"><img src="http://lukap.info/gcd/masters/assets/pins/pin_orange.png" width="70" height="70" alt="History" /><div class="button" >History</div></a></li>
+                    <li><a class="set_category " data-category="study" href="#"><img src="http://lukap.info/gcd/masters/assets/pins/pin_blue.png" width="70" height="70" alt="Stuy" /><div class="button" >Study</div></a></li>
                     <li><a class="set_category " data-category="" href="#"><div class="reset"><i class="icon-remove"> </i></div><div class="button" >Reset</div></a></li>
                 </ul>
             </nav>
 
-            <div class="scrollTop separator" href="#">Back to top <i class="icon-arrow-up"></i></div>
+            <div class="scrollTop separator">Back to top <i class="icon-arrow-up"></i></div>
 
         </section>
 
@@ -154,19 +154,19 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
                     <li><a class="set_map button" data-map="dub" href="#">Dublin</a></li>
                 </ul>
 
-                <div class="scrollTop separator" href="#">Back to top <i class="icon-arrow-up"></i></div>
+                <div class="scrollTop separator">Back to top <i class="icon-arrow-up"></i></div>
             </nav>
         </section>
 
         <div class="clearfix"></div>
 
-        <div class="scrollTop separator aboveFooter " href="#">Back to top <i class="icon-arrow-up"></i></div>
+        <div class="scrollTop separator aboveFooter ">Back to top <i class="icon-arrow-up"></i></div>
 
     </div>
 
     <footer class="dark">
 
-        <img src="../assets/icons/logo.png" />
+        <img src="../assets/icons/logo.png" alt="" />
         <h3 class="siteTitle"></h3>
         <p class="siteDesc"></p>
 
@@ -176,7 +176,7 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
             <a class="github" href="https://github.com/lukap2211/GCD-Masters"><i class="icon-github"></i></a>
         </p>
 
-        <div class="scrollTop separator about" href="#">Back to top <i class="icon-arrow-up"></i></div>
+        <div class="scrollTop separator about">Back to top <i class="icon-arrow-up"></i></div>
     </footer>
 
     <!-- JAVASCRIPT -->
