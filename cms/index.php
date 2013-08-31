@@ -110,12 +110,11 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
 
  -->
 
-
 <html>
 <head>
 
+    <meta charset="utf-8">
     <title>Geo CMS</title>
-
 
     <!-- CSS -->
     <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
@@ -132,15 +131,15 @@ http://www.apache.org/licenses/LICENSE-2.0.txt
     <link rel="apple-touch-icon" sizes="114x114" href="../assets/icons/touch-icon-iphone-retina.png" />
     <link rel="apple-touch-icon" sizes="144x144" href="../assets/icons/touch-icon-ipad-retina.png" />
 
-    <!-- iPad standalone app -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-
     <!--[if IE 7]>
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
 
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- iPad standalone app -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
     <!-- GOOGLE MAPS API -->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.6&sensor=false"></script>
