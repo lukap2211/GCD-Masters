@@ -6,7 +6,9 @@
 /* COMMON */
 body {margin: 0; padding: 0; font-size: 14px; font-family: "Roboto", Helvetica, Arial, serif; color:#FFF; background: url(../img/bg.png); max-width: 100%; position: static; border: none; }
 h2 {text-align: center; margin: 100px 0 10px; padding: 18px 0; background: #2A2A2A; color: #DDD;letter-spacing: 0.2em;font-weight: normal;}
-a {color:#FFFFF;}
+a {color:#FFFFF; border:0; outline: none;}
+a img {border:0; outline: none;}
+
 .small {font-size: 12px; color:#999;}
 .github {color:#EEE; font-size: 30px; text-decoration: none; display: none;}
 .clearfix {clear: both;}
@@ -57,7 +59,7 @@ section {text-align: center; margin: 100px 0;}
 section.category li {float: left; margin: 0 20px;width: 25%; min-width:100px;}
 section.category span {width: 120px; text-align: center;margin: 0 auto;display: block;float: left;}
 section.category img {margin: 30px auto; display: block;}
-section.category .reset {width:70px;height:70px; margin:30px auto;font-size:60px;color:#ddd;}
+section.category .reset {width:70px;height:70px; margin:30px auto; font-size:60px; color:#ddd; border:0; outline: none;}
 
 /* FOOTER */
 footer {text-align: center; margin: 100px 0;}
